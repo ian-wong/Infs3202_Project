@@ -83,6 +83,7 @@ $db->disconnect(); // disconnect after use is a good habit
     </div>
     <div class="card-body">
         <form id="loginForm " action="SQLsignup.php">
+            <!--User Input -->
             <div class="form-row">
                 <div class="form-group col-md-5 ml-3 mb-4">
                     <label for="fNameInput">First Name</label>
