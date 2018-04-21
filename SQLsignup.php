@@ -3,7 +3,7 @@ include 'connectMySQL.php';
 include 'signup.php';
 
 $db = new MySQLDatabase(); // create a Database object
-$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“quay”, “3202”, “3202database”);
+$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“infs”, “3202”, “3202database”);
     // do some database jobs.
 $db->disconnect(); // disconnect after use is a good habit
 
