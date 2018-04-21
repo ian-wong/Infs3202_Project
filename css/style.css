@@ -1,0 +1,91 @@
+body {
+    padding-bottom: 3rem;
+}
+
+#searchBar {
+    width: 350px;
+
+}
+/* Logo Sizing */
+#Logo {
+    width: 3em;
+    height: 2.5em;
+}
+
+/* Signup Button */
+.signupBtn {
+    background-color: #007aff;
+    color: white;
+    border-radius: 4px;
+    padding: 0.3em 0.8em 0.55em 0.8em;
+    font-size: 16px;
+    display: inline-block;
+}
+
+.signupBtn:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #106cd6;
+}
+
+
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+.carousel-caption {
+    bottom: 11rem;
+    z-index: 10;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 32rem;
+}
+.carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+
+/* Feature */
+.feature {
+    margin: 4rem 0 ; /* Space out the Bootstrap <hr> more */
+    padding-left: 2rem;
+}
+
+/* Thin out headings */
+.feature-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+}
+
+
+
+/* RESPONSIVE CSS */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption h1 {
+        margin-bottom: 1.25rem;
+        font-size: 3rem;
+        line-height: 1.4;
+        text-shadow: 1px 1px 2px #000000;
+
+    }
+
+    .feature-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .feature-heading {
+        margin-top: 7rem;
+    }
+}
