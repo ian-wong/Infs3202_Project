@@ -18,13 +18,16 @@ $db->disconnect(); // disconnect after use is a good habit
     <meta name="author" content="Anthony Hanh & Ian Wong">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Register | Quay</title>
+    <title>Register | Quest Hotel</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <!-- Icon -->
+    <link rel="icon" href="img/logo.png"/>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -39,12 +42,13 @@ $db->disconnect(); // disconnect after use is a good habit
     <script src="js/loginJS.js" type="text/javascript"></script>
 
 </head>
+
 <body>
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <a href="index.html" class="navbar-brand">
-            <img src="img/Logo.png" id="Logo" class="d-inline-block align-top">
+            <img src="img/logo.png" id="Logo" class="d-inline-block align-top">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +68,6 @@ $db->disconnect(); // disconnect after use is a good habit
     </nav>
 </header>
 
-
 <?php
     /* Bad practice - trusting user input.
     if(isset($_POST['create'])){
@@ -73,7 +76,6 @@ $db->disconnect(); // disconnect after use is a good habit
     }
     */
 ?>
-
 
 <div class="card">
     <div class="card-header">
@@ -122,6 +124,6 @@ $db->disconnect(); // disconnect after use is a good habit
     </div>
 </div>
 
-
 </body>
+
 </html>
