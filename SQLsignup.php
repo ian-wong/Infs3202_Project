@@ -9,6 +9,7 @@ $db->connect('root', '', '3202database'); //Doesnt work, why? $db->connect(“in
     // do some database jobs.
 
 */
+    /*
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -22,6 +23,8 @@ $db->connect('root', '', '3202database'); //Doesnt work, why? $db->connect(“in
     if ($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
     } 
+    */
+    include("connectMySQL.php");
 
     if (isset($_POST['fNameInput']) && !empty($_POST['lNameInput']) && !empty($_POST['emailInputReg']) && !empty($_POST['passwordInput']) ){
         $fName = $_POST['fNameInput'];
