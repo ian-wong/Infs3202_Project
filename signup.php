@@ -1,5 +1,7 @@
-<!--<!DOCTYPE html> 
--->
+<!DOCTYPE html> 
+
+<!-- USE SIGNUP.HTML -->
+
 
 <?php
 //include 'connectMySQL.php';
