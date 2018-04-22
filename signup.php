@@ -1,13 +1,16 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html> 
+-->
 
 <?php
-include 'connectMySQL.php';
+
+//include 'connectMySQL.php';
 include 'SQLsignup.php';
 
-$db = new MySQLDatabase(); // create a Database object
-$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“quay”, “3202”, “3202database”);
+//$db = new MySQLDatabase(); // create a Database object
+//$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“quay”, “3202”, “3202database”);
     // do some database jobs.
-$db->disconnect(); // disconnect after use is a good habit
+//$db->disconnect(); // disconnect after use is a good habit
+
 ?>
 
 
@@ -68,15 +71,6 @@ $db->disconnect(); // disconnect after use is a good habit
     </nav>
 </header>
 
-<?php
-    /* Bad practice - trusting user input.
-    if(isset($_POST['create'])){
-        $sql = "INSERT INTO users (fname, password, email)
-        VALUES ('".$_POST["fname"]."','".$_POST["password"]."','".$_POST["email"]."')";
-    }
-    */
-?>
-
 <div class="card">
     <div class="card-header">
         <h3 class="col-7 mb-1">Register</h3>
@@ -128,3 +122,7 @@ $db->disconnect(); // disconnect after use is a good habit
 </body>
 
 </html>
+
+<?php
+//$db->disconnect(); // disconnect after use is a good habit
+?>

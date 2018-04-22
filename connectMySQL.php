@@ -1,15 +1,15 @@
 <?php
+    //include 'signup.php';
+
     class MySQLDatabase{
         /* Info ver20.4.18
         $cfg['Servers'][$i]['auth_type'] = 'config';
         $cfg['Servers'][$i]['user'] = 'root';                     
         $cfg['Servers'][$i]['password'] = '';
-        OR
-        $cfg['Servers'][$i]['user'] = 'quaydba';                     
-        $cfg['Servers'][$i]['password'] = '3202';
         $cfg['Servers'][$i]['extension'] = 'mysqli';
         */
         public $link = null;
+
         function connect($user, $password, $database){
             $this->link = mysqli_connect('localhost', $user, $password);
             if(!$this->link){
@@ -21,10 +21,11 @@
             }
             return $this->link;
         }
+
         function disconnect(){
             mysqli_close($this->link);
-            }
-}
+        }
+    }
 /*
 Add this to php page that needs MySQL database connection
 <?php

@@ -1,21 +1,13 @@
-<html>
-    <head>
-
-        
-    </head>
-    <body>
-        <h1>sqlsignup.php</h1>
-    
-
-
 <?php
 include 'connectMySQL.php';
 include 'signup.php';
 
+//header("Location: goodsignup.html");
+
 $db = new MySQLDatabase(); // create a Database object
-$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“infs”, “3202”, “3202database”);
+$db->connect('root', '', '3202database'); //Doesnt work, why? $db->connect(“infs”, “3202”, “3202database”);
     // do some database jobs.
-$db->disconnect(); // disconnect after use is a good habit
+
 
 if (isset($_POST['fNameInput']) && !empty($_POST['lNameInput']) && !empty($_POST['emailInputReg']) && !empty($_POST['passwordInput']) ){
     $fName = $_POST['fNameInput'];
@@ -36,6 +28,10 @@ if (isset($_POST['fNameInput']) && !empty($_POST['lNameInput']) && !empty($_POST
     $id = mysqli_insert_id($db->link);
 }
 
+//header("Location: goodsignup.html");
+
+$db->disconnect(); // disconnect after use is a good habit
+
 /*
 mysql_query("INSERT INTO user(firstname, surname, email)
     VALUES ('$', '$user_refer', '$user_share', '".$_SERVER['REMOTE_ADDR']."')");
@@ -49,5 +45,3 @@ if(!$result){
 }
 */
 ?>
-</body>
-</html>
