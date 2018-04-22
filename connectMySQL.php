@@ -1,13 +1,36 @@
 <?php
     //include 'signup.php';
 
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    //also dbname
+    $dbname = "3202database";
+
+    //Create connection 
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    //Check connection
+    if ($conn->connect_error){
+        die("Connection failed: " . $conn->connect_error);
+    } 
+    
+    echo "Connected Successfully";
+
+    //Close connection
+    $conn->close();
+    
+    
+
+
+    /* ------broken code----- Using Lecturer Method
     class MySQLDatabase{
-        /* Info ver20.4.18
+         Info ver20.4.18
         $cfg['Servers'][$i]['auth_type'] = 'config';
         $cfg['Servers'][$i]['user'] = 'root';                     
         $cfg['Servers'][$i]['password'] = '';
         $cfg['Servers'][$i]['extension'] = 'mysqli';
-        */
+        
         public $link = null;
 
         function connect($user, $password, $database){
@@ -26,6 +49,9 @@
             mysqli_close($this->link);
         }
     }
+    UNTIL HERE -------------------------------*/
+
+
 /*
 Add this to php page that needs MySQL database connection
 <?php
@@ -45,4 +71,6 @@ $db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->c
 $db->disconnect(); // disconnect after use is a good habit
 ?>
 */
+
+
 ?>

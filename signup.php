@@ -2,9 +2,8 @@
 -->
 
 <?php
-
 //include 'connectMySQL.php';
-include 'SQLsignup.php';
+//include 'SQLsignup.php';
 
 //$db = new MySQLDatabase(); // create a Database object
 //$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“quay”, “3202”, “3202database”);
@@ -76,30 +75,30 @@ include 'SQLsignup.php';
         <h3 class="col-7 mb-1">Register</h3>
     </div>
     <div class="card-body">
-        <form id="loginForm " action="SQLsignup.php">
+        <form id="loginForm " action="SQLsignup.php" method="POST">
             <!--User Input -->
             <div class="form-row">
                 <div class="form-group col-md-5 ml-3 mb-4">
                     <label for="fNameInput">First Name</label>
-                    <input type="text" class="form-control" id="fNameInput">
+                    <input type="text" class="form-control" id="fNameInput" name="fNameInput">
                 </div>
                 <div class="form-group col-md-5 ml-3 mb-4">
                     <label for="lNameInput">Last Name</label>
-                    <input type="text" class="form-control" id="lNameInput">
+                    <input type="text" class="form-control" id="lNameInput" name="lNameInput">
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-7 mb-4">
                     <label for="emailInputReg">Email address</label>
-                    <input type="email" class="form-control" id="emailInputReg" placeholder="email@example.com">
+                    <input type="email" class="form-control" id="emailInputReg" placeholder="email@example.com" name="emailInputReg">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group col-md-5 ml-3">
                     <label for="passwordInput">Password</label>
-                    <input type="password" class="form-control" id="passwordInput">
+                    <input type="password" class="form-control" id="passwordInput" name="passwordInput">
                 </div>
                 <div class="form-group col-md-5 ml-3">
                     <label for="confirmPassInput">Confirm Password</label>
