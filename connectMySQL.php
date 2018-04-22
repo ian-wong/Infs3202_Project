@@ -15,11 +15,11 @@
         die("Connection failed: " . $conn->connect_error);
     } 
     
-    echo "Connected Successfully";
+    //echo "Connected Successfully";
 
     //Close connection
-    $conn->close();
-    
+    //$conn->close();
+    //CLOSE CONNECTION IN OTHER FILE
     
 
 
