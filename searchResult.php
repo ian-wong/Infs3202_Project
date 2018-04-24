@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+    include("connectMySQL.php");
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -39,6 +42,48 @@
 
 
 </head>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Accommodation Finder">
+    <meta name="author" content="Anthony Hanh & Ian Wong">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quest Hotel</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen"/>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <!-- Icon -->
+    <link rel="icon" href="img/logo.png"/>
+
+    <!-- Bootstrap CDN -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!-- JQuery from Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Lightbox JS -->
+    <script type="text/javascript" src="js/prototype.js"></script>
+    <script type="text/javascript"
+            src="js/scriptaculous.js?load=effects,builder"></script>
+    <script type="text/javascript" src="js/lightbox.js"></script>
+
+
+</head>
+
 <body>
 
 <header>
@@ -68,68 +113,44 @@
     </nav>
 </header>
 
-<main>
-    <div id="carouselHome" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselHome" data-slide-to="1"></li>
-            <li data-target="#carouselHome" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="first-slide" src="img/bg.jpeg" alt="">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Experience new homes</h1>
-                        <h1>around the world.</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="second-slide" src="img/bg2.jpeg" alt="Second slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>The easy way to stay.</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="third-slide" src="img/bg3.jpeg" alt="Second slide">
-                <div class="container">
-                    <div class="carousel-caption">
-                        <h1>Discover new favourite spots to stay.</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#carouselHome" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselHome" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+<?php
+    //if($_REQUEST['submit']){
+        $searchInput = $_POST['searchInput'];
 
+        if(empty($searchInput)){
+            $make = '<h3>input values to search</h3>';
+        } else {
+            $make = '<h3>Sorry, no matches found</h3>';
+            $sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
+            $result = mysqli_query($conn, $sqlselect);
+            //$resultforphoto = mysqli_query($sqlselect);
+            //for photos
+            //$resultarray = mysqli_fetch_array($result);
 
-    <div class="row feature">
-        <div class="col-md-7">
-            <h2 class="feature-heading">QUAY </h2>
-            <p class="lead">Easily locate, manage and book short-term accommodation. From holiday homes, apartments,
-                cottages to single rooms, there are a variety of accommodation available to reserve.</p>
-        </div>
-        <div class="col-md-5">
-        </div>
-    </div>
+            if($make = mysqli_num_rows($result) > 0){
 
-    <div class="row feature">
-        <a class="linkBox" href="img/logo.png" data-lightbox="example-1">
-            <img class="example-image" src="img/logo.png" alt="image-1"/>
-        </a>
-    </div>
-</main>
+                while($row = mysqli_fetch_assoc($result)){
 
+                    echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" />'; //width="300" height="200" />';
+                    
+                    echo '<br><h4>Name: ' . $row['name'] . '</h4>';
+                    echo '<br><h5>Location: ' . $row['location'] . '</h5>';
+                    echo '<br>'; 
+                }
+                
+            } else { 
+                echo '<h3> search result </h3>';
+                print ($make); // no matches found
+            }
+            mysqli_free_result($result);
+        }
+    //} else {
+      //  echo "else'd the first if";
+    //}
+    
+    $conn->close();
+
+?>
 
 </body>
-</html>
+
