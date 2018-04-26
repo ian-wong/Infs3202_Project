@@ -136,24 +136,30 @@ include("connectMySQL.php");
     <section>
         <div class="row feature"> 
             <b>new body starts here</b>
-            <?php
+            <?php 
                 $make = '<h3>Something wrong</h3>';
                 $sqlselectaccom = "SELECT * FROM accommodation";
                 $result = mysqli_query($conn, $sqlselectaccom);
                 
+                //check if there are records
                 if ($make = mysqli_num_rows($result)>0){
                     while ($row = mysqli_fetch_assoc($result)){
+                        //echo basic accommodation info. Links for accomm.php
+
                         //echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" />';
-                        //<a href="SQLgetphoto.php?id=".$row['aid']."
-                        $aid = $row=['id'];
+                    
+                        $aid = $row['aid'];
+                        $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" />';
                         
+                        echo ('<a href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');
+
                     
                     }
                 } else {
                     print ($make);
                 }
 
-
+                
             ?>
 
         </div>
