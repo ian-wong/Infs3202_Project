@@ -119,7 +119,7 @@ include("connectMySQL.php");
 
     <div class="row feature">
         <div class="col-md-7">
-            <h2 class="feature-heading">QUAY </h2>
+            <h2 class="feature-heading">Hello </h2>
             <p class="lead">Easily locate, manage and book short-term accommodation. From holiday homes, apartments,
                 cottages to single rooms, there are a variety of accommodation available to reserve.</p>
         </div>
