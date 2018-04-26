@@ -151,7 +151,7 @@ include("connectMySQL.php");
                         $aid = $row['aid'];
                         $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" />';
                         
-                        echo ('<a href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');
+                        echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');
 
                     
                     }
