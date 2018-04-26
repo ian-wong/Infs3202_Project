@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php 
+include("connectMySQL.php");
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -128,6 +132,33 @@
             <img class="example-image" src="img/logo.png" alt="image-1"/>
         </a>
     </div>
+
+    <section>
+        <div class="row feature"> 
+            <b>new body starts here</b>
+            <?php
+                $make = '<h3>Something wrong</h3>';
+                $sqlselectaccom = "SELECT * FROM accommodation";
+                $result = mysqli_query($conn, $sqlselectaccom);
+                
+                if ($make = mysqli_num_rows($result)>0){
+                    while ($row = mysqli_fetch_assoc($result)){
+                        //echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" />';
+                        //<a href="SQLgetphoto.php?id=".$row['aid']."
+                        $aid = $row=['id'];
+                        
+                    
+                    }
+                } else {
+                    print ($make);
+                }
+
+
+            ?>
+
+        </div>
+    </section>
+
 </main>
 
 
