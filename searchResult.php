@@ -89,7 +89,7 @@
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a href="index.html" class="navbar-brand">
+        <a href="index.php" class="navbar-brand">
             <img src="img/logo.png" id="Logo" class="d-inline-block align-top">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -114,13 +114,88 @@
     </nav>
 </header>
 
+    <div class="container-fluid">
+        <!--
+        <div class="page-header">
+            <h1>page header inside container</h1>
+        </div>
+        -->
+        <div class="row">
+            <div class=col-md-8> <!--for accomms-->
+                col 1
+                <div class="row">
+                    <?php
+                        $searchInput = $_POST['searchInput'];
+
+                        if(empty($searchInput)){
+                            $make = '<h3>input values to search</h3>';
+                            print ($make);
+                        } else {
+                            $make = '<h3>Sorry, no matches found</h3>';
+                            $sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
+                            $result = mysqli_query($conn, $sqlselect);
+                
+                            if($make = mysqli_num_rows($result) > 0){
+                
+                                while($row = mysqli_fetch_assoc($result)){
+                                    //$colwidth = 'width["col-md-4"]';
+                                    //$colwidth = "5";
+                                    //$colwidth = "col-md-4";
+                                    
+                                    echo '<div class="col-md-4">';
+                                        //echo '<div class=container'
+                                        //echo '<div class="container">';
+                                        //echo '<div class="col-mid-4 style="padding-left:0px; padding-right:0px;">'; 
+                                            echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">'; //width='."$colwidth".' //width="300" height="200" />';
+                                        //echo '</div>';
+                                        //echo '</div>';
+                                    echo '<br><h4>Name: ' . $row['name'] . '</h4>';
+                                    echo '<br><h5>Location: ' . $row['location'] . '</h5>';
+                                    echo '<br>'; 
+
+                                    echo "</div>";
+                                }
+                                
+                            } else { 
+                                echo '<h3> search result </h3>';
+                                print ($make); // no matches found
+                            }
+                        }
+
+                            /*
+                        $num = 10;
+                        while($num > 0 ){
+                            echo '<div class="col-md-4">';
+                            echo "Containers provide a means to center and 
+                            horizontally pad your site’s contents. Use .container 
+                            for a responsive pixel width or .container-fluid for 
+                            width: 100% across all viewport and device sizes.
+                            Rows are wrappers for columns. END OF TEXT";
+                            echo "<br/>";
+                            echo "</div>";
+                            $num--;
+                        }
+                        */
+                    ?>
+                    <!--</div>-->
+                    </div>
+            </div>
+            <div class=col-sm-4> <!--for map -->
+                col 2 map goes here.
+            </div>
+        </div>
+
+    </div>
+
 
 <?php
+    /*
     //if($_REQUEST['submit']){
         $searchInput = $_POST['searchInput'];
 
         if(empty($searchInput)){
             $make = '<h3>input values to search</h3>';
+            print ($make);
         } else {
             $make = '<h3>Sorry, no matches found</h3>';
             $sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
@@ -146,10 +221,12 @@
     //} else {
       //  echo "else'd the first if";
     //}
+    */
     
     $conn->close();
 
 ?>
 
 </body>
+</html>
 
