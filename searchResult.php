@@ -82,6 +82,17 @@
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
 
+    <style>
+        a:link{
+           color:black;
+        }
+        a:visited{
+            color:black;
+        }
+        a:hover{
+            color:blue;
+        }
+    </style>
 
 </head>
 
@@ -121,8 +132,7 @@
         </div>
         -->
         <div class="row">
-            <div class=col-md-8> <!--for accomms-->
-                col 1
+            <div class=col-md-8> <!--for accomms--> 
                 <div class="row">
                     <?php
                         $searchInput = $_POST['searchInput'];
@@ -138,20 +148,24 @@
                             if($make = mysqli_num_rows($result) > 0){
                 
                                 while($row = mysqli_fetch_assoc($result)){
-                                    //$colwidth = 'width["col-md-4"]';
-                                    //$colwidth = "5";
-                                    //$colwidth = "col-md-4";
-                                    
+        
                                     echo '<div class="col-md-4">';
-                                        //echo '<div class=container'
-                                        //echo '<div class="container">';
-                                        //echo '<div class="col-mid-4 style="padding-left:0px; padding-right:0px;">'; 
-                                            echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">'; //width='."$colwidth".' //width="300" height="200" />';
-                                        //echo '</div>';
-                                        //echo '</div>';
-                                    echo '<br><h4>Name: ' . $row['name'] . '</h4>';
-                                    echo '<br><h5>Location: ' . $row['location'] . '</h5>';
-                                    echo '<br>'; 
+                                    echo '<br/>';
+
+                                    $aid = $row['aid'];
+                                    $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">';
+                                    $aname = $row['name'];
+                                    $aloc = $row['location'];
+
+
+                                    //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
+                                    echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
+                                    echo ('<h5><a target="_blank" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
+                                    echo ('<h7><a target="_blank" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>');     
+                                    
+                                    //echo '<h5>' . $row['name'] . '</h5>'; //accomm name
+                                    //echo '<h7>' . $row['location'] . '</h7>'; //accomm location
+                                    //echo '<br>'; 
 
                                     echo "</div>";
                                 }

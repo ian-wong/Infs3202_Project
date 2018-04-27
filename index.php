@@ -41,6 +41,17 @@ include("connectMySQL.php");
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
 
+    <style>
+        a:link{
+           color:black;
+        }
+        a:visited{
+            color:black;
+        }
+        a:hover{
+            color:blue;
+        }
+    </style>
 
 </head>
 <body>
@@ -127,46 +138,55 @@ include("connectMySQL.php");
         </div>
     </div>
 
+</main>
+
+    <div class="container-fluid">
+        <div class="row"> 
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <?php 
+                        $make = '<h3>Something wrong :(</h3>';
+                        $sqlselectaccom = "SELECT * FROM accommodation";
+                        $result = mysqli_query($conn, $sqlselectaccom);
+                
+                        //check if there are records
+                        if ($make = mysqli_num_rows($result)>0){
+                            while ($row = mysqli_fetch_assoc($result)){
+                    
+                                echo "<div class='col-md-3'>";
+                                echo "<br>";
+                                $aid = $row['aid'];
+                                $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">';
+                                $aname = $row['name'];
+                                $aloc = $row['location'];
+                      
+                                //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
+                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
+                                echo ('<h5><a target="_blank" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
+                                echo ('<h7><a target="_blank" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
+
+                                echo "</div>";
+                            }
+                        } else {
+                        print ($make);
+                        }   
+                    ?>
+                </div>
+            </div>
+            <div class=col-md-2>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="row feature">
         <a class="linkBox" href="img/logo.png" data-lightbox="example-1">
             <img class="example-image" src="img/logo.png" alt="image-1"/>
         </a>
     </div>
-
-    <section>
-        <div class="row feature"> 
-            <b>new body starts here</b>
-            <?php 
-                $make = '<h3>Something wrong</h3>';
-                $sqlselectaccom = "SELECT * FROM accommodation";
-                $result = mysqli_query($conn, $sqlselectaccom);
-                
-                //check if there are records
-                if ($make = mysqli_num_rows($result)>0){
-                    while ($row = mysqli_fetch_assoc($result)){
-                        //echo basic accommodation info. Links for accomm.php
-
-                        //echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" />';
-                    
-                        $aid = $row['aid'];
-                        $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" />';
-                        
-                        echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');
-
-                    
-                    }
-                } else {
-                    print ($make);
-                }
-
-                
-            ?>
-
-        </div>
-    </section>
-
-</main>
-
 
 </body>
 </html>
