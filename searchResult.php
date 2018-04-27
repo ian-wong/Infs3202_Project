@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
     include("connectMySQL.php");
 ?>
@@ -113,6 +114,7 @@
     </nav>
 </header>
 
+
 <?php
     //if($_REQUEST['submit']){
         $searchInput = $_POST['searchInput'];
@@ -123,9 +125,6 @@
             $make = '<h3>Sorry, no matches found</h3>';
             $sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
             $result = mysqli_query($conn, $sqlselect);
-            //$resultforphoto = mysqli_query($sqlselect);
-            //for photos
-            //$resultarray = mysqli_fetch_array($result);
 
             if($make = mysqli_num_rows($result) > 0){
 
