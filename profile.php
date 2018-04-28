@@ -3,6 +3,7 @@
     include("connectMySQL.php");
     
     session_start();
+
 ?>
 
 <html lang="en">
@@ -79,16 +80,17 @@
                 <li class="nav-item">
                     <?php
                         if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+                            
                             //header("location: index.php");
                             $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT firstname FROM user WHERE email='$email'";
+                            $sqlselect="SELECT * FROM user WHERE email='$email'";
                             $result = mysqli_query($conn, $sqlselect);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
                             echo '<a class="nav-link" href="profile.php">Welcome, '.$row['firstname'] .'</a>';
                         } else {
                             echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        }
                     ?>
                 </li>
             </ul>
@@ -99,16 +101,75 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
+            <!--col basic info-->
             <?php 
+                $make = '<h3>Something went wrong :(</h3>';
+                $uid = $_GET['id'];
+                $sqlselectuser = "SELECT * FROM user WHERE uid='$uid'";
+                $result = mysqli_query($conn, $sqlselectuser);
+        
+                //check if there are records
+                if ($make = mysqli_num_rows($result)>0){
+                    $row = mysqli_fetch_assoc($result);
             
+                    echo "<br>";
+                    $uid = $row['uid'];
+                    $uphoto = '<img src="SQLgetuphoto.php?id='.$uid.'" class="img-fluid">';
+                    $ufname = $row['firstname'];
+                    $usname = $row['surname'];
+            
+                    //retrieving user info
+                    echo $uphoto;
+                    echo '<div class="text-center">';
+                        echo '<h3>'.$ufname.' '.$usname. '</h3>';
+                    echo '</div>';
+
+                } else {
+                print ($make);
+                }
             ?>
 
         </div>
-        <div class="col-md-6">
-            column main info
+        <div class="col-md-7">
+            <!--col main info-->
+            <?php 
+                $amake = '<h3>Something went wrong :(</h3>';
+                //$uid = $_GET['id'];
+                $sqlua = "SELECT * FROM user, accommodation WHERE user.uid=accommodation.uid AND user.uid=$uid";
+                $aresult = mysqli_query($conn, $sqlua);
+        
+                //check if there are records
+                if ($amake = mysqli_num_rows($aresult)>0){
+                    while ($row = mysqli_fetch_assoc($aresult)){
+                        echo '<div class="row mt-md-3" >';
+                            echo '<div class=col-md-12>';
+                                $uid = $row['uid'];
+                                $aid = $row['aid'];
+                                $aphoto = '<img src="SQLgetphoto.php?id='.$aid.'" class="img-fluid">';
+                                $aname = $row['name'];
+                                $aloc = $row['location'];
+                                $adesc = $row['descr'];
+
+                                //retrieving user info
+                                //echo $aphoto;
+                                $anamestr = '<h5>'.$aname.'</h5>';
+                                $alocstr = '<h6>'.$aloc.'</h6>';
+                                $adescstr = '<p>'.$adesc.'</p>';
+
+                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>'); 
+                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $anamestr  . '</a>');
+                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $alocstr  . '</a>');
+                                echo ($adescstr);
+                            echo '</div>';
+                        echo "</div>"; 
+                    }
+                } else {
+                    print ($amake);
+                }
+            ?>
         </div>
         <div class="col-md-2">
-            column blank
+            <btn
         </div>
     </div>
 </div>
