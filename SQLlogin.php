@@ -28,7 +28,8 @@
         $error=null;
         //if correct email and pass, then table must have 1 row
         if($count == 1){
-            $_SESSION_['login_user'] = $email;
+            $_SESSION['login_user'] = $email;
+            
             //$_SEESION_['password'] = $password;
 
             //header("Location: goodlogin.php");
