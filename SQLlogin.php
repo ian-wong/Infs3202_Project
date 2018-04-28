@@ -25,14 +25,18 @@
         //No idea what this is for $active = $row['active'];
 
         $count = mysqli_num_rows($result);
-
+        $error=null;
         //if correct email and pass, then table must have 1 row
         if($count == 1){
             $_SESSION_['login_user'] = $email;
+            //$_SEESION_['password'] = $password;
 
-            header("Location: goodlogin.php");
+            //header("Location: goodlogin.php");
+            header("location: index.php");
         } else {
             $error = "Login unsuccessful, email or password invalid.";
+            header("Location: login.php");
+        
         }
     }
 

@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+    session_start();
+    if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+        header("location: index.php");
+    }
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,6 +73,15 @@
     <div class="card-body">
         <form id="loginForm" action="SQLlogin.php" method="POST">
             <div class="form-group">
+                
+                <!--When login failed, redirect to this page, but have an extra text displays 'incorrect username or password' -->
+                <?php
+                    /*
+                    if ($_POST['$error']){
+                        echo $error;
+                    }
+                    */
+                ?>
                 <div class="col-7 mb-4 mt-4">
                     <label for="emailInput">Email address</label>
                     <input type="email" class="form-control" id="emailInput" placeholder="email@example.com" name="emailInput">

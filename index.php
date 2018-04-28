@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php 
-include("connectMySQL.php");
+    include("connectMySQL.php");
+    
+    session_start();
 ?>
 
 <html lang="en">
@@ -76,9 +78,19 @@ include("connectMySQL.php");
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Account</a>
+                    <?php
+                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+                            //header("location: index.php");
+                            echo '<a class="nav-link" href="login.php">Account</a>';
+                        }
+                    ?>
+                    <!--
+                    <a class="nav-link" href="login.php">Account</a>
+                    -->
                 </li>
             </ul>
+
+            
         </div>
     </nav>
 </header>
