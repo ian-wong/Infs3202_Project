@@ -83,11 +83,12 @@
                         if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
                             //header("location: index.php");
                             $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT firstname FROM user WHERE email='$email'";
+                            $sqlselect="SELECT * FROM user WHERE email='$email'";
                             $result = mysqli_query($conn, $sqlselect);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                            $uid = $row['uid'];
 
-                            echo '<a class="nav-link" href="profile.php">Welcome, '.$row['firstname'] .'</a>';
+                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
                         } else {
                             echo '<a class="nav-link" href="login.php">Account</a>';
                         } 
