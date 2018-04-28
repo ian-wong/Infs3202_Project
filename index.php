@@ -43,6 +43,7 @@
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
 
+    <!-- CSS -->
     <style>
         a:link{
            color:black;
