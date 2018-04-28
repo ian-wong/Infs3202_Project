@@ -4,9 +4,8 @@
 
     session_start();
 
-    $aid = $_GET['id'];
-    
-    $result = mysqli_query($conn, "SELECT * FROM accommodation WHERE aid = $aid");
+    //$aid = $_GET['id'];
+    //$aresult = mysqli_query($conn, "SELECT * FROM accommodation WHERE aid = $aid");
 
 ?>
 <html lang="en">
@@ -80,10 +79,66 @@
 </header>
 
 <main>
+
     <div class="container-fluid">
-        <h1> Test  <h1>
-        <h2> Test <h2>
+        <div class="row">
+            <div class="col-md-3 mt-sm-3">
+                <?php
+                
+                        //$searchInput = $_POST['searchInput'];
+
+                        $aid = $_GET['id'];
+                        $sqlselect = "SELECT * FROM accommodation WHERE aid='$aid'";
+                        //$sqlselect = "SELECT * FROM accommodation, user WHERE accommdation.aid='$aid' AND user.uid= accommodation.uid;
+
+                        $result = mysqli_query($conn, $sqlselect);
+
+                        if($make = mysqli_num_rows($result) > 0){
+                            $row = mysqli_fetch_assoc($result);
+
+                            $aid = $row['aid'];
+                            $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid>';
+                            $aname = $row['name'];
+                            $aloc = $row['location'];
+                            $uid = $row['uid'];
+                            $ufname= $row['firstname'];
+
+                           
+                            echo '<div class="row">';
+                                echo '<div class="col-md-3 mt-sm-3">';
+                                    echo ($aphoto);
+                                    echo ($aname); 
+                                echo '</div>';
+                            echo '</div>';
+                            
+
+                            
+                        
+                        } else {
+                            echo ('hi');
+                        }
+
+
+                    
+                    
+                   
+                ?>
+
+            </div>
+            <div class="col-md-4 mt-sm-3">
+                    <div class="row">
+                        <div class="col-md-4 mt-sm-3">
+                            <h1>Profile and Calendar</h1>
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+
+        
+
     </div>
+    
 </main>
 
 </body>
