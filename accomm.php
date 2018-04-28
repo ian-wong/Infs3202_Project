@@ -4,7 +4,7 @@
 
     session_start();
 
-    $aid = $_GET['id'];
+    $uid = $_GET['id'];
     
     $result = mysqli_query($conn, "SELECT * FROM accommodation WHERE aid = $aid");
 
