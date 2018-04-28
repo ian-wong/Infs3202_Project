@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
     include("connectMySQL.php");
+    session_start();
+
     $aid = $_GET['id'];
     
     $result = mysqli_query($conn, "SELECT * FROM accommodation WHERE aid = $aid");
