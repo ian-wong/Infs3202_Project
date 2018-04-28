@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
     include("connectMySQL.php");
+
     session_start();
 
     $aid = $_GET['id'];
@@ -79,7 +80,10 @@
 </header>
 
 <main>
-
+    <div class="container-fluid">
+        <h1> Test  <h1>
+        <h2> Test <h2>
+    </div>
 </main>
 
 </body>
