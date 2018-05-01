@@ -145,7 +145,7 @@
         </div>
         -->
         <div class="row">
-            <div class=col-md-8> <!--for accomms--> 
+            <div class="col-md-8"> <!--for accomms--> 
                 <div class="row">
                     <?php
                         $searchInput = $_POST['searchInput'];

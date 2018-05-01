@@ -8,7 +8,8 @@
     //$aresult = mysqli_query($conn, "SELECT * FROM accommodation WHERE aid = $aid");
 
 ?>
-<html lang="en">
+    <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="description" content="Accommodation Finder">
@@ -77,43 +78,49 @@
         <main>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-7 bg-warning">.col-7
-                        accomomodation photo breaks layout            
-                        <?php
-                            echo '<div class="row">';
-                            
-                                $aid = $_GET['id'];
-                                $sqlselect = "SELECT * FROM accommodation WHERE aid='$aid'";
-                                //$sqlselect = "SELECT * FROM accommodation, user WHERE accommdation.aid='$aid' AND user.uid= accommodation.uid;
-                                $result = mysqli_query($conn, $sqlselect);
-                                $row = mysqli_fetch_assoc($result);
+                    <div class="col-sm-8 px-md-5 pt-md-4">
+                        <div class="row">
+                            <?php
 
-                                //Setting variables
-                                echo "<br>";
-                                $aid = $row['aid'];
-                                $aphoto = '<img src="SQLgetphoto.php?id='.$aid.'" class="img-fluid>';
-                                $aname = $row['name'];
-                                $aloc = $row['location'];
+                            $aid = $_GET['id'];
+                            $sqlselect = "SELECT * FROM accommodation WHERE aid='$aid'";
+                            $result = mysqli_query($conn, $sqlselect);
                             
-                                echo '<div class="col-12 bg-light">';
-                                    echo '.col-12';
-                                    //Retrieving accommodation info
-                                    //echo ($aphoto);
-                                echo '</div>';
-                            echo '</div>';
-                        ?>                        
+                            $row = mysqli_fetch_assoc($result);
+                            $aid = $row['aid'];
+                            $aphoto = '<img src = "SQLgetphoto.php?id='.$aid.'" class= img-fluid width=100%>';
+                            $aname = $row['name'];
+                            $aloc = $row['location'];
+                            $adescr = $row['descr'];
+                            
+                            echo ($aphoto);
+
+                            echo '<div class="col-md-12 mt-md-4">';
+                            echo '<h4>'.$aname.'</h4>';
+                            echo '<p>'.$aloc.'<p>';
+                            echo '<p>'.$adescr.'<p>';
+                            
+                            ?>
+                        </div>
                     </div>
-                    <div class="col-5 bg-success">.col-5
-                        <?php
-                            echo "<br>";
-
-                            //Retrieving accommodation info
-                            
-                            echo "accommodation photo does show";
-                        ?>
                 </div>
+                <div class="col-sm-4">.col-4 calendar
+                    <div class="row">
+                        <div class="col-sm-12 bg-primary">
+                            Profile
+                        </div>
+                        <div class="col-sm-12 bg-danger">
+                            <p>Calendar</p>
+                        </div>
+                    
+                    </div>
+                </div>
+                
             </div>
+            </div>
+
         </main>
 
     </body>
-</html>
+
+    </html>

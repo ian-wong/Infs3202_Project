@@ -43,7 +43,7 @@
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
 
-    <!-- CSS -->
+    <!-- CSS 
     <style>
         a:link{
            color:black;
@@ -55,6 +55,7 @@
             color:blue;
         }
     </style>
+    -->
 
 </head>
 <body>
@@ -181,9 +182,9 @@
                                 $aloc = $row['location'];
                       
                                 //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
-                                echo ('<h5><a target="_blank" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                                echo ('<h7><a target="_blank" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
+                                echo ('<a target="_blank"  href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
+                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
+                                echo ('<h7><a target="_blank" class="text-secondary" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
 
                                 echo "</div>";
                             }
