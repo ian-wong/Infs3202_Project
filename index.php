@@ -43,20 +43,6 @@
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
 
-    <!-- CSS 
-    <style>
-        a:link{
-           color:black;
-        }
-        a:visited{
-            color:black;
-        }
-        a:hover{
-            color:blue;
-        }
-    </style>
-    -->
-
 </head>
 <body>
 
@@ -182,9 +168,9 @@
                                 $aloc = $row['location'];
                       
                                 //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
-                                echo ('<a target="_blank"  href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
+                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
                                 echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                                echo ('<h7><a target="_blank" class="text-secondary" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
+                                //echo ('<h7><a target="_blank" class="text-secondary" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
 
                                 echo "</div>";
                             }
@@ -200,12 +186,13 @@
     </div>
 
 
-
+<!-- LIGHT BOX EXAMPLE
     <div class="row feature">
         <a class="linkBox" href="img/logo.png" data-lightbox="example-1">
             <img class="example-image" src="img/logo.png" alt="image-1"/>
         </a>
     </div>
+                    -->
 
 </body>
 </html>

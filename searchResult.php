@@ -173,8 +173,8 @@
 
                                     //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
                                     echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
-                                    echo ('<h5><a target="_blank" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                                    echo ('<h7><a target="_blank" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>');     
+                                    echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
+                                    echo ('<h7><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>');     
                                     
                                     //echo '<h5>' . $row['name'] . '</h5>'; //accomm name
                                     //echo '<h7>' . $row['location'] . '</h7>'; //accomm location

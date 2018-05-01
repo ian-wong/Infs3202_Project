@@ -104,10 +104,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">.col-4 calendar
+                <div class="col-sm-4 mt-md-4">
                     <div class="row">
                         <div class="col-sm-12 bg-primary">
-                            Profile
+                            Host
                         </div>
                         <div class="col-sm-12 bg-danger">
                             <p>Calendar</p>
