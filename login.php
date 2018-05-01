@@ -95,7 +95,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-7">
-                    <a href="signup.html" class="signupBtn">Sign Up</a>
+                    <a href="signup.php" class="signupBtn">Sign Up</a>
                     <button type="submit" class="btn btn-primary">Log In</button>
                 </div>
             </div>
