@@ -107,7 +107,28 @@
                 <div class="col-sm-4 mt-md-4">
                     <div class="row">
                         <div class="col-sm-12 bg-primary">
-                            Host
+                            <div class="row">
+                                <?php
+                                    $sqlhost = "SELECT * FROM  user, accommodation WHERE accommodation.aid='$aid' AND accommodation.uid=user.uid";
+                                    $uresult = mysqli_query($conn, $sqlhost);
+
+                                    $urow = mysqli_fetch_assoc($uresult);
+                                    $uid = $urow['uid'];
+                                    $uphoto = '<img src="SQLgetuphoto.php?id='.$uid.'" class="img-fluid">';
+                                    $ufname = $urow['firstname'];
+                                    $usname = $urow['surname'];
+                                    
+                                    echo "<div class='col-sm-3'>";
+                                        echo $uphoto;
+                                    echo "</div>";
+                                    echo "<div class='col-sm-9'>";
+                                            echo '<br/>';
+                                        //echo '<div class="align-baseline">';
+                                            echo '<h3>'.$ufname.' '.$usname. '</h3>';
+                                        //echo '</div>';
+                                    echo "</div>";
+                                ?>
+                            </div>
                         </div>
                         <div class="col-sm-12 bg-danger">
                             <p>Calendar</p>
