@@ -100,7 +100,7 @@
                     <label for="lNameInput">Last Name</label>
                     <input type="text" class="form-control" id="lNameInput" name="lNameInput">
                 </div>
-            </div>
+            </div> 
 
             <div class="form-group">
                 <div class="col-7 mb-4">

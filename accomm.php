@@ -123,11 +123,14 @@
                                     echo "</div>";
                                     echo "<div class='col-sm-9'>";
                                             echo '<br/>';
-                                        //echo '<div class="align-baseline">';
                                             echo '<h3>'.$ufname.' '.$usname. '</h3>';
-                                        //echo '</div>';
                                     echo "</div>";
                                 ?>
+                                <form class="form" action="contact.php" method="POST">
+                                    <div class="col-sm-12 ml-md-10">
+                                        <button type="submit" class="btn">Email Host</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                         <div class="col-sm-12 bg-danger">
