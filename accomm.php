@@ -82,7 +82,7 @@
                         <div class="row">
                             <?php
 
-                            $aid = $_GET['id'];
+                            $aid = $_GET['id'];    
                             $sqlselect = "SELECT * FROM accommodation WHERE aid='$aid'";
                             $result = mysqli_query($conn, $sqlselect);
                             
