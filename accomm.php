@@ -119,11 +119,7 @@
                 </div>
                 <div class="col-md-4 mt-md-4">
                     <div class="row">
-<<<<<<< HEAD
                         <div class="col-sm-12 bg-success">
-=======
-                        <div class="col-md-12 bg-primary">
->>>>>>> bdac957782e938f5169000aac59cf84a1d45ab4b
                             <div class="row">
                                 <?php
                                     $sqlhost = "SELECT * FROM  user, accommodation WHERE accommodation.aid='$aid' AND accommodation.uid=user.uid";
@@ -143,7 +139,6 @@
                                             echo '<h3>'.$ufname.' '.$usname. '</h3>';
                                     echo "</div>";
                                 ?>
-<<<<<<< HEAD
                                 <?php
                                     echo '<div class="col-sm-7 align-middle">';
                                         echo '<div class="row">';
@@ -151,13 +146,6 @@
                                         echo '</div>';
                                     echo '</div>';
                                 ?>
-=======
-                                <form class="form" action="contact.php" method="POST">
-                                    <div class="col-md-12 ml-md-10">
-                                        <button type="submit" class="btn">Email Host</button>
-                                    </div>
-                                </form>
->>>>>>> bdac957782e938f5169000aac59cf84a1d45ab4b
                             </div>
                         </div>
                         <div class="col-md-12 bg-danger">

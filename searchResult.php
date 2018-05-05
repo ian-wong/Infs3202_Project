@@ -35,8 +35,10 @@
         <!-- JQuery from Google-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <!-- Google Maps API -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
-            defer></script>
+        <!--<script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap">
+        </script>
+        -->
         <!-- Lightbox JS -->
         <script type="text/javascript" src="js/prototype.js"></script>
         <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
@@ -184,6 +186,9 @@
           });
         }
       </script>
+      <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap">
+        </script>
         
         <?php
     /*
