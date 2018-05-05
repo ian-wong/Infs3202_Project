@@ -129,6 +129,8 @@
                 }
             ?>
 
+            <a href="host.php" class="btn btn-block btn-primary"><h4>Become a Host</h4></a>
+
         </div>
         <div class="col-md-7">
             <!--col main info-->
@@ -171,6 +173,9 @@
             ?>
         </div>
         <div class="col-md-2">
+            <br>
+            <a href=# class="btn btn-primary"><h4>Edit Profile</h4></a>
+            <br>
             <br>
             <a href="logout.php" class="btn btn-danger"><h4>Log Out</h4></a>
         </div>
