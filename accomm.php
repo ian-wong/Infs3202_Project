@@ -106,7 +106,7 @@
                 </div>
                 <div class="col-sm-4 mt-md-4">
                     <div class="row">
-                        <div class="col-sm-12 bg-primary">
+                        <div class="col-sm-12 bg-success">
                             <div class="row">
                                 <?php
                                     $sqlhost = "SELECT * FROM  user, accommodation WHERE accommodation.aid='$aid' AND accommodation.uid=user.uid";
@@ -126,11 +126,13 @@
                                             echo '<h3>'.$ufname.' '.$usname. '</h3>';
                                     echo "</div>";
                                 ?>
-                                <form class="form" action="contact.php" method="POST">
-                                    <div class="col-sm-12 ml-md-10">
-                                        <button type="submit" class="btn">Email Host</button>
-                                    </div>
-                                </form>
+                                <?php
+                                    echo '<div class="col-sm-7 align-middle">';
+                                        echo '<div class="row">';
+                                            echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary" >Contact Host</a>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                ?>
                             </div>
                         </div>
                         <div class="col-sm-12 bg-danger">
