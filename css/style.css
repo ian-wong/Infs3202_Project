@@ -1,3 +1,4 @@
+
 body {
     padding-bottom: 3rem;
 }
@@ -67,6 +68,7 @@ body {
 
 
 
+
 /* RESPONSIVE CSS */
 
 @media (min-width: 40em) {
@@ -89,3 +91,4 @@ body {
         margin-top: 7rem;
     }
 }
+
