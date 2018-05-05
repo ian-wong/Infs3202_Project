@@ -137,23 +137,26 @@
                                     echo "<div class='col-md-9'>";
                                             echo '<br/>';
                                             echo '<h3>'.$ufname.' '.$usname. '</h3>';
+                                            echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary" >Contact Host</a>';
                                     echo "</div>";
+                                   
                                 ?>
                                 <?php
-                                    echo '<div class="col-sm-7 align-middle">';
-                                        echo '<div class="row">';
-                                            echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary" >Contact Host</a>';
-                                        echo '</div>';
-                                    echo '</div>';
+                                    //echo '<div class="col-sm-7 align-middle">';
+                                        //echo '<div class="row">';
+                                          //  echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary" >Contact Host</a>';
+                                       // echo '</div>';
+                                    //echo '</div>';
                                 ?>
                             </div>
                         </div>
                         <div class="col-md-12 bg-warning">
                             <?php
                                 echo '<br>';
-                                //how to make not newline after h4
+                                
                                 $acost = $arow['cost'];
-                                echo '<h4>$'.$acost.' AUD </h4> <p>per night</p>'; 
+                                echo '<h4-inline>$'.$acost.' AUD </h4-inline> per night'; 
+                                
                             ?>
                         </div>
                         <div class="col-md-12 bg-danger">

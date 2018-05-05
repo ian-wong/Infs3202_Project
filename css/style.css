@@ -73,6 +73,16 @@ html, body {
     
 }
 
+h4-inline{
+    display: inline-block; /*inline-block;inline; to maintain vertical paddin */
+    font-size: 1.33em;
+    /*margin-top: 1.33em;
+    margin-bottom: 1.33em; */
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+}
+
 
 /* RESPONSIVE CSS */
 
