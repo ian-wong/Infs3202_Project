@@ -69,7 +69,20 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="login.html">Account</a>
+                            <?php
+                                if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+                                    //header("location: index.php");
+                                    $email = $_SESSION['login_user'];
+                                    $sqlselect="SELECT * FROM user WHERE email='$email'";
+                                    $result = mysqli_query($conn, $sqlselect);
+                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                                    $uid = $row['uid'];
+
+                                    echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
+                                } else {
+                                    echo '<a class="nav-link" href="login.php">Account</a>';
+                                } 
+                            ?>
                         </li>
                     </ul>
                 </div>
@@ -78,11 +91,11 @@
         <main>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-8 px-md-5 pt-md-4">
+                    <div class="col-md-8 px-md-5 pt-md-4 ">
                         <div class="row">
                             <?php
 
-                            $aid = $_GET['id'];
+                            $aid = $_GET['id'];    
                             $sqlselect = "SELECT * FROM accommodation WHERE aid='$aid'";
                             $result = mysqli_query($conn, $sqlselect);
                             
@@ -104,9 +117,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 mt-md-4">
+                <div class="col-md-4 mt-md-4">
                     <div class="row">
+<<<<<<< HEAD
                         <div class="col-sm-12 bg-success">
+=======
+                        <div class="col-md-12 bg-primary">
+>>>>>>> bdac957782e938f5169000aac59cf84a1d45ab4b
                             <div class="row">
                                 <?php
                                     $sqlhost = "SELECT * FROM  user, accommodation WHERE accommodation.aid='$aid' AND accommodation.uid=user.uid";
@@ -118,14 +135,15 @@
                                     $ufname = $urow['firstname'];
                                     $usname = $urow['surname'];
                                     
-                                    echo "<div class='col-sm-3'>";
+                                    echo "<div class='col-md-3'>";
                                         echo $uphoto;
                                     echo "</div>";
-                                    echo "<div class='col-sm-9'>";
+                                    echo "<div class='col-md-9'>";
                                             echo '<br/>';
                                             echo '<h3>'.$ufname.' '.$usname. '</h3>';
                                     echo "</div>";
                                 ?>
+<<<<<<< HEAD
                                 <?php
                                     echo '<div class="col-sm-7 align-middle">';
                                         echo '<div class="row">';
@@ -133,9 +151,16 @@
                                         echo '</div>';
                                     echo '</div>';
                                 ?>
+=======
+                                <form class="form" action="contact.php" method="POST">
+                                    <div class="col-md-12 ml-md-10">
+                                        <button type="submit" class="btn">Email Host</button>
+                                    </div>
+                                </form>
+>>>>>>> bdac957782e938f5169000aac59cf84a1d45ab4b
                             </div>
                         </div>
-                        <div class="col-sm-12 bg-danger">
+                        <div class="col-md-12 bg-danger">
                             <p>Calendar</p>
                         </div>
                     

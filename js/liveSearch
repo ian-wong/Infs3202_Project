@@ -1,0 +1,24 @@
+<script>
+    function showResult(str) {
+        //If string is empty, clears the placeholder and exits function
+        if (str.length == 0) {
+            document.getElementById("searchBar").innerHTML = "";
+            document.getElementById("searchBar").style.border = "0px";
+            return;
+        }
+        //Create an XMLHttpRequest obj
+        xmlhttp = new XMLHttpRequest();
+        //When server response is ready, start function
+        xmlhttp.onreadystatechange = function () {
+            // request finished, response is ready and status is okay then change search bar
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("searchBar").innerHTML = this.responseText;
+                docment.getElementById("serachBar").style.border = "1px solid #A5ACB2";
+            }
+        }
+        //initialises the search request
+        xtlhttp.open("GET", "livesearch.php?q=" + str, true);
+        xmlhttp.send();
+
+    }
+</script>

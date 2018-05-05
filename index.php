@@ -42,6 +42,9 @@
     <script type="text/javascript"
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
+     <!-- Google Maps API -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
+            defer></script>
 
 </head>
 <body>
@@ -58,12 +61,11 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             
             <!-- Search Bar -->
-            <!-- also add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput"> <!--type="search"-->
+                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-
+             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
@@ -193,6 +195,7 @@
         </a>
     </div>
                     -->
+    
 
 </body>
 </html>
