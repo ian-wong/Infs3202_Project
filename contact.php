@@ -72,13 +72,13 @@
                     <?php
                         if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
                             //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
+                            $luemail = $_SESSION['login_user'];
+                            $sqllu ="SELECT * FROM user WHERE email='$luemail'";
+                            $luresult = mysqli_query($conn, $sqllu);
+                            $lurow = mysqli_fetch_array($luresult, MYSQLI_ASSOC);
+                            $luid = $lurow['uid'];
 
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
+                            echo '<a class="nav-link" href="profile.php?id='.$luid.'">Welcome, '.$lurow['firstname'] .'</a>';
                         } else {
                             echo '<a class="nav-link" href="login.php">Account</a>';
                         } 
@@ -107,6 +107,9 @@
                 $hostfname = $row['firstname'];
                 $hostsname = $row['surname'];
 
+                
+            
+
                 //$aid = $_GET['aid'];
                 
                 echo "<br />";
@@ -126,7 +129,7 @@
 
                 echo '<form method="POST" action="SQLemail.php">';
                     echo '<label for="fromemail">From:</label>';
-                    echo '<input type="email" class="form-control" id="toemail" value="" name="toemail"></br>';
+                    echo '<input type="email" class="form-control" id="toemail" value="'.$luemail.'" name="toemail"></br>';
 
                     echo '<label for="toemail">To:</label>';
                     echo '<input type="email" class="form-control" id="toemail" value="'.$hostemail.'" name="fromemail"></br>';
