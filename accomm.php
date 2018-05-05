@@ -96,15 +96,15 @@
                             <?php
 
                             $aid = $_GET['id'];    
-                            $sqlselect = "SELECT * FROM accommodation WHERE aid='$aid'";
-                            $result = mysqli_query($conn, $sqlselect);
+                            $sqla = "SELECT * FROM accommodation WHERE aid='$aid'";
+                            $aresult = mysqli_query($conn, $sqla);
                             
-                            $row = mysqli_fetch_assoc($result);
-                            $aid = $row['aid'];
+                            $arow = mysqli_fetch_assoc($aresult);
+                            $aid = $arow['aid'];
                             $aphoto = '<img src = "SQLgetphoto.php?id='.$aid.'" class= img-fluid width=100%>';
-                            $aname = $row['name'];
-                            $aloc = $row['location'];
-                            $adescr = $row['descr'];
+                            $aname = $arow['name'];
+                            $aloc = $arow['location'];
+                            $adescr = $arow['descr'];
                             
                             echo ($aphoto);
 
@@ -147,6 +147,14 @@
                                     echo '</div>';
                                 ?>
                             </div>
+                        </div>
+                        <div class="col-md-12 bg-warning">
+                            <?php
+                                echo '<br>';
+                                //how to make not newline after h4
+                                $acost = $arow['cost'];
+                                echo '<h4>$'.$acost.' AUD </h4> <p>per night</p>'; 
+                            ?>
                         </div>
                         <div class="col-md-12 bg-danger">
                             <p>Calendar</p>
