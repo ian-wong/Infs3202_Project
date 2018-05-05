@@ -1,6 +1,8 @@
 
-body {
-    padding-bottom: 3rem;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #searchBar {
@@ -66,7 +68,10 @@ body {
     letter-spacing: -.05rem;
 }
 
-
+#map {
+    height: 500px;
+    
+}
 
 
 /* RESPONSIVE CSS */

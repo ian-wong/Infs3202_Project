@@ -45,42 +45,7 @@
 
     </head>
 
-    <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="description" content="Accommodation Finder">
-        <meta name="author" content="Anthony Hanh & Ian Wong">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>Quest Hotel</title>
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous">
-
-        <!-- Lightbox CSS -->
-        <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen" />
-        <!-- Custom CSS -->
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-        <!-- Icon -->
-        <link rel="icon" href="img/logo.png" />
-
-        <!-- Bootstrap CDN -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <!-- JQuery from Google-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!-- Lightbox JS -->
-        <script type="text/javascript" src="js/prototype.js"></script>
-        <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
-        <script type="text/javascript" src="js/lightbox.js"></script>
-
-    </head>
 
     <body>
 
@@ -126,13 +91,8 @@
         </header>
 
         <div class="container-fluid">
-            <!--
-        <div class="page-header">
-            <h1>page header inside container</h1>
-        </div>
-        -->
             <div class="row">
-                <div class="col-md-8 bg-danger">
+                <div class="col-md-8">
                     <!--for accomms-->
                     <div class="row">
                         <?php
@@ -154,7 +114,7 @@
                 
                                 while($row = mysqli_fetch_assoc($result)){
         
-                                    echo '<div class="col-md-5  bg-warning" >';
+                                    echo '<div class="col-md-6">';
                                     echo '<br/>';
 
                                     $aid = $row['aid'];
@@ -199,30 +159,32 @@
                             <!--</div>-->
                     </div>
                 </div>
-                <div class="col-sm-4 bg-primary">
-                    <div class="row">
-                        <div class="col-sm-12 bg-success">hi
-                            <div id="map height=100%"></div>
-                            <script>
-                                var map;
-                                function initMap() {
-                                    map = new google.maps.Map(document.getElementById('map'), {
-                                        center: {
-                                            lat: -34.397,
-                                            lng: 150.644
-                                        },
-                                        zoom: 8
-                                    });
-                                }
-                            </script>
-                        </div>
+                <div class="col-md-4 mt-md-3">
+                
+                    
+                    <div id="map"></div>
+
                     </div>
-                </div>
+                    
+                    
+                
             </div>
 
         </div>
-
-
+       <script>
+        function initMap() {
+          var uluru = {lat: -25.363, lng: 131.044};
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 4,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+        }
+      </script>
+        
         <?php
     /*
     //if($_REQUEST['submit']){

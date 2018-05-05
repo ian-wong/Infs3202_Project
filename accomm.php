@@ -91,7 +91,7 @@
         <main>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-8 px-md-5 pt-md-4 ">
+                    <div class="col-md-8 px-md-5 pt-md-4 ">
                         <div class="row">
                             <?php
 
@@ -117,9 +117,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4 mt-md-4">
+                <div class="col-md-4 mt-md-4">
                     <div class="row">
-                        <div class="col-sm-12 bg-primary">
+                        <div class="col-md-12 bg-primary">
                             <div class="row">
                                 <?php
                                     $sqlhost = "SELECT * FROM  user, accommodation WHERE accommodation.aid='$aid' AND accommodation.uid=user.uid";
@@ -131,22 +131,22 @@
                                     $ufname = $urow['firstname'];
                                     $usname = $urow['surname'];
                                     
-                                    echo "<div class='col-sm-3'>";
+                                    echo "<div class='col-md-3'>";
                                         echo $uphoto;
                                     echo "</div>";
-                                    echo "<div class='col-sm-9'>";
+                                    echo "<div class='col-md-9'>";
                                             echo '<br/>';
                                             echo '<h3>'.$ufname.' '.$usname. '</h3>';
                                     echo "</div>";
                                 ?>
                                 <form class="form" action="contact.php" method="POST">
-                                    <div class="col-sm-12 ml-md-10">
+                                    <div class="col-md-12 ml-md-10">
                                         <button type="submit" class="btn">Email Host</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col-sm-12 bg-danger">
+                        <div class="col-md-12 bg-danger">
                             <p>Calendar</p>
                         </div>
                     

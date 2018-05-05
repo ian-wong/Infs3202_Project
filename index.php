@@ -42,6 +42,9 @@
     <script type="text/javascript"
             src="js/scriptaculous.js?load=effects,builder"></script>
     <script type="text/javascript" src="js/lightbox.js"></script>
+     <!-- Google Maps API -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
+            defer></script>
 
 </head>
 <body>
@@ -192,6 +195,7 @@
         </a>
     </div>
                     -->
+    
 
 </body>
 </html>
