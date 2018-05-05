@@ -132,6 +132,8 @@
         </div>
         <div class="col-md-7">
             <!--col main info-->
+            <br>
+            <h2>Your hosted accommodations: </h2>
             <?php 
                 $amake = '<h3>Something went wrong :(</h3>';
                 //$uid = $_GET['id'];
@@ -169,7 +171,8 @@
             ?>
         </div>
         <div class="col-md-2">
-            <btn
+            <br>
+            <a href="logout.php" class="btn btn-danger"><h4>Log Out</h4></a>
         </div>
     </div>
 </div>
