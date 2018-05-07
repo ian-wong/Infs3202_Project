@@ -68,6 +68,7 @@ html, body {
     letter-spacing: -.05rem;
 }
 
+/* Map Height in search results */
 #map {
     height: 500px;
     
@@ -81,6 +82,11 @@ h4-inline{
     margin-left: 0;
     margin-right: 0;
     font-weight: bold;
+}
+
+#aphoto {
+  height: 250px;
+  width: 300px;   
 }
 
 

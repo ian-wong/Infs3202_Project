@@ -34,15 +34,12 @@
             crossorigin="anonymous"></script>
         <!-- JQuery from Google-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!-- Google Maps API -->
-        <!--<script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap">
-        </script>
-        -->
         <!-- Lightbox JS -->
         <script type="text/javascript" src="js/prototype.js"></script>
         <script type="text/javascript" src="js/scriptaculous.js?load=effects,builder"></script>
         <script type="text/javascript" src="js/lightbox.js"></script>
+        
+
 
 
     </head>
@@ -74,18 +71,18 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT firstname FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                                if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+                                    //header("location: index.php");
+                                    $email = $_SESSION['login_user'];
+                                    $sqlselect="SELECT firstname FROM user WHERE email='$email'";
+                                    $result = mysqli_query($conn, $sqlselect);
+                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-                            echo '<a class="nav-link" href="profile.php">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
-                    ?>
+                                    echo '<a class="nav-link" href="profile.php">Welcome, '.$row['firstname'] .'</a>';
+                                } else {
+                                    echo '<a class="nav-link" href="login.php">Account</a>';
+                                } 
+                            ?>
                         </li>
                     </ul>
                 </div>
