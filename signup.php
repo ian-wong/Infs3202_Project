@@ -137,5 +137,6 @@
 </html>
 
 <?php
-//$db->disconnect(); // disconnect after use is a good habit
+    //$db->disconnect(); // disconnect after use is a good habit
+    $conn->close();
 ?>
