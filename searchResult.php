@@ -95,6 +95,7 @@
                     <!--for accomms-->
                     <div class="row">
                         <?php
+                        //$searchInput = $_POST['searchInput'];
                         $searchInput = $_POST['searchInput'];
 
                         if(empty($searchInput)){
@@ -106,13 +107,35 @@
 
                         } else {
                             $make = '<h3>Sorry, no matches found</h3>';
-                            $sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
+                            
+                            //$keyword = str_replace(" ","+", $_POST["$searchInput"]);
+                            //keyword search
+                            //$keys = explode(" ",$searchInput);
+
+                            $condition = "";
+                            $keyword = explode(" ", $searchInput);
+                            foreach($keyword as $key){
+                                $condition .= "location LIKE '%".mysqli_real_escape_string($conn, $key)."%' OR ";
+                            }
+                            $condition = substr($condition,0, -4);
+
+                            //$sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
+                            $sqlselect = "SELECT * FROM accommodation WHERE ".$condition;
+                            
+                            //$sqlselect = "SELECT * FROM accommodation WHERE MATCH(location) AGAINST('$searchInput*' IN BOOLEAN MODE)";
+                            /*
+                            foreach($keys as $k){
+                                $sqlselect .= " OR name LIKE '%$k%' ";
+                            } 
+                            */
                             $result = mysqli_query($conn, $sqlselect);
-                
+                            //$result = mysqli_query()
+                                            
                             if($make = mysqli_num_rows($result) > 0){
                 
-                                while($row = mysqli_fetch_assoc($result)){
-        
+                                //while($row = mysqli_fetch_assoc($result)){
+                                while($row = mysqli_fetch_array($result)){
+
                                     echo '<div class="col-md-6">';
                                     echo '<br/>';
 
@@ -138,6 +161,7 @@
                                 echo '<h3> search result </h3>';
                                 print ($make); // no matches found
                             }
+                            
                         }
 
                             /*
