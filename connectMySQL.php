@@ -2,8 +2,8 @@
     //include 'signup.php';
 
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "infs";
+    $password = "3202";
     //also dbname
     $dbname = "3202database";
 
