@@ -3,6 +3,9 @@
     include("connectMySQL.php");
     
     session_start();
+    if(!isset($_SESSION['login_user'])){
+        header('location: login.php');
+    }
 
 ?>
 
@@ -103,8 +106,12 @@
         <div class="col-md-3">
             <!--col basic info-->
             <?php 
-                $make = '<h3>Something went wrong :(</h3>';
-                $uid = $_GET['id'];
+                //$make = '<h3>Something went wrong :(</h3>';
+                
+                //cant use this, because no 'id' to GET if not coming from index.php
+                //$uid = $_GET['id'];
+                //as Profile.php can only be accessed by user that is logged in then - 
+                $uid = $row['uid'];
                 $sqlselectuser = "SELECT * FROM user WHERE uid='$uid'";
                 $result = mysqli_query($conn, $sqlselectuser);
         
@@ -174,6 +181,7 @@
         </div>
         <div class="col-md-2">
             <br>
+            <!--Upload photo update name-->
             <a href=# class="btn btn-primary"><h4>Edit Profile</h4></a>
             <br>
             <br>

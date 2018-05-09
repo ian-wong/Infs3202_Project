@@ -3,6 +3,9 @@
     include("connectMySQL.php");
     
     session_start();
+    if(!isset($_SESSION['login_user'])){
+        header('location: login.php');
+    }
 ?>
 
 <html lang="en">
@@ -95,23 +98,27 @@
             <h3 class="col-7 mb-1">Host Your Own Accommodation</h3>
         </div>
         <div class="card-body">
-            <form id="loginForm " action="SQLsignup.php" method="POST">
+            <form id="hostForm" action="SQLhost.php" method="POST">
                 <!--User Input -->
                 <div class="form-row">
-                    <div class="form-group col-md-5 ml-3 mb-4">
-                        <label for="fNameInput">First Name</label>
-                        <input type="text" class="form-control" id="fNameInput" name="fNameInput">
+                    <div class="form-group col-md-7 ml-3 mb-4">
+                        <label for="locInput">Accommodation Address: </label>
+                        <input type="text" class="form-control" placeholder="12 Example St Brisbane QLD 4000  //   Street Address - Suburb and State - Postcode" 
+                            id="locInput" name="locInput" maxlength="200">
                     </div>
+                    <!--
                     <div class="form-group col-md-5 ml-3 mb-4">
                         <label for="lNameInput">Last Name</label>
                         <input type="text" class="form-control" id="lNameInput" name="lNameInput">
                     </div>
+                    -->
                 </div> 
 
                 <div class="form-group">
                     <div class="col-7 mb-4">
-                        <label for="emailInputReg">Email address</label>
-                        <input type="email" class="form-control" id="emailInputReg" placeholder="email@example.com" name="emailInputReg">
+                        <label for="nameInput">Title of Accommodation</label>
+                        <input type="text" class="form-control" id="nameInput" name="emailInputReg"
+                            maxlength="200">
                     </div>
                 </div>
 
