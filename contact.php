@@ -129,13 +129,13 @@
 
                 echo '<form method="POST" action="SQLemail.php">';
                     echo '<label for="fromemail">From:</label>';
-                    echo '<input type="email" class="form-control" id="toemail" value="'.$luemail.'" name="toemail"></br>';
+                    echo '<input type="text" class="form-control" id="fromemail" value="'.$luemail.'" name="fromemail"></br>';
 
                     echo '<label for="toemail">To:</label>';
-                    echo '<input type="email" class="form-control" id="toemail" value="'.$hostemail.'" name="fromemail"></br>';
+                    echo '<input type="text" class="form-control" id="toemail" value="'.$hostemail.'" name="toemail"></br>';
                     
                     echo '<label for="subject">Subject:</label>';
-                    echo '<input type="text" class="form-control" id="subject" placeholder="" name="subject"></br>';
+                    echo '<input type="text" class="form-control" id="subject" name="subject"></br>';
 
                     echo '<label for="message">Comment:</label>';
                     echo '<textarea class="form-control" rows="5" id="message" name="message"></textarea></br>';
