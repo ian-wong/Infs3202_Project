@@ -1,16 +1,11 @@
 <!DOCTYPE html> 
 
-<!-- USE SIGNUP.HTML -->
 
 
 <?php
-//include 'connectMySQL.php';
-//include 'SQLsignup.php';
+    include("connectMySQL.php");
 
-//$db = new MySQLDatabase(); // create a Database object
-//$db->connect(“root”, “”, “3202database”); //Doesnt work, why? $db->connect(“quay”, “3202”, “3202database”);
-    // do some database jobs.
-//$db->disconnect(); // disconnect after use is a good habit
+    session_start();
 
 ?>
 

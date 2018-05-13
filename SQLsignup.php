@@ -50,7 +50,7 @@ $db->connect('root', '', '3202database'); //Doesnt work, why? $db->connect(“in
 
     $conn->close();
 
-    header("Location: goodsignup.html");
+    header("Location: login.php");
 
 //header("Location: goodsignup.html");
 
