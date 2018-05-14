@@ -92,55 +92,53 @@
         </div>
     </nav>
 </header>
-
     <div class="card">
         <div class="card-header">
             <h3 class="col-7 mb-1">Host Your Own Accommodation</h3>
         </div>
         <div class="card-body">
-            <form id="hostForm" action="SQLhost.php" method="POST">
+            <form id="hostForm" action="SQLhost.php" method="POST" enctype="multipart/form-data">
                 <!--User Input -->
-                <div class="form-row">
-                    <div class="form-group col-md-7 ml-3 mb-4">
-                        <label for="locInput">Accommodation Address: </label>
-                        <input type="text" class="form-control" placeholder="12 Example St Brisbane QLD 4000  //   Street Address - Suburb and State - Postcode" 
-                            id="locInput" name="locInput" maxlength="200">
+                
+                    
+                <div class="col-md-5 ml-3 mb-4 bg-success">
+                    <label for="nameInput">Title of Accommodation:</label>
+                    <input type="text" class="form-control" id="nameInput" name="nameInput" maxlength="200">
+                </div>
+                
+                <div class="form-group col-md-7 ml-3 mb-4 bg-primary">
+                    <label for="locInput">Address of Accommodation: </label>
+                    <input type="text" class="form-control" placeholder="12 Example St Brisbane QLD 4000  //   Street Address - Suburb and State - Postcode"
+                    id="locInput" name="locInput" maxlength="200">
+                </div>
+                
+                <div class="col-md-3 ml-3 bg-success">
+                    <label>Pricing: </label>
+                </div>
+                <div class="col-md-2 ml-3 mb-4">
+                    <div class="input-group">
+                        <div class="input-group-addon "><b>$AUD </b></div>
+                        <input class="form-control" type="text" name="priceInput">
+                        <div class="input-group-addon "><b> per night</b></div>
                     </div>
-                    <!--
-                    <div class="form-group col-md-5 ml-3 mb-4">
-                        <label for="lNameInput">Last Name</label>
-                        <input type="text" class="form-control" id="lNameInput" name="lNameInput">
-                    </div>
-                    -->
-                </div> 
+                </div>
+                
+                <div class="col-md-8 ml-3 mb-4 bg-warning">
+                    <label for="descInput">Description: </label>
+                    <textarea class="form-control" rows="5" placeholder="Basic Description / Amenities / Arrangements / Rules / Cancellations - (Maximum 2000 characters)"
+                        id="descInput" name="descInput"></textarea>
+                </div>
+            
+                <div class="col-md-5 ml-3 bg-danger">
+                    <label for="photoInput">Upload a Photo of Accommodation: </label><br>
+                    <input type="file" id="photoInput" name="photoInput" />
+                </div>
 
                 <div class="form-group">
-                    <div class="col-7 mb-4">
-                        <label for="nameInput">Title of Accommodation</label>
-                        <input type="text" class="form-control" id="nameInput" name="emailInputReg"
-                            maxlength="200">
+                    <div class="col-md-7 mt-4">
+                        <button class="btn btn-primary" type="submit" name="submit">Host Accommodation!</button>
                     </div>
                 </div>
-
-                <div class="form-row">
-                    <div class="form-group col-md-5 ml-3">
-                        <label for="passwordInput">Password</label>
-                        <input type="password" class="form-control" id="passwordInput" name="passwordInput">
-                    </div>
-                    <div class="form-group col-md-5 ml-3">
-                        <label for="confirmPassInput">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmPassInput">
-                    </div>
-                </div>
-
-
-                <div class="form-group">
-                    <div class="col-sm-7">
-                        <button type="submit" class="btn btn-primary" name="create">Create Account</button>
-                    </div>
-                </div>
-
-
             </form>
         </div>
     </div>
