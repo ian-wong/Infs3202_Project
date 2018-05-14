@@ -182,7 +182,14 @@
         <div class="col-md-2">
             <br>
             <!--Upload photo update name-->
-            <a href=# class="btn btn-primary"><h4>Edit Profile</h4></a>
+            <?php
+                echo '<a href="profilename.php?id='.$uid.'" class="btn btn-primary"><h5>Edit Profile Name</h5></a>';
+            ?>
+            <br>
+            <br>
+            <?php
+                echo '<a href="profilephoto.php?id='.$uid.'" class="btn btn-primary"><h5>Edit Profile Picture</h5></a>';
+            ?>
             <br>
             <br>
             <a href="logout.php" class="btn btn-danger"><h4>Log Out</h4></a>
