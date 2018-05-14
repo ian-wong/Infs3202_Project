@@ -1,2 +1,2 @@
-# Infs3202_Project
-This is the repository for the project INFS3202.
+# Quest Hotel
+Web-based Information Systems design and development project - INFS3202
