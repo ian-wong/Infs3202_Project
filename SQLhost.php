@@ -39,7 +39,7 @@
                     $insaccomm = "INSERT INTO accommodation (uid, name, location, descr, photos, cost) VALUES ('$uid', '$name','$loc', '$desc', '$photoData', '$price')";
                     mysqli_query($conn, $insaccomm);
                 
-                        //header("location: profile.php?id=$uid");
+                    header("location: profile.php?id=$uid");
                         
                     //} else {
                     //    echo "substr photoType error";
