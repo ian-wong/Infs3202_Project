@@ -135,9 +135,12 @@
                 print ($make);
                 }
             ?>
-
-            <a href="host.php" class="btn btn-block btn-primary"><h4>Become a Host</h4></a>
-
+            
+            <?php
+                //host accommodation
+                echo '<a href="host.php?id='.$uid.'" class="btn btn-block btn-primary"><h5>Host Accommodation</h5></a>';
+                //<a href="host.php" class="btn btn-block btn-primary"><h4>Become a Host</h4></a>
+            ?>
         </div>
         <div class="col-md-7">
             <!--col main info-->
@@ -171,6 +174,10 @@
                                 echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $anamestr  . '</a>');
                                 echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $alocstr  . '</a>');
                                 echo ($adescstr);
+                                echo '<a href="accommdelete.php?aid='.$aid.'" class="btn btn-danger">Delete this accommodation</a>';
+                                echo '<br>';
+                                echo '<br>';
+                                echo '<br>';
                             echo '</div>';
                         echo "</div>"; 
                     }
@@ -189,6 +196,11 @@
             <br>
             <?php
                 echo '<a href="profilephoto.php?id='.$uid.'" class="btn btn-primary"><h5>Edit Profile Picture</h5></a>';
+            ?>
+            <br>
+            <br>
+            <?php
+                echo '<a href="profiledelete.php?id='.$uid.'" class="btn btn-warning"><h5>Delete Account</h5></a>';
             ?>
             <br>
             <br>
