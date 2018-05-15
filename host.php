@@ -97,8 +97,11 @@
             <h3 class="col-7 mb-1">Host Your Own Accommodation</h3>
         </div>
         <div class="card-body">
-            <form id="hostForm" action="SQLhost.php" method="POST" enctype="multipart/form-data">
-                <!--User Input -->
+            <?php
+                echo '<form id="hostForm" action="SQLhost.php?uid='.$uid.'" method="POST" enctype="multipart/form-data">';
+                //echo '<form id="hostForm" action="SQLprofilephoto.php?uid='.$uid.'" method="POST" enctype="multipart/form-data">';
+            ?>
+            <!--User Input -->
                 
                     
                 <div class="col-md-5 ml-3 mb-4 bg-success">
@@ -119,7 +122,7 @@
                     <div class="input-group">
                         <div class="input-group-addon "><b>$AUD </b></div>
                         <input class="form-control" type="text" name="priceInput">
-                        <div class="input-group-addon "><b> per night</b></div>
+                        <div class="input-group-addon"><b> per night</b></div>
                     </div>
                 </div>
                 
@@ -134,11 +137,13 @@
                     <input type="file" id="photoInput" name="photoInput" />
                 </div>
 
-                <div class="form-group">
-                    <div class="col-md-7 mt-4">
-                        <button class="btn btn-primary" type="submit" name="submit">Host Accommodation!</button>
-                    </div>
+                <!--<div class="form-group">
+                -->
+                <div class="col-md-7 mt-4">
+                    <button class="btn btn-primary" type="submit" name="submit">Host Accommodation!</button>
                 </div>
+                <!--</div>
+                -->
             </form>
         </div>
     </div>
