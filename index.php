@@ -3,6 +3,14 @@
     include("connectMySQL.php");
     
     session_start();
+
+    //YouTube Data API request returns the JSON data that includes the information of the video
+    $API_key    = 'AIzaSyC58pvE_Y0F8--HCIUVUfXaKNg1GcjSbNM';
+    $channelID  = 'UCqcmWrL58OTxjLCbAZuz_gA';
+    $maxResults = 4;
+
+    $videoList = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$channelID.'&maxResults='.$maxResults.'&key='.$API_key.''));
+    
 ?>
 
 <html lang="en">
@@ -148,10 +156,37 @@
 </main>
 
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <h2>Quest Hotel Videos</h2>
+                <div class="row">
+                <?php
+                    foreach($videoList->items as $item){
+                        //Embed video
+                        if(isset($item->id->videoId)){
+                           // echo '<div class="col-md-2">';
+                            echo '<div class=" col-md-4 youtube-video">
+                                    <iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>
+                                </div>';
+                                //<h2>'. $item->snippet->title .'</h2>
+                            //echo '</div>';
+                        }   
+                    }
+                ?>
+                </div> 
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+
         <div class="row"> 
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
+                <br>
+                <h2>Available Accommodations: </h2>
                 <div class="row">
                     <?php 
                         $make = '<h3>Something wrong :(</h3>';
