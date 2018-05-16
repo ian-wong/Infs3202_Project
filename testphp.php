@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <?php
 include("connectMySQL.php");
+
+    //YouTube Data API request returns the JSON data that includes the information of the video
+    //Get videos from channel by YouTube Data API
+    $API_key    = 'AIzaSyC58pvE_Y0F8--HCIUVUfXaKNg1GcjSbNM';
+    $channelID  = 'UCXhEVz35SzaTuLey3L5TGVA';
+    $maxResults = 10;
+
+    $videoList = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$channelID.'&maxResults='.$maxResults.'&key='.$API_key.''));
+    
+
 ?>
 
 <html lang="en">
@@ -137,6 +147,24 @@ include("connectMySQL.php");
 
         </div>
     </div>
+
+<?php
+    foreach($videoList->items as $item){
+        //Embed video
+        if(isset($item->id->videoId)){
+            echo '<div class="youtube-video">
+                    <iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>
+                    <h2>'. $item->snippet->title .'</h2>
+                </div>';
+        }
+    }
+?>
+
+
+
+
+
+
 </body>
 
     <?php

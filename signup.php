@@ -1,7 +1,4 @@
 <!DOCTYPE html> 
-
-
-
 <?php
     include("connectMySQL.php");
 
@@ -9,25 +6,27 @@
 
 ?>
 
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Login page for Quota">
+    <meta name="description" content="Accommodation Finder">
     <meta name="author" content="Anthony Hanh & Ian Wong">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Register | Quest Hotel</title>
+    <title>Quest Hotel</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-
     <!-- Icon -->
     <link rel="icon" href="img/logo.png"/>
 
+    <!-- Bootstrap CDN -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -37,11 +36,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <script src="js/loginJS.js" type="text/javascript"></script>
+    <!-- JQuery from Google-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Lightbox JS -->
+    <script type="text/javascript" src="js/prototype.js"></script>
+    <script type="text/javascript"
+            src="js/scriptaculous.js?load=effects,builder"></script>
+    <script type="text/javascript" src="js/lightbox.js"></script>
+     <!-- Google Maps API -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
+            defer></script>
 
 </head>
-
 <body>
 
 <header>
@@ -54,27 +60,33 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline">
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light " type="submit">Search</button>
+            
+            <!-- Search Bar -->
+            <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
+                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+                <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
+             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
                         if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
                             //header("location: index.php");
                             $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT firstname FROM user WHERE email='$email'";
+                            $sqlselect="SELECT * FROM user WHERE email='$email'";
                             $result = mysqli_query($conn, $sqlselect);
                             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                            $uid = $row['uid'];
 
-                            echo '<a class="nav-link" href="profile.php">Welcome, '.$row['firstname'] .'</a>';
+                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
                         } else {
                             echo '<a class="nav-link" href="login.php">Account</a>';
                         } 
                     ?>
                 </li>
             </ul>
+
+            
         </div>
     </nav>
 </header>
@@ -87,6 +99,41 @@
         <form id="loginForm " action="SQLsignup.php" method="POST">
             <!--User Input -->
             <div class="form-row">
+                <?php
+                    
+                    
+                    //$urlcheck = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                    //if(strpos($urlcheck, "error=empty") == true){
+                    
+                    if (!isset($_GET['error'])) {
+                        
+                    } else {
+                        $signupcheck = $_GET['error'];
+
+                        if($signupcheck == "empty"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>You did not fill in all fields</p>";
+                            echo '</div>';
+                        } 
+                        elseif($signupcheck == "name"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>You entered an invalid first name(s) or last name</p>";
+                            echo '</div>';
+                        } 
+                        elseif($signupcheck == "email"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>You entered an invalid email address</p>";
+                            echo '</div>';
+                        }
+                        elseif($signupcheck == "password"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>Your entered passwords did not match</p>";
+                            echo '</div>';
+                        }
+                    }
+                     
+                ?>
+
                 <div class="form-group col-md-5 ml-3 mb-4">
                     <label for="fNameInput">First Name</label>
                     <input type="text" class="form-control" id="fNameInput" name="fNameInput">
@@ -115,14 +162,11 @@
                 </div>
             </div>
 
-
             <div class="form-group">
                 <div class="col-sm-7">
-                    <button type="submit" class="btn btn-primary" name="create">Create Account</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Create Account</button>
                 </div>
             </div>
-
-
         </form>
     </div>
 </div>
