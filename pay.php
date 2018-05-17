@@ -2,6 +2,7 @@
 
     use PayPal\Api\Payment;
     use PayPal\Api\PaymentExecution;
+    use PHPMailer\PHPMailer\Exception;
 
     require 'paypal/app/start.php';
 
@@ -21,7 +22,7 @@
 
             try{
                 $result = $payment->execute($exe, $paypal);
-            } catch () {
+            } catch (Exception $e) {
                 //error handle
             }
             echo 'Payment Successful.';
