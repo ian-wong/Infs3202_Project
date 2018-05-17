@@ -22,6 +22,11 @@
     $twitconn = new TwitterOAuth($twitAPI_key, $twitAPI_secret, $twitToken, $twitToken_secret);
     //user info
     $user = $twitconn->get("account/verify_credentials");
+
+    //paypal sandbox
+    //sand-box account anthonysailou3-facilitator@gmail.com
+    $paypAPI_key = 'Aa3JuAqm4QMvrZCRuwdxnjKjNgPa3cvlgK-co4EHkpQ-H3fIM-3W1dhfZQck3g-6b37cgYTWX3uIwqGf';
+    $paypAPI_secret = 'EChbiuGJmDoqbzQstsI4c-sWwO5Jmhxdv4ex9FJa6nKnwrgfj0nEcP2emz8NGDyHnWE5iGZNdy0oPYlW';
 ?>
 
 <html lang="en">
@@ -171,7 +176,7 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h2>Quest Hotel Videos</h2>
+                <h2><a target="_blank" href="https://www.youtube.com/channel/UC2QGb0wattUTF82jpM3UL2w/"> Quest Hotel Videos</a></h2>
                 <div class="row">
                 <?php
                     foreach($ytvideos->items as $item){
@@ -191,8 +196,8 @@
             <div class="col-md-2">
                 
                 <?php
-                
-                    echo "<h2>".$user->screen_name."'s Twitter</h2>";
+                    
+                    echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
                     $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
                     
 
@@ -243,6 +248,23 @@
                 </div>
             </div>
             <div class=col-md-2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <form action="donate.php" method="post" autocomplete="off">
+                    <h4>Enjoy using Quest Hotel? Support us by donating.</h4>
+                    <label for="donate">Amount</label>
+                    <input type="text" name="donate">
+                    <input type="submit" value="Donate" name="submit">
+                    <p>You'll be taken to Paypal to complete your payment.</p><br>
+                </form>
+
+            </div>
+            <div class="col-md-3">
             </div>
         </div>
     </div>
