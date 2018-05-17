@@ -5,12 +5,23 @@
     session_start();
 
     //YouTube Data API request returns the JSON data that includes the information of the video
-    $API_key    = 'AIzaSyC58pvE_Y0F8--HCIUVUfXaKNg1GcjSbNM';
-    $channelID  = 'UCqcmWrL58OTxjLCbAZuz_gA';
-    $maxResults = 4;
-
-    $videoList = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$channelID.'&maxResults='.$maxResults.'&key='.$API_key.''));
+    $ytAPI_key    = 'AIzaSyC58pvE_Y0F8--HCIUVUfXaKNg1GcjSbNM';
+    $ytChannelID  = 'UC2QGb0wattUTF82jpM3UL2w';
+    $ytResults = 4;
+    //retrieves video data, name, description etc. 
+    $ytvideos = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$ytChannelID.'&maxResults='.$ytResults.'&key='.$ytAPI_key.''));
     
+    $twitAPI_key = 'T0tQ4JGdEm4vb2Q31FFa9fRSL';
+    $twitAPI_secret = "IU21cYDqrs3rOZm0NVTidNa0WidXMAlTshV97RHmPcNiXG16So";
+    $twitToken = "996969380633182208-hZ8jwnPScjqBsg1Xg6ZBi6cweyfoaNV";
+    $twitToken_secret = "B1vta4JRBQgqBZEu5rLLu8kdg53rFLUBGtZG2KAYz53OZ";
+
+    require "twitter/autoload.php";
+    use Abraham\TwitterOAuth\TwitterOAuth;
+    //twitter API
+    $twitconn = new TwitterOAuth($twitAPI_key, $twitAPI_secret, $twitToken, $twitToken_secret);
+    //user info
+    $user = $twitconn->get("account/verify_credentials");
 ?>
 
 <html lang="en">
@@ -163,13 +174,13 @@
                 <h2>Quest Hotel Videos</h2>
                 <div class="row">
                 <?php
-                    foreach($videoList->items as $item){
-                        //Embed video
+                    foreach($ytvideos->items as $item){
+                        //Embed video - CEHCK with tutor count as marks. 
                         if(isset($item->id->videoId)){
                            // echo '<div class="col-md-2">';
-                            echo '<div class=" col-md-4 youtube-video">
-                                    <iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>
-                                </div>';
+                            echo '<div class=" col-md-4 youtube-video">';
+                                echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+                            echo '</div>';
                                 //<h2>'. $item->snippet->title .'</h2>
                             //echo '</div>';
                         }   
@@ -178,6 +189,20 @@
                 </div> 
             </div>
             <div class="col-md-2">
+                
+                <?php
+                
+                    echo "<h2>".$user->screen_name."'s Twitter</h2>";
+                    $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
+                    
+
+                    $firsttweet = 1;
+                    foreach ($tweets as $twt){
+                        echo $twt->text . '<br><br>';
+                        $firsttweet++;
+                    }
+                
+                ?>
             </div>
         </div>
 
