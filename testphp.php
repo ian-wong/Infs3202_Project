@@ -10,6 +10,17 @@ include("connectMySQL.php");
 
     $videoList = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$channelID.'&maxResults='.$maxResults.'&key='.$API_key.''));
     
+    $twitAPI_key = 'T0tQ4JGdEm4vb2Q31FFa9fRSL';
+    $twitAPI_secret = "IU21cYDqrs3rOZm0NVTidNa0WidXMAlTshV97RHmPcNiXG16So";
+    $twitToken = "996969380633182208-hZ8jwnPScjqBsg1Xg6ZBi6cweyfoaNV";
+    $twitToken_secret = "B1vta4JRBQgqBZEu5rLLu8kdg53rFLUBGtZG2KAYz53OZ";
+
+    require "twitter/autoload.php";
+    use Abraham\TwitterOAuth\TwitterOAuth;
+    //twitter API
+    $twitconn = new TwitterOAuth($twitAPI_key, $twitAPI_secret, $twitToken, $twitToken_secret);
+    //user info
+    $user = $twitconn->get("account/verify_credentials");
 
 ?>
 
@@ -33,6 +44,11 @@ include("connectMySQL.php");
     <!-- Icon -->
     <link rel="icon" href="img/logo.png"/>
 
+
+
+     <!-- JQuery from Google-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <!-- Bootstrap CDN -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -43,8 +59,7 @@ include("connectMySQL.php");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <!-- JQuery from Google-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <!-- Lightbox JS -->
     <script type="text/javascript" src="js/prototype.js"></script>
     <script type="text/javascript"
@@ -71,39 +86,33 @@ include("connectMySQL.php");
             <div class="col-md">
                 <h3>test test </h3>
                 
+                    <?php
+                        //choose what to display 
+                        //$timeline = $twitconn->GET("statuses/user_timeline", ["count"=>1, "exclude_replies"=>true]);
+                        //echo $timeline;                    
+                        //print_r($timeline);
+
+                        //twitter username
+                        echo $user->screen_name;
+                        echo '<br>';echo '<br>';
+                        $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
+                        
+
+                        $firsttweet = 1;
+                        foreach ($tweets as $twt){
+                            echo $firsttweet . ':' . $twt->text . '<br>';
+                            $firsttweet++;
+                        }
+
+                    ?>
+
+
+                <br><br><br><br><br><br><br><br><br>
+
+
+
+
                 <?php 
-
-                    /*
-                    echo 'work please<br/>';
-                
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    //also dbname
-                    $dbname = "3202database";
-                
-                    //Create connection 
-                    $conn = new mysqli($servername, $username, $password, $dbname);
-                
-                    //Check connection
-                    if ($conn->connect_error){
-                        die("Connection failed: " . $conn->connect_error);
-                    } 
-                    
-                    echo "Connected Successfully<br>";
-
-                    */
-                    
-                    /*
-                    //inserting data to database
-                    $sqlinsert = "INSERT INTO user (firstname, surname, email, password) VALUES ('testfname', 'testlname', 'testemail@t.co', '1234567890')";
-                    if ($conn->query($sqlinsert) === TRUE){ //=== is 'equal and of same type'
-                        echo "new record entered<br/>";
-                    } else {
-                        echo "Error: " . $sqlinsert . "<br>" . $conn->error . "<br>";
-                    }
-                    */
-
                         //retrieving data from database
                     $sqlselect = "SELECT uid, firstname, surname, email FROM user";
                     $result = $conn->query($sqlselect);
