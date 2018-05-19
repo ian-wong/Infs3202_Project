@@ -184,7 +184,8 @@
                         if(isset($item->id->videoId)){
                            // echo '<div class="col-md-2">';
                             echo '<div class=" col-md-4 youtube-video">';
-                                echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+                                //echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+                                echo '<iframe src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
                             echo '</div>';
                                 //<h2>'. $item->snippet->title .'</h2>
                             //echo '</div>';
@@ -198,6 +199,7 @@
                 <?php
                     
                     echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
+                    
                     $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
                     
 

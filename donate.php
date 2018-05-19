@@ -49,8 +49,8 @@
             $redirectUrls = new RedirectUrls();
             //$redirectUrls->setReturnUrl('http://google.com')
             //    ->setCancelUrl('http://bing.com');
-            $redirectUrls->setReturnUrl(SITE_URL . '/pay.php?success=true')
-                ->setCancelUrl(SITE_URL . '/pay.php?success=false');
+            $redirectUrls->setReturnUrl(SITE_URL . '/donatedone.php?success=true')
+                ->setCancelUrl(SITE_URL . '/donatedone.php?success=false');
             
             $payment = new Payment();
             $payment->setIntent('sale')

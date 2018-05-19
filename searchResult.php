@@ -163,23 +163,7 @@
                             }
                             
                         }
-
-                            /*
-                        $num = 10;
-                        while($num > 0 ){
-                            echo '<div class="col-md-4">';
-                            echo "Containers provide a means to center and 
-                            horizontally pad your site’s contents. Use .container 
-                            for a responsive pixel width or .container-fluid for 
-                            width: 100% across all viewport and device sizes.
-                            Rows are wrappers for columns. END OF TEXT";
-                            echo "<br/>";
-                            echo "</div>";
-                            $num--;
-                        }
-                        */
                     ?>
-                            <!--</div>-->
                     </div>
                 </div>
                 <div class="col-md-4 mt-md-3">
@@ -194,7 +178,7 @@
             </div>
 
         </div>
-       <script>
+        <script>
         function initMap() {
           var uluru = {lat: -25.363, lng: 131.044};
           var map = new google.maps.Map(document.getElementById('map'), {
@@ -206,45 +190,13 @@
             map: map
           });
         }
-      </script>
-      <script async defer
+        </script>
+        <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap">
         </script>
         
         <?php
-    /*
-    //if($_REQUEST['submit']){
-        $searchInput = $_POST['searchInput'];
-
-        if(empty($searchInput)){
-            $make = '<h3>input values to search</h3>';
-            print ($make);
-        } else {
-            $make = '<h3>Sorry, no matches found</h3>';
-            $sqlselect = "SELECT * FROM accommodation WHERE location LIKE '%".$searchInput."%'";
-            $result = mysqli_query($conn, $sqlselect);
-
-            if($make = mysqli_num_rows($result) > 0){
-
-                while($row = mysqli_fetch_assoc($result)){
-
-                    echo '<img src="SQLgetphoto.php?id='.$row['aid'].'" />'; //width="300" height="200" />';
-                    
-                    echo '<br><h4>Name: ' . $row['name'] . '</h4>';
-                    echo '<br><h5>Location: ' . $row['location'] . '</h5>';
-                    echo '<br>'; 
-                }
-                
-            } else { 
-                echo '<h3> search result </h3>';
-                print ($make); // no matches found
-            }
-            mysqli_free_result($result);
-        }
-    //} else {
-      //  echo "else'd the first if";
-    //}
-    */
+    
     
     $conn->close();
 

@@ -51,22 +51,6 @@
         echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     }
 
-
-    /*
-    //$aid = $_POST['aid'];
-    
-    $fromemail = $_REQUEST['fromemail'];
-    $toemail = $_REQUEST['toemail'];
-    $subject = $_REQUEST['subject'];
-    $message = $_REQUEST['message'];
-    $headers = "From: ".$fromemail;
-
-    mail($toemail, $subject, $message, $headers);
-
-    //header("location: accomm.php?uid'.$aid.'");
-    echo "email sent";
-    */
-
     header("location: index.php");
 
 
