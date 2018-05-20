@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
     session_start();
+    
+    //already logged in
     if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
         header("location: index.php");
     }

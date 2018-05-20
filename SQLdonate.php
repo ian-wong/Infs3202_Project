@@ -8,6 +8,15 @@
     use PayPal\Api\RedirectUrls;
     use PayPal\Api\Payment;
 
+    include("connectMySQL.php");
+    
+    session_start();
+
+    //must login to donate
+    if(!isset($_SESSION['login_user'])){
+        header('location: login.php'); //?check=need
+    }
+
     if(!isset($_POST['submit'])){
         //error handle.
     } else {
@@ -49,8 +58,8 @@
             $redirectUrls = new RedirectUrls();
             //$redirectUrls->setReturnUrl('http://google.com')
             //    ->setCancelUrl('http://bing.com');
-            $redirectUrls->setReturnUrl(SITE_URL . '/donatedone.php?success=true')
-                ->setCancelUrl(SITE_URL . '/donatedone.php?success=false');
+            $redirectUrls->setReturnUrl(SITE_URL . '/SQLdonatedone.php?success=true')
+                ->setCancelUrl(SITE_URL . '/SQLdonatedone.php?success=false');
             
             $payment = new Payment();
             $payment->setIntent('sale')

@@ -200,6 +200,16 @@
             <br>
             <br>
             <?php
+                echo '<a href="profilephone.php?id='.$uid.'" class="btn btn-primary"><h5>Add/Edit Phone Number</h5></a>';
+            ?>
+            <br>
+            <br>
+            <?php
+                echo '<a href="profiledonate.php?id='.$uid.'" class="btn btn-primary"><h5>View Donations</h5></a>';
+            ?>
+            <br>
+            <br>
+            <?php
                 echo '<a href="profiledelete.php?id='.$uid.'" class="btn btn-warning"><h5>Delete Account</h5></a>';
             ?>
             <br>

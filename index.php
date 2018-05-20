@@ -257,7 +257,7 @@
             </div>
             <div class="col-md-6">
                 <br><br><br><br>
-                <form action="donate.php" method="post" autocomplete="off">
+                <form action="SQLdonate.php" method="post" autocomplete="off">
                     <h4>Enjoy using Quest Hotel? Support us by donating.</h4>
                     <label for="donate">Amount</label>
                     <input type="text" name="donate">
