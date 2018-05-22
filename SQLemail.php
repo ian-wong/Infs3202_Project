@@ -3,57 +3,49 @@
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-    //use PHPMailer\Vendor\PHPMailer\PHPMailer\PHPMailer;
-    //use PHPMailer\Vendor\PHPMailer\PHPMailer\Exception;
-
-
-    //Load Composer's autoloader
+    
     require 'phpmailer/vendor/autoload.php';
 
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-    try {
-        //Server settings
-        $mail->SMTPDebug = 2;                                 // Enable verbose debug output
-        $mail->isSMTP();                                      // Set mailer to use SMTP
-        $mail->Host = 'mailhub.eait.uq.edu.au;smtp2.example.com';  // Specify main and backup SMTP servers
-        $mail->SMTPAuth = false; //true;                               // Enable SMTP authentication
-        $mail->Username = 's4353213';                           // SMTP username
-        $mail->Password = 'anto333anto';                           // SMTP password
-        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 25;                                    // TCP port to connect to
+    $fromemail = mysqli_real_escape_string($conn, $_POST['fromemail']);
+    $toemail = mysqli_real_escape_string($conn, $_POST['toemail']);
+    $subject = mysqli_real_escape_string($conn, $_POST['subject']);
+    $message = $_POST['message'];
 
-        
-        //Recipients
-        $mail->setFrom($_REQUEST['fromemail'], 'Anthony');
+    if (!isset($_POST['submit'])){
+        header("location: index.php");
+    } else {
+        if(empty($fromemail) || empty($toemail) || empty($subject) || empty($message)){
+            header("location: contact.php?error=value");
+        } else {
+            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+            try {
+                //Server settings
+                $mail->SMTPDebug = 2;    //according to eaitSmartOS      // Enable verbose debug output
+                $mail->isSMTP();                                      // Set mailer to use SMTP
+                $mail->Host = 'mailhub.eait.uq.edu.au';//;smtp2.example.com';  // Specify main and backup SMTP servers
+                $mail->SMTPAuth = false; //true;                               // Enable SMTP authentication
+                $mail->Username = 's4353213';                           // SMTP username
+                $mail->Password = 'anto333anto';                           // SMTP password
+                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Port = 25;                                    // TCP port to connect to
 
-        $mail->addAddress($_REQUEST['toemail']);   //'Joe User');     // Add a recipient
-        //$mail->addAddress('ellen@example.com');               // Name is optional
-        //$mail->addReplyTo('info@example.com', 'Information');
-        //$mail->addCC('cc@example.com');
-        //$mail->addBCC('bcc@example.com');
+                //Recipients
+                $mail->setFrom($_REQUEST['fromemail']);
 
-        //Attachments
-        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-        
-        //Content
-        $mail->isHTML(true);                                  // Set email format to HTML
-        $mail->Subject = $_REQUEST['subject'];
-        $mail->Body    = $_REQUEST['message'];
-        //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-        
+                $mail->addAddress($_REQUEST['toemail']);   // Add a recipient
 
-
-        $mail->send();
-        echo 'Message has been sent';
-        
-    } catch (Exception $e) {
-        echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                //Content
+                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->Subject = $_REQUEST['subject'];
+                $mail->Body    = $_REQUEST['message'];
+                $mail->send();
+                echo 'Message has been sent';
+                
+            } catch (Exception $e) {
+                header("location: contact.php?error=email");
+            }
+            header("location: index.php?success=mail");
+        }
     }
-
-    header("location: index.php");
-
-
-
     $conn->close;
 ?>

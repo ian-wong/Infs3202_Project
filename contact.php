@@ -111,7 +111,7 @@
                     echo '<label for="message">Comment:</label>';
                     echo '<textarea class="form-control" rows="5" id="message" name="message"></textarea></br>';
                     
-                    echo '<button type="submit" class="btn btn-primary">Send Email</button>';
+                    echo '<button type="submit" name="submit" class="btn btn-primary">Send Email</button>';
                 echo '</form>';
             ?>
         </div>

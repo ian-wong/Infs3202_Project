@@ -158,6 +158,5 @@
 </html>
 
 <?php
-    //$db->disconnect(); // disconnect after use is a good habit
     $conn->close();
 ?>

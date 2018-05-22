@@ -91,13 +91,17 @@
                 $uid = $_GET['uid'];
                 $sqlselectuser = "SELECT * FROM user WHERE uid='$uid'";
                 $result = mysqli_query($conn, $sqlselectuser);
+
+                if(!$result){
+                    echo "Could not connect to server.";
+                }
         
                 if (!(mysqli_num_rows($result)>0)){
-                    echo 'Unable to connect to server.';
+                    echo 'You have no profile picture.';
                 } else {
                     $row = mysqli_fetch_assoc($result);
                     echo "<br>";
-                    $uphoto = '<img src="SQLgetuphoto.php?id='.$uid.'" class="img-fluid">';
+                    $uphoto = '<img src="SQLgetuphoto.php?uid='.$uid.'" class="img-fluid">';
                     $ufname = $row['firstname'];
                     $usname = $row['surname'];
         
@@ -115,19 +119,23 @@
             <br>
             <h2>Your hosted accommodations: </h2>
             <?php 
-                $amake = '<h3>Something went wrong :(</h3>';
-                //$uid = $_GET['id'];
+                
                 $sqlua = "SELECT * FROM user, accommodation WHERE user.uid=accommodation.uid AND user.uid=$uid";
                 $aresult = mysqli_query($conn, $sqlua);
-        
-                //check if there are records
-                if ($amake = mysqli_num_rows($aresult)>0){
+                
+                if (!$result){
+                    echo 'Could not connect to server.';
+                }
+                
+                if (!(mysqli_num_rows($aresult)>0)){
+                    echo 'You are not hosting any accommodations.';
+                } else {
                     while ($row = mysqli_fetch_assoc($aresult)){
                         echo '<div class="row mt-md-3" >';
                             echo '<div class=col-md-12>';
                                 $uid = $row['uid'];
                                 $aid = $row['aid'];
-                                $aphoto = '<img src="SQLgetphoto.php?uid='.$aid.'" class="img-fluid">';
+                                $aphoto = '<img src="SQLgetphoto.php?aid='.$aid.'" class="img-fluid">';
                                 $aname = $row['name'];
                                 $aloc = $row['location'];
                                 $adesc = $row['descr'];
@@ -147,8 +155,6 @@
                             echo '</div>';
                         echo "</div>"; 
                     }
-                } else {
-                    print ($amake);
                 }
             ?>
         </div>

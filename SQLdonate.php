@@ -1,5 +1,4 @@
 <?php
-
     include("connectMySQL.php");
     
     session_start();
@@ -7,52 +6,26 @@
     require 'paypal/app/start.php';
         
     use PayPal\Api\Payer;
-    //use PayPal\Api\Item;
     use PayPal\Api\Amount;
     use PayPal\Api\Transaction;
     use PayPal\Api\RedirectUrls;
     use PayPal\Api\Payment;
 
-
-    //must login to donate
     if(!isset($_SESSION['login_user'])){
-        header('location: login.php'); //?check=need
+        header('location: login.php?error=login'); 
     } else {
         if(!isset($_POST['submit'])){
-            //error handle.
-            echo 'no submit';
+            header('location: index.php');
         } else {
             if (!isset($_POST['donate'])){
-                //error handle.
-                echo 'no donate';
+                header('location: index.php?error=donatevalue');
             } else {
-
-                //error handle amount value
-                
-                
-
-
-                echo 'reached here';
-
-                $donate = (float) $_POST['donate'];
-
+                $don = mysqli_real_escape_string($conn, $_POST['donate']);
+                $donate = (float) $don;
                 $total = $donate;
 
                 $payer = new Payer();
                 $payer->setPaymentMethod('paypal'); 
-
-                /*
-                $item = new Item();
-                $item->setName($product)
-                    ->setCurrency('AUD')
-                    ->setQuantity(1)
-                    ->setPrice($donate);
-                */
-
-                //$itemList = new ItemList();
-                //$itemList->setItems([$item]);
-
-                //$details = new Details();
 
                 $amount = new Amount();
                 $amount->setCurrency('AUD')
@@ -64,8 +37,6 @@
                     ->setInvoiceNumber(uniqid());
 
                 $redirectUrls = new RedirectUrls();
-                //$redirectUrls->setReturnUrl('http://www.google.com')
-                //    ->setCancelUrl('http://bing.com');                               $amount is an object
                 $redirectUrls->setReturnUrl(SITE_URL . '/SQLdonatedone.php?success=true&amount='.$donate.'')
                     ->setCancelUrl(SITE_URL . '/SQLdonatedone.php?success=false');
                 
@@ -78,17 +49,12 @@
                 try {
                     $payment->create($paypal);
                 } catch(Exception $e) {
-                    die($e);
+                    header("location: index.php?error=paypal");
                 }
-
                 $approvalUrl = $payment->getApprovalLink();
                 header("location: $approvalUrl");
-
-
             }
         }
-
-
-
     }
+    $conn->close();
 ?>

@@ -20,11 +20,10 @@
     $uid = $row['uid'];
 
     if (!isset($_GET['success'], $_GET['paymentId'], $_GET['PayerID'], $_GET['amount'])){
-        //error handle
-    
+        header("location: index.php");
     } else {
         if ((bool)$_GET['success'] === false){
-            //error handle
+            header("location: index.php?error=paypal");
         } else {
             $paymentId = $_GET['paymentId'];
             $payerId = $_GET['PayerID'];
@@ -37,9 +36,7 @@
             try{
                 $result = $payment->execute($exe, $paypal);
             } catch (Exception $e) {
-                //error handle
-                echo ("result did not work -- try catch block");
-                header("location: index.php?donate=error");
+                header("location: index.php?error=paypal");
             }
             $amount=$_GET["amount"];
 
