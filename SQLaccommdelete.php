@@ -4,8 +4,11 @@
     $aid = $_GET['aid'];
     $uid = $_GET['uid'];
 
-    $delaccomm = "DELETE FROM accommodation WHERE aid='$aid')";
-    sqli_query($conn, $delaccomm);
+    $delaccomm = "DELETE FROM accommodation WHERE aid='$aid'";// AND 'uid'=$uid";
+    
+    
+    mysqli_query($conn, $delaccomm);
+    //$conn->exec($delaccomm);
 
     
     header("Location: profile.php?uid=$uid");

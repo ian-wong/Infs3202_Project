@@ -107,7 +107,7 @@
                 
                 
                 <div class="col-md-7 ml-3 mt-4">
-                    <button class="btn btn-danger" type="submit" name="submit">Yes, permanently delete account.</button>
+                    <button class="btn btn-danger" type="submit" name="submit">Yes, delete accommodation.</button>
                 </div>
                 
             </form>
