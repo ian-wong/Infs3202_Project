@@ -82,11 +82,6 @@
             <!--User Input -->
             <div class="form-row">
                 <?php
-                    
-                    
-                    //$urlcheck = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    //if(strpos($urlcheck, "error=empty") == true){
-                    
                     if (!isset($_GET['error'])) {
                         
                     } else {

@@ -13,13 +13,12 @@
 
     $username = 'sailou';
     $password = 'anto333anto';
-    //$destination = '0400000000'; //Multiple numbers can be entered, separated by a comma
-    //$destination = '0402199177'; //Ian's
+
     $destination = $phone;
     $source    = 'Quest Hotel';
-    //$text = 'This is our test message from Quest Hotel, tell me if this works please Thanks.';
+    
     $text = 'Thank you for using Quest Hotel, please visit us again soon. Also follow us on Twitter:https://twitter.com/HotelsQuest';
-    //$ref = 'abc123';
+    
     $ref = '';
     
     $content =  'username='.rawurlencode($username).
@@ -32,7 +31,7 @@
     $smsbroadcast_response = sendSMS($content);
     $response_lines = explode("\n", $smsbroadcast_response);
     
-     foreach( $response_lines as $data_line){
+    foreach( $response_lines as $data_line){
         $message_data = "";
         $message_data = explode(':',$data_line);
         if($message_data[0] == "OK"){

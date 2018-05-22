@@ -4,33 +4,28 @@
     $uid = $_GET['uid'];
 
     if(!isset($_POST['submit'])){
-        //error
-        echo 'error isset submit';
+        header("location: index.php");
     } else {
         if (!isset($_POST['phoneInput'])){
-            //erro
-            echo 'input empty';
+            header("location: profilephone.php?error=empty");
         } else {
-            //escape string
-            $phone = str_pad($_POST['phoneInput'],1);
-            
-            //echo $phone;
-            //check phone number
-            //if(preg_match("/^[0-9]{3}-[0-9]{4}-[0-9]{4}$/", $phone)) {
-                // $phone is valid
+            $pho = str_pad($_POST['phoneInput'],1);
+
+            $phone = mysqli_real_escape_string($conn, $pho);
+
             if(is_numeric($phone)){
                 $updphone = "UPDATE user SET phone='$phone' WHERE uid='$uid'";
         
-                mysqli_query($conn, $updphone);
-                header("Location: profile.php?id=".$uid."");
+                try {
+                    mysqli_query($conn, $updphone);
+                } catch (exception $e){
+                    header("location: profilephone.php?error=error");    
+                }
+                header("Location: profile.php?uid=".$uid."");
+            } else {
+                header("location: profile.php?error=value");
             }
-            //}
-
-
-            //if(is_numeric($phone)){
-                
-            //}
         }
     }
-
+    $conn->close();
 ?>

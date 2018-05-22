@@ -2,7 +2,7 @@
     include("connectMySQL.php");
 
     if (!isset($_POST['submit'])) {
-        header("location: signup.php");
+        header("location: index.php");
     } else {
         $fName = mysqli_real_escape_string($conn, $_POST['fNameInput']);
         $lName = mysqli_real_escape_string($conn, $_POST['lNameInput']);

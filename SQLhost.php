@@ -11,7 +11,7 @@
         } else {
             if ((($_FILES["photoInput"]["type"] == "image/gif") || ($_FILES["photoInput"]["type"] == "image/jpeg") || ($_FILES["photoInput"]["type"] == "image/pjpeg") || ($_FILES["photoInput"]["type"] == "image/png")) && ($_FILES["photoInput"]["size"] < 50000)){
                 if ($_FILES["photoInput"]["error"] > 0){
-                    echo "image error";
+                    header("location: host.php?error=photo");
                 } else {
                     $photoName = mysqli_real_escape_string($conn, $_FILES["photoInput"]["name"]);
                     $photoType = mysqli_real_escape_string($conn, $_FILES["photoInput"]["type"]);
