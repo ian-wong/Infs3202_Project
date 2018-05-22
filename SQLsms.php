@@ -9,13 +9,16 @@
         return $output;    
     }
 
+    $phone = $_GET['phone'];
+
     $username = 'sailou';
     $password = 'anto333anto';
     //$destination = '0400000000'; //Multiple numbers can be entered, separated by a comma
-    $destination = '0402199177'; //Ian's
+    //$destination = '0402199177'; //Ian's
+    $destination = $phone;
     $source    = 'Quest Hotel';
     //$text = 'This is our test message from Quest Hotel, tell me if this works please Thanks.';
-    $text = 'Thank you for using Quest Hotel ';
+    $text = 'Thank you for using Quest Hotel, please visit us again soon. Also follow us on Twitter:https://twitter.com/HotelsQuest';
     //$ref = 'abc123';
     $ref = '';
     
@@ -40,5 +43,7 @@
             echo "There was an error with this request. Reason: ".$message_data[1]."\n";
         }
     }
+
+    header("location: index.php");
     
 ?>

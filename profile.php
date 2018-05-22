@@ -207,7 +207,7 @@
             ?>
             <br>
             <br>
-            <a href="logout.php" class="btn btn-danger"><h4>Log Out</h4></a>
+            <a href="logout.php" class="btn btn-danger" ><h4>Log Out</h4></a>
         </div>
     </div>
 </div>
