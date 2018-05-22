@@ -37,8 +37,6 @@ include("connectMySQL.php");
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <!-- Icon -->
@@ -59,12 +57,6 @@ include("connectMySQL.php");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-
-    <!-- Lightbox JS -->
-    <script type="text/javascript" src="js/prototype.js"></script>
-    <script type="text/javascript"
-            src="js/scriptaculous.js?load=effects,builder"></script>
-    <script type="text/javascript" src="js/lightbox.js"></script>
 
     <style>
         a:link{

@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="css/lightbox.css" type="text/css" media="screen"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <!-- Icon -->
@@ -37,11 +35,6 @@
             crossorigin="anonymous"></script>
     <!-- JQuery from Google-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <!-- Lightbox JS -->
-    <script type="text/javascript" src="js/prototype.js"></script>
-    <script type="text/javascript"
-            src="js/scriptaculous.js?load=effects,builder"></script>
-    <script type="text/javascript" src="js/lightbox.js"></script>
      <!-- Google Maps API -->
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
             defer></script>
