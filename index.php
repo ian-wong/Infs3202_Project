@@ -59,9 +59,7 @@
             crossorigin="anonymous"></script>
     <!-- JQuery from Google-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-     <!-- Google Maps API -->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
-            defer></script>
+
 
 </head>
 <body>
@@ -119,7 +117,7 @@
                 <img class="first-slide" src="img/bg.jpeg" alt="">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Experience new homes</h1>
+                        <h1>Find new homes</h1>
                         <h1>around the world.</h1>
                     </div>
                 </div>
