@@ -126,29 +126,31 @@
     <div class="col-md-8">
         <div class="row">
             <?php 
-                $selpay = "SELECT * FROM payment";
+                $selpay = "SELECT * FROM payment,user WHERE payment.uid=user.uid AND user.uid=$uid";
                 $result = mysqli_query($conn, $selpay);
         
                 //check if there are records
-                if (mysqli_num_rows($result)>0){
-                    while ($row = mysqli_fetch_assoc($result)){
-            
-                        echo "<div class='col-md-3'>";
-                        echo "<br>";
-                        $aid = $row['aid'];
-                        $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">';
-                        $aname = $row['name'];
-                        $aloc = $row['location'];
-                
-                        //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
-                        echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
-                        echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                        //echo ('<h7><a target="_blank" class="text-secondary" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
-
-                        echo "</div>";
-                    }
+                if (mysqli_num_rows($result)<=0){
+                    //print ($make);
+                    echo 'no donations yo.';
                 } else {
-                print ($make);
+                    //there are values
+                    //create a good ol table
+                    echo "<table border='1'>
+                        <tr>
+                        <th>PayPal Id</th>
+                        <th>PayPal Payment Id</th>
+                        <th>Amount Donated AUD$</th>
+                        </tr>";
+
+                    while ($row = mysqli_fetch_assoc($result)){
+                        echo "<tr>";
+                        echo "<td>" . $row['payerid'] . "</td>";
+                        echo "<td>" . $row['paymentid'] . "</td>";
+                        echo "<td>" . $row['amount'] . "</td>";
+                        echo "</tr>";
+                    }
+                    echo '</table>';
                 }   
             ?>
         </div>

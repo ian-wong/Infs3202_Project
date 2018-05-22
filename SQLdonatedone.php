@@ -1,13 +1,15 @@
 <?php
 
+    include 'connectMySQL.php';
+
+    session_start();
+
+    require 'paypal/app/start.php';
+    
     use PayPal\Api\Payment;
     use PayPal\Api\PaymentExecution;
     use PHPMailer\PHPMailer\Exception;
 
-    require 'paypal/app/start.php';
-    include 'connectMySQL.php';
-
-    session_start();
     if(!isset($_SESSION['login_user'])){
         header('location: login.php');
     }
@@ -17,8 +19,9 @@
     $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     $uid = $row['uid'];
 
-    if (!isset($_GET['success'], $_GET['paymentId'], $_GET['PayerID'])){
+    if (!isset($_GET['success'], $_GET['paymentId'], $_GET['PayerID'], $_GET['amount'])){
         //error handle
+    
     } else {
         if ((bool)$_GET['success'] === false){
             //error handle
@@ -33,13 +36,15 @@
 
             try{
                 $result = $payment->execute($exe, $paypal);
-                $ins = "INSERT INTO payment VALUES ('$paymentId', '$payerId', '$uid')";
-                mysqli_query($conn, $ins);
             } catch (Exception $e) {
                 //error handle
+                echo ("result did not work -- try catch block");
+                header("location: index.php?donate=error");
             }
-            echo 'Payment Successful.';
-            header('location: index.php');
+            $amount=$_GET["amount"];
+
+            header("location: SQLdonatedone2.php?paymentId=$paymentId&payerId=$payerId&amount=$amount&uid=$uid");
+            
         }
     }
 
