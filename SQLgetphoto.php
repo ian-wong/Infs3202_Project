@@ -1,9 +1,9 @@
 <?php
     include('connectMySQL.php');
 
-    $id = $_GET['id'];
+    $aid = $_GET['aid'];
 
-    $sqlselphoto= "SELECT photos FROM accommodation WHERE aid=$id";
+    $sqlselphoto= "SELECT photos FROM accommodation WHERE aid=$aid";
     $result = mysqli_query($conn, $sqlselphoto);
     $row = mysqli_fetch_assoc($result);
 

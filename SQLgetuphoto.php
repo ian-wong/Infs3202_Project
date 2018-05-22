@@ -1,9 +1,9 @@
 <?php
     include('connectMySQL.php');
 
-    $id = $_GET['id'];
+    $uid = $_GET['uid'];
 
-    $sqlselphoto= "SELECT photos FROM user WHERE uid=$id";
+    $sqlselphoto= "SELECT photos FROM user WHERE uid=$uid";
     $result = mysqli_query($conn, $sqlselphoto);
     $row = mysqli_fetch_assoc($result);
 

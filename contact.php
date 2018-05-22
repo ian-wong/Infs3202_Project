@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
-    
+    include 'function.php';
+
     session_start();
     if(!isset($_SESSION['login_user'])){
         header("location: login.php");
@@ -52,34 +53,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
-            <!-- also add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput"> <!--type="search"-->
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput"> <!--type="search"-->
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $luemail = $_SESSION['login_user'];
-                            $sqllu ="SELECT * FROM user WHERE email='$luemail'";
-                            $luresult = mysqli_query($conn, $sqllu);
-                            $lurow = mysqli_fetch_array($luresult, MYSQLI_ASSOC);
-                            $luid = $lurow['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$luid.'">Welcome, '.$lurow['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user();
                     ?>
                 </li>
             </ul>
-
-            
         </div>
     </nav>
 </header>
@@ -88,23 +72,19 @@
     <div class="row">
         <div class="col-md-3">
         </div>
-        <div class="col-md-6 bg-danger">
+        <div class="col-md-6">
             <?php
+                $luemail = $_SESSION['login_user'];
                 $uid = $_GET['uid'];
                 $sqlhost = "SELECT * FROM user WHERE uid='$uid'";
                 $result = mysqli_query($conn, $sqlhost);
 
                 $row = mysqli_fetch_assoc($result);
                 $hostemail = $row['email'];
-                $hostphoto = '<img src="SQLgetuphoto.php?id='.$uid.'" class="img-fluid">';
+                $hostphoto = '<img src="SQLgetuphoto.php?uid='.$uid.'" class="img-fluid">';
                 $hostfname = $row['firstname'];
                 $hostsname = $row['surname'];
 
-                
-            
-
-                //$aid = $_GET['aid'];
-                
                 echo "<br />";
                 echo '<div class="row">';
                     echo "<div class='col-md-3'>";
@@ -117,8 +97,6 @@
                 echo '</div>';
                 echo '</br>';
                 echo "<h5>Email ".$hostfname. " " .$hostsname." the host of this accommodation</h5>";
-
-                
 
                 echo '<form method="POST" action="SQLemail.php">';
                     echo '<label for="fromemail">From:</label>';
@@ -138,7 +116,6 @@
             ?>
         </div>
         <div class="col-md-3">
-            asdf
         </div>
     </div>
 </div>

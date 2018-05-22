@@ -1,32 +1,12 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
-    
+    include 'function.php';
+
     session_start();
-
-    //YouTube Data API request returns the JSON data that includes the information of the video
-    $ytAPI_key    = 'AIzaSyC58pvE_Y0F8--HCIUVUfXaKNg1GcjSbNM';
-    $ytChannelID  = 'UC2QGb0wattUTF82jpM3UL2w';
-    $ytResults = 4;
-    //retrieves video data, name, description etc. 
-    $ytvideos = json_decode(file_get_contents('https://www.googleapis.com/youtube/v3/search?order=date&part=snippet&channelId='.$ytChannelID.'&maxResults='.$ytResults.'&key='.$ytAPI_key.''));
-    
-    $twitAPI_key = 'T0tQ4JGdEm4vb2Q31FFa9fRSL';
-    $twitAPI_secret = "IU21cYDqrs3rOZm0NVTidNa0WidXMAlTshV97RHmPcNiXG16So";
-    $twitToken = "996969380633182208-hZ8jwnPScjqBsg1Xg6ZBi6cweyfoaNV";
-    $twitToken_secret = "B1vta4JRBQgqBZEu5rLLu8kdg53rFLUBGtZG2KAYz53OZ";
-
-    require "twitter/autoload.php";
-    use Abraham\TwitterOAuth\TwitterOAuth;
-    //twitter API
-    $twitconn = new TwitterOAuth($twitAPI_key, $twitAPI_secret, $twitToken, $twitToken_secret);
-    //user info
-    $user = $twitconn->get("account/verify_credentials");
-
-    //paypal sandbox
-    //sand-box account anthonysailou3-facilitator@gmail.com
-    $paypAPI_key = 'Aa3JuAqm4QMvrZCRuwdxnjKjNgPa3cvlgK-co4EHkpQ-H3fIM-3W1dhfZQck3g-6b37cgYTWX3uIwqGf';
-    $paypAPI_secret = 'EChbiuGJmDoqbzQstsI4c-sWwO5Jmhxdv4ex9FJa6nKnwrgfj0nEcP2emz8NGDyHnWE5iGZNdy0oPYlW';
+    if(!isset($_SESSION['login_user'])){
+        header('location: login.php');
+    }
 ?>
 
 <html lang="en">
@@ -77,82 +57,62 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
             <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user();
                     ?>
                 </li>
-            </ul>
-
-            
+            </ul>  
         </div>
     </nav>
 </header>
 
-<div class="card">
-    <div class="card-header mb-4">
-        <h3 class="col-7 mb-1 ">Your donations to Quest Hotel</h3>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-8">
-        <div class="row">
-            <?php 
-                $selpay = "SELECT * FROM payment,user WHERE payment.uid=user.uid AND user.uid=$uid";
-                $result = mysqli_query($conn, $selpay);
-        
-                //check if there are records
-                if (mysqli_num_rows($result)<=0){
-                    //print ($make);
-                    echo 'no donations yo.';
-                } else {
-                    //there are values
-                    //create a good ol table
-                    echo "<table border='1'>
-                        <tr>
-                        <th>PayPal Id</th>
-                        <th>PayPal Payment Id</th>
-                        <th>Amount Donated AUD$</th>
-                        </tr>";
-
-                    while ($row = mysqli_fetch_assoc($result)){
-                        echo "<tr>";
-                        echo "<td>" . $row['payerid'] . "</td>";
-                        echo "<td>" . $row['paymentid'] . "</td>";
-                        echo "<td>" . $row['amount'] . "</td>";
-                        echo "</tr>";
-                    }
-                    echo '</table>';
-                }   
-            ?>
+    <div class="card">
+        <div class="card-header mb-4">
+            <h3 class="col-7 mb-1 ">Your donations to Quest Hotel</h3>
         </div>
     </div>
-    <div class="col-md-2">
-    </div>
-</div>
 
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <?php 
+                    $uid = $_GET['uid'];
+                    $selpay = "SELECT * FROM payment,user WHERE payment.uid=user.uid AND user.uid=$uid";
+                    $result = mysqli_query($conn, $selpay);
+            
+                    //check if there are records
+                    if (!(mysqli_num_rows($result)>0)){
+                        echo "You have made zero donations to Quest Hotel.";
+                    } else {
+                        echo "<table border='1'>
+                            <tr>
+                            <th>PayPal Id</th>
+                            <th>PayPal Payment Id</th>
+                            <th>Amount Donated AUD$</th>
+                            </tr>";
+                        while ($row = mysqli_fetch_assoc($result)){
+                            echo "<tr>";
+                            echo "<td>" . $row['payerid'] . "</td>";
+                            echo "<td>" . $row['paymentid'] . "</td>";
+                            echo "<td>" . $row['amount'] . "</td>";
+                            echo "</tr>";
+                        }
+                        echo '</table>';
+                    }   
+                ?>
+            </div>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
 </body>
 
 </html>

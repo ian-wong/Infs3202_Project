@@ -2,8 +2,7 @@
 <?php
     session_start();
     
-    //already logged in
-    if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+    if(isset($_SESSION['login_user'])){ 
         header("location: index.php");
     }
 ?>
@@ -96,7 +95,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-7">
+                <div class="col-md-7">
                     <a href="signup.php" class="btn btn-primary">Sign Up</a>
                     <button type="submit" class="btn btn-primary">Log In</button>
                 </div>
