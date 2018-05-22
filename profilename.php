@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
+    include 'function.php';
     
     session_start();
+    if(!isset($_SESSION['login_user'])){
+        header('location: login.php');
+    }
 ?>
 
 <html lang="en">
@@ -52,33 +56,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
-            <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+            <form class="form-inline" action="searchResult.php" method="POST">
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user(); 
                     ?>
                 </li>
             </ul>
-
-            
         </div>
     </nav>
 </header>
@@ -87,9 +75,9 @@
             <h3 class="col-7 mb-1 ">Edit Profile Name</h3>
         </div>
             <?php
+                $uid = $_GET['uid'];
                 echo '<form class="" id="hostForm" action="SQLprofilename.php?uid='.$uid.'" method="POST">';
             ?>
-                <!--User Input -->
                 <div class="form-row form-inline ml-3">
                     <div class="col-md-4 ml-3 bg-success">
                         <h5>First name: </h5>
@@ -108,7 +96,6 @@
                 </div>
             </form>
     </div>
-
 </body>
 
 </html>

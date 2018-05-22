@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
-    
+    include 'function.php';
+
     session_start();
     if(!isset($_SESSION['login_user'])){
         header('location: login.php');
@@ -55,33 +56,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
-            <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+            <form class="form-inline" action="searchResult.php" method="POST">
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user();
                     ?>
                 </li>
-            </ul>
-
-            
+            </ul> 
         </div>
     </nav>
 </header>
@@ -91,13 +76,12 @@
         </div>
         <div class="card-body">
             <?php
+                $uid = $_GET['uid'];
                 echo '<form id="hostForm" action="SQLprofilephone.php?uid='.$uid.'" method="POST">';
             ?>
-            <!--User Input -->
                 <div class="col-md-5 ml-3 mb-4 bg-success">
                     <label for="phoneInput">You will receive sms updates from Quest Hotel (enter digits only, mobile only):</label>
                     <input type="tel" class="form-control" id="phoneInput" name="phoneInput" maxlength="10">
-                        <!--error handle digits only-->
                 </div>
 
                 <div class="col-md-7 mt-4">
@@ -107,8 +91,6 @@
             </form>
         </div>
     </div>
-
-
 </body>
 
 </html>
