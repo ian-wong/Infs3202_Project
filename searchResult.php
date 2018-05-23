@@ -65,7 +65,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 bg-success">
                 <div class="row">
                     <?php
                     $searchInput = mysqli_real_escape_string($conn, $_POST['searchInput']);
@@ -88,7 +88,7 @@
                             echo "Sorry, your search did not match any accommodations.";
                         } else {
                             while($row = mysqli_fetch_array($result)){
-                                echo '<div class="col-md-6">';
+                                echo '<div class="col-md-4">';
                                 echo '<br/>';
 
                                 $aid = $row['aid'];
@@ -96,18 +96,19 @@
                                 $aname = $row['name'];
                                 $aloc = $row['location'];
 
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
-                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                                echo ('<h7><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>');     
+                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $aphoto  . '</a>');     
+                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aname  . '</a></h5>');     
+                                echo ('<h7><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aloc  . '</a></h7>');     
                                 echo "</div>";
                             }
                         }
                     }
                 ?>
-            </div>
-            <div class="col-md-4 mt-md-3">
-                <div id="map"></div>
                 </div>
+                </div>
+            <div class="col-md-4 mt-md-4 bg-warning">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
     <script>
