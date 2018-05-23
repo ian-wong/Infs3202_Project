@@ -42,7 +42,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <!-- Colorbox CSS -->
+    <link rel="stylesheet" href="css/colorbox.css"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <!-- Icon -->
@@ -60,8 +61,16 @@
             crossorigin="anonymous"></script>
     <!-- JQuery from Google-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
+    <!-- Colorbox JQuery -->
+    <script src="js/jquery.colorbox.js"></script>
+    
+    <script>
+        //Assigning Colorbox event to elements
+        $(document).ready(function(){
+				$(".group1").colorbox({rel:'group1'});				
+                $(".youtube").colorbox({iframe:true, width:"80%", height: "80%"});		
+			});
+    </script>
 </head>
 <body>
 
@@ -132,7 +141,7 @@
                 <img class="first-slide" src="img/bg.jpeg" alt="">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Find new homes</h1>
+                        <h1>Experience new homes</h1>
                         <h1>around the world.</h1>
                     </div>
                 </div>
@@ -171,8 +180,26 @@
             <p class="lead">Easily locate, manage and book short-term accommodation. From holiday homes, apartments,
                 cottages to single rooms, there are a variety of accommodation available to reserve.</p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-2">
         </div>
+        <div class="col-md-2">
+                
+                <?php
+                    
+                    echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
+                    
+                    $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
+                    
+
+                    $firsttweet = 1;
+                    foreach ($tweets as $twt){
+                        echo $twt->text . '<br><br>';
+                        $firsttweet++;
+                    }
+                
+                ?>
+        </div>
+        <div class="col-md-1"></div>
     </div>
 
 </main>
@@ -182,11 +209,16 @@
             <div class="col-md-2">
             </div>
             <div class="col-md-8">
-                <h2><a target="_blank" href="https://www.youtube.com/channel/UC2QGb0wattUTF82jpM3UL2w/"> Quest Hotel Videos</a></h2>
+                <h2><a href="https://www.youtube.com/channel/UC2QGb0wattUTF82jpM3UL2w/"> Quest Hotel Videos</a></h2>
                 <div class="row">
                 <?php
                     foreach($ytvideos->items as $item){ 
                         if(isset($item->id->videoId)){
+                           // echo '<div class="col-md-2">';
+                            echo '<div class="col-md-4 youtube-video">';
+                                //echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+                            echo '<div class=" col-md-4 youtube-video">';
+
                             echo '<div class=" col-md-4 youtube-video">';
                                 echo '<iframe src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
                             echo '</div>';
@@ -196,6 +228,7 @@
                 </div> 
             </div>
             <div class="col-md-2">
+
                 <?php
                     
                     echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
@@ -260,6 +293,12 @@
                 </form>
             </div>
             <div class="col-md-3">
+            <!--
+            <h2>Elastic Transition</h2>
+                <p><a class="group1" href="img/bg.jpeg" title="Backgoround1">Grouped Photo 1</a></p>
+                <p><a class="group1" href="img/bg2.jpeg" title="Bg 2">Grouped Photo 2</a></p>
+                <p><a class="group1" href="img/bg3.jpeg" title="Bg3">Grouped Photo 3</a></p>
+            -->
             </div>
         </div>
     </div>
