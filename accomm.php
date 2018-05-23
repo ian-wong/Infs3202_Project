@@ -143,7 +143,10 @@
             </div>
 
             <h2>Elastic Transition</h2>
-		<p><a class="group1" href="img/logo.png" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>
+            <?php
+		        echo '<p><a class="group1" href="'.$aphoto.'" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>';
+        
+            ?>
         </main>
 
     </body>
