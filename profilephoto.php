@@ -65,7 +65,9 @@
                         isset_user();
                     ?>
                 </li>
-            </ul> 
+            </ul>
+
+            
         </div>
     </nav>
 </header>
@@ -74,15 +76,6 @@
             <h3 class="col-7 mb-1 ">Update Profile Picture</h3>
         </div>
             <?php
-                if (isset($_GET['error'])) {
-                    $error = $_GET['error'];
-                    if($error == "photo"){
-                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
-                        echo "<p class='text-danger'>Invalid file uploaded for profile picture, please upload</p>";
-                        echo '</div>';
-                    }
-                }
-                
                 $uid = $_GET['uid'];
                 echo '<form class="" id="hostForm" action="SQLprofilephoto.php?uid='.$uid.'" method="POST" enctype="multipart/form-data">';
             ?>
@@ -94,8 +87,10 @@
                 <div class="col-md-7 ml-3 mt-4">
                     <button class="btn btn-primary" type="submit" name="submit">Update Profile Picture</button>
                 </div>
+                
             </form>
     </div>
+
 </body>
 
 </html>
