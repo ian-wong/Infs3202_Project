@@ -82,33 +82,34 @@
             <!--User Input -->
             <div class="form-row">
                 <?php
-                    if (!isset($_GET['error'])) {
-                        
-                    } else {
-                        $signupcheck = $_GET['error'];
-
-                        if($signupcheck == "empty"){
+                    if (isset($_GET['error'])) {
+                        $error = $_GET['error'];
+                        if($error == "empty"){
                             echo '<div class="form-group col-md-12 ml-3 mb-4">';
                             echo "<p class='text-danger'>You did not fill in all fields</p>";
                             echo '</div>';
                         } 
-                        elseif($signupcheck == "name"){
+                        elseif($error == "name"){
                             echo '<div class="form-group col-md-12 ml-3 mb-4">';
                             echo "<p class='text-danger'>You entered an invalid first name(s) or last name</p>";
                             echo '</div>';
                         } 
-                        elseif($signupcheck == "email"){
+                        elseif($error == "email"){
                             echo '<div class="form-group col-md-12 ml-3 mb-4">';
                             echo "<p class='text-danger'>You entered an invalid email address</p>";
                             echo '</div>';
                         }
-                        elseif($signupcheck == "password"){
+                        elseif($error == "password"){
                             echo '<div class="form-group col-md-12 ml-3 mb-4">';
                             echo "<p class='text-danger'>Your entered passwords did not match</p>";
                             echo '</div>';
                         }
+                        elseif($error == "error"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>Unable to connect to server, please try again later.</p>";
+                            echo '</div>';
+                        }
                     }
-                     
                 ?>
 
                 <div class="form-group col-md-5 ml-3 mb-4">

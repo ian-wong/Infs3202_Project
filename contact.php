@@ -97,7 +97,22 @@
                 echo '</div>';
                 echo '</br>';
                 echo "<h5>Email ".$hostfname. " " .$hostsname." the host of this accommodation</h5>";
-
+                
+                
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    if($error == "email"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Sorry, unable to send email please try again later.</p>";
+                        echo '</div>';
+                    } 
+                    elseif($error == "value"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Please fill in all fields.</p>";
+                        echo '</div>';
+                    } 
+                }
+        
                 echo '<form method="POST" action="SQLemail.php">';
                     echo '<label for="fromemail">From:</label>';
                     echo '<input type="text" class="form-control" id="fromemail" value="'.$luemail.'" name="fromemail"></br>';

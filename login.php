@@ -77,14 +77,37 @@
     <div class="card-body">
         <form id="loginForm" action="SQLlogin.php" method="POST">
             <div class="form-group">
-                
-                <!--When login failed, redirect to this page, but have an extra text displays 'incorrect username or password' -->
-                <?php
-                    /*
-                    if ($_POST['$error']){
-                        echo $error;
+                <?php 
+                    if (isset($_GET['error'])) {
+                        $error = $_GET['error'];
+                        if($error == "empty"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>You did not fill in all fields</p>";
+                            echo '</div>';
+                        } 
+                        elseif($error == "incorrect"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>Invalid Email or password.</p>";
+                            echo '</div>';
+                        }  
+                        elseif($error == "login"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>Please login to proceed.</p>";
+                            echo '</div>';
+                        }  
+                        elseif($error == "error"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>Unable to connect to server, please try again later.</p>";
+                            echo '</div>';
+                        } 
+                    } elseif (isset($_GET['success'])){
+                        $success = $_GET['success'];
+                        if($success == "signup"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-success'>Successful signup! Please sign in.</p>";
+                            echo '</div>';
+                        }
                     }
-                    */
                 ?>
                 <div class="col-7 mb-4 mt-4">
                     <label for="emailInput">Email address</label>

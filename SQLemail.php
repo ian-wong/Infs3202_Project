@@ -44,7 +44,7 @@
             } catch (Exception $e) {
                 header("location: contact.php?error=email");
             }
-            header("location: index.php?success=mail");
+            header("location: index.php?success=email");
         }
     }
     $conn->close;

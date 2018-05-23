@@ -97,7 +97,7 @@
                 }
         
                 if (!(mysqli_num_rows($result)>0)){
-                    echo 'You have no profile picture.';
+                    echo 'You currently have no profile picture, add a profile picture.';
                 } else {
                     $row = mysqli_fetch_assoc($result);
                     echo "<br>";
@@ -115,7 +115,31 @@
             ?>
         </div>
         <div class="col-md-7">
-            <!--col main info-->
+            <br>
+            <?php 
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    if($error == "accommdel"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Sorry, unable to delete accommodation, please try again later.</p>";
+                        echo '</div>';
+                    } 
+                    elseif($error == "profdel"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Sorry, unable to delete profile, please try again later.</p>";
+                        echo '</div>';
+                    } 
+                } elseif (isset($_GET['success'])){
+                    $success = $_GET['success'];
+                    if($success == "host"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-success'>You have successfully hosted an accommodation!</p>";
+                        echo '</div>';
+                    }
+                }
+            ?>
+
+            <br>
             <br>
             <h2>Your hosted accommodations: </h2>
             <?php 
