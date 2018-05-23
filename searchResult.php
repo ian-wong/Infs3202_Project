@@ -92,7 +92,7 @@
                                 echo '<br/>';
 
                                 $aid = $row['aid'];
-                                $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">';
+                                $aphoto = '<img src="SQLgetphoto.php?aid='.$row['aid'].'" class="img-fluid">';
                                 $aname = $row['name'];
                                 $aloc = $row['location'];
 
