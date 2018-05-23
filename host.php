@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
+    include 'function.php';
     
     session_start();
     if(!isset($_SESSION['login_user'])){
@@ -55,33 +56,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
             <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user();
                     ?>
                 </li>
-            </ul>
-
-            
+            </ul>        
         </div>
     </nav>
 </header>
@@ -91,12 +76,9 @@
         </div>
         <div class="card-body">
             <?php
+                $uid = $_GET['uid'];
                 echo '<form id="hostForm" action="SQLhost.php?uid='.$uid.'" method="POST" enctype="multipart/form-data">';
-                //echo '<form id="hostForm" action="SQLprofilephoto.php?uid='.$uid.'" method="POST" enctype="multipart/form-data">';
-            ?>
-            <!--User Input -->
-                
-                    
+            ?>   
                 <div class="col-md-5 ml-3 mb-4 bg-success">
                     <label for="nameInput">Title of Accommodation:</label>
                     <input type="text" class="form-control" id="nameInput" name="nameInput" maxlength="200">
@@ -129,19 +111,12 @@
                     <label for="photoInput">Upload a Photo of Accommodation: </label><br>
                     <input type="file" id="photoInput" name="photoInput" />
                 </div>
-
-                <!--<div class="form-group">
-                -->
                 <div class="col-md-7 mt-4">
                     <button class="btn btn-primary" type="submit" name="submit">Host Accommodation!</button>
                 </div>
-                <!--</div>
-                -->
             </form>
         </div>
     </div>
-
-
 </body>
 
 </html>

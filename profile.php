@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
-    
+    include 'function.php';
+
     session_start();
     if(!isset($_SESSION['login_user'])){
         header('location: login.php');
@@ -68,25 +69,14 @@
             <!-- Search Bar -->
             <!-- also add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput"> <!--type="search"-->
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput"> <!--type="search"-->
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
 
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-                            echo '<a class="nav-link" href="profile.php">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        }
+                        isset_user();
                     ?>
                 </li>
             </ul>
@@ -97,42 +87,31 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <!--col basic info-->
             <?php 
-                //$make = '<h3>Something went wrong :(</h3>';
-                
-                //cant use this, because no 'id' to GET if not coming from index.php
-                //$uid = $_GET['id'];
-                //as Profile.php can only be accessed by user that is logged in then - 
-                $uid = $row['uid'];
+                $uid = $_GET['uid'];
                 $sqlselectuser = "SELECT * FROM user WHERE uid='$uid'";
                 $result = mysqli_query($conn, $sqlselectuser);
+
+                if(!$result){
+                    echo "Could not connect to server.";
+                }
         
-                //check if there are records
-                if ($make = mysqli_num_rows($result)>0){
+                if (!(mysqli_num_rows($result)>0)){
+                    echo 'You have no profile picture.';
+                } else {
                     $row = mysqli_fetch_assoc($result);
-            
                     echo "<br>";
-                    $uid = $row['uid'];
-                    $uphoto = '<img src="SQLgetuphoto.php?id='.$uid.'" class="img-fluid">';
+                    $uphoto = '<img src="SQLgetuphoto.php?uid='.$uid.'" class="img-fluid">';
                     $ufname = $row['firstname'];
                     $usname = $row['surname'];
-            
-                    //retrieving user info
+        
                     echo $uphoto;
                     echo '<div class="text-center">';
                         echo '<h3>'.$ufname.' '.$usname. '</h3>';
                     echo '</div>';
-
-                } else {
-                print ($make);
                 }
-            ?>
-            
-            <?php
-                //host accommodation
-                echo '<a href="host.php?id='.$uid.'" class="btn btn-block btn-primary"><h5>Host Accommodation</h5></a>';
-                //<a href="host.php" class="btn btn-block btn-primary"><h4>Become a Host</h4></a>
+
+            echo '<a href="host.php?uid='.$uid.'" class="btn btn-block btn-primary"><h5>Host Accommodation</h5></a>';
             ?>
         </div>
         <div class="col-md-7">
@@ -140,32 +119,34 @@
             <br>
             <h2>Your hosted accommodations: </h2>
             <?php 
-                $amake = '<h3>Something went wrong :(</h3>';
-                //$uid = $_GET['id'];
+                
                 $sqlua = "SELECT * FROM user, accommodation WHERE user.uid=accommodation.uid AND user.uid=$uid";
                 $aresult = mysqli_query($conn, $sqlua);
-        
-                //check if there are records
-                if ($amake = mysqli_num_rows($aresult)>0){
+                
+                if (!$result){
+                    echo 'Could not connect to server.';
+                }
+                
+                if (!(mysqli_num_rows($aresult)>0)){
+                    echo 'You are not hosting any accommodations.';
+                } else {
                     while ($row = mysqli_fetch_assoc($aresult)){
                         echo '<div class="row mt-md-3" >';
                             echo '<div class=col-md-12>';
                                 $uid = $row['uid'];
                                 $aid = $row['aid'];
-                                $aphoto = '<img src="SQLgetphoto.php?id='.$aid.'" class="img-fluid">';
+                                $aphoto = '<img src="SQLgetphoto.php?aid='.$aid.'" class="img-fluid">';
                                 $aname = $row['name'];
                                 $aloc = $row['location'];
                                 $adesc = $row['descr'];
 
-                                //retrieving user info
-                                //echo $aphoto;
                                 $anamestr = '<h5>'.$aname.'</h5>';
                                 $alocstr = '<h6>'.$aloc.'</h6>';
                                 $adescstr = '<p>'.$adesc.'</p>';
 
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>'); 
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $anamestr  . '</a>');
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $alocstr  . '</a>');
+                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $aphoto  . '</a>'); 
+                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $anamestr  . '</a>');
+                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $alocstr  . '</a>');
                                 echo ($adescstr);
                                 echo '<a href="accommdelete.php?aid='.$aid.'" class="btn btn-danger">Delete this accommodation</a>';
                                 echo '<br>';
@@ -174,36 +155,33 @@
                             echo '</div>';
                         echo "</div>"; 
                     }
-                } else {
-                    print ($amake);
                 }
             ?>
         </div>
         <div class="col-md-2">
             <br>
-            <!--Upload photo update name-->
             <?php
-                echo '<a href="profilename.php?id='.$uid.'" class="btn btn-primary"><h5>Edit Profile Name</h5></a>';
+                echo '<a href="profilename.php?uid='.$uid.'" class="btn btn-primary"><h5>Edit Profile Name</h5></a>';
             ?>
             <br>
             <br>
             <?php
-                echo '<a href="profilephoto.php?id='.$uid.'" class="btn btn-primary"><h5>Edit Profile Picture</h5></a>';
+                echo '<a href="profilephoto.php?uid='.$uid.'" class="btn btn-primary"><h5>Edit Profile Picture</h5></a>';
             ?>
             <br>
             <br>
             <?php
-                echo '<a href="profilephone.php?id='.$uid.'" class="btn btn-primary"><h5>Add/Edit Phone Number</h5></a>';
+                echo '<a href="profilephone.php?uid='.$uid.'" class="btn btn-primary"><h5>Add/Edit Phone Number</h5></a>';
             ?>
             <br>
             <br>
             <?php
-                echo '<a href="profiledonate.php?id='.$uid.'" class="btn btn-primary"><h5>View Donations</h5></a>';
+                echo '<a href="profiledonate.php?uid='.$uid.'" class="btn btn-primary"><h5>View Donations</h5></a>';
             ?>
             <br>
             <br>
             <?php
-                echo '<a href="profiledelete.php?id='.$uid.'" class="btn btn-warning"><h5>Delete Account</h5></a>';
+                echo '<a href="profiledelete.php?uid='.$uid.'" class="btn btn-warning"><h5>Delete Account</h5></a>';
             ?>
             <br>
             <br>

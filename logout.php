@@ -1,5 +1,4 @@
 <?php
-
     include("connectMySQL.php");
 
     session_start();
@@ -10,24 +9,15 @@
     $uid = $row['uid'];
     
     $phone = $row['phone'];
-    //if (!isset($_POST['logout'])){
-        //error handle 
-    //    echo 'no submit';
-    //} else {
-        if ($phone=='0'){
-            if(session_destroy()){
-                header("Location: index.php");
-            } else {
-                //error
-            }  
+    if ($phone=='0'){
+        if(session_destroy()){
+            header("Location: index.php");
         } else {
-            if(session_destroy()){
-                //header("location: testphp.php?phone=$phone");
-                header("location: SQLsms.php?phone=$phone");
-            
-            }
+            //error
         }  
-        
-    //}
-
+    } else {
+        if(session_destroy()){
+            header("location: SQLsms.php?phone=$phone");
+        }
+    }  
 ?>

@@ -1,9 +1,12 @@
 <!DOCTYPE html> 
 <?php
     include("connectMySQL.php");
+    include 'function.php';
 
     session_start();
-
+    if(isset($_SESSION['login_user'])){ 
+        header("location: index.php");
+    }
 ?>
 
 <html lang="en">
@@ -53,28 +56,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
             <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user();
                     ?>
                 </li>
             </ul>
@@ -93,11 +82,6 @@
             <!--User Input -->
             <div class="form-row">
                 <?php
-                    
-                    
-                    //$urlcheck = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                    //if(strpos($urlcheck, "error=empty") == true){
-                    
                     if (!isset($_GET['error'])) {
                         
                     } else {
@@ -156,7 +140,7 @@
             </div>
 
             <div class="form-group">
-                <div class="col-sm-7">
+                <div class="col-md-7">
                     <button type="submit" class="btn btn-primary" name="submit">Create Account</button>
                 </div>
             </div>
@@ -169,6 +153,5 @@
 </html>
 
 <?php
-    //$db->disconnect(); // disconnect after use is a good habit
     $conn->close();
 ?>

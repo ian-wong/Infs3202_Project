@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php 
     include("connectMySQL.php");
-    
+    include 'function.php';
+
     session_start();
 
     //YouTube Data API request returns the JSON data that includes the information of the video
@@ -24,7 +25,7 @@
     $user = $twitconn->get("account/verify_credentials");
 
     //paypal sandbox
-    //sand-box account anthonysailou3-facilitator@gmail.com
+    //sand-box account anthonysailou3-facilitator@gmail.com OR anthonysailou3-buyer@gmail.com
     $paypAPI_key = 'Aa3JuAqm4QMvrZCRuwdxnjKjNgPa3cvlgK-co4EHkpQ-H3fIM-3W1dhfZQck3g-6b37cgYTWX3uIwqGf';
     $paypAPI_secret = 'EChbiuGJmDoqbzQstsI4c-sWwO5Jmhxdv4ex9FJa6nKnwrgfj0nEcP2emz8NGDyHnWE5iGZNdy0oPYlW';
 ?>
@@ -41,7 +42,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <!-- Colorbox CSS -->
+    <link rel="stylesheet" href="css/colorbox.css"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <!-- Icon -->
@@ -59,8 +61,16 @@
             crossorigin="anonymous"></script>
     <!-- JQuery from Google-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
+    <!-- Colorbox JQuery -->
+    <script src="js/jquery.colorbox.js"></script>
+    
+    <script>
+        //Assigning Colorbox event to elements
+        $(document).ready(function(){
+				$(".group1").colorbox({rel:'group1'});				
+                $(".youtube").colorbox({iframe:true, width:"80%", height: "80%"});		
+			});
+    </script>
 </head>
 <body>
 
@@ -76,26 +86,14 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             
             <!-- Search Bar -->
-            <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
+            <form class="form-inline" action="searchResult.php" method="POST">
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
-             <!-- Add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
-                        if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                            //header("location: index.php");
-                            $email = $_SESSION['login_user'];
-                            $sqlselect="SELECT * FROM user WHERE email='$email'";
-                            $result = mysqli_query($conn, $sqlselect);
-                            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                            $uid = $row['uid'];
-
-                            echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                        } else {
-                            echo '<a class="nav-link" href="login.php">Account</a>';
-                        } 
+                        isset_user();
                     ?>
                 </li>
             </ul>
@@ -117,7 +115,7 @@
                 <img class="first-slide" src="img/bg.jpeg" alt="">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Find new homes</h1>
+                        <h1>Experience new homes</h1>
                         <h1>around the world.</h1>
                     </div>
                 </div>
@@ -156,36 +154,9 @@
             <p class="lead">Easily locate, manage and book short-term accommodation. From holiday homes, apartments,
                 cottages to single rooms, there are a variety of accommodation available to reserve.</p>
         </div>
-        <div class="col-md-5">
+        <div class="col-md-2">
         </div>
-    </div>
-
-</main>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8">
-                <h2><a target="_blank" href="https://www.youtube.com/channel/UC2QGb0wattUTF82jpM3UL2w/"> Quest Hotel Videos</a></h2>
-                <div class="row">
-                <?php
-                    foreach($ytvideos->items as $item){
-                        //Embed video - CEHCK with tutor count as marks. 
-                        if(isset($item->id->videoId)){
-                           // echo '<div class="col-md-2">';
-                            echo '<div class=" col-md-4 youtube-video">';
-                                //echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
-                                echo '<iframe src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
-                            echo '</div>';
-                                //<h2>'. $item->snippet->title .'</h2>
-                            //echo '</div>';
-                        }   
-                    }
-                ?>
-                </div> 
-            </div>
-            <div class="col-md-2">
+        <div class="col-md-2">
                 
                 <?php
                     
@@ -201,6 +172,54 @@
                     }
                 
                 ?>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+</main>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8">
+                <h2><a href="https://www.youtube.com/channel/UC2QGb0wattUTF82jpM3UL2w/"> Quest Hotel Videos</a></h2>
+                <div class="row">
+                <?php
+                    foreach($ytvideos->items as $item){ 
+                        if(isset($item->id->videoId)){
+<<<<<<< HEAD
+                           // echo '<div class="col-md-2">';
+                            echo '<div class="col-md-4 youtube-video">';
+                                //echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+=======
+                            echo '<div class=" col-md-4 youtube-video">';
+>>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
+                                echo '<iframe src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+                            echo '</div>';
+                        }   
+                    }
+                ?>
+                </div> 
+            </div>
+            <div class="col-md-2">
+<<<<<<< HEAD
+=======
+                <?php
+                    
+                    echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
+                    
+                    $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
+                    
+
+                    $firsttweet = 1;
+                    foreach ($tweets as $twt){
+                        echo $twt->text . '<br><br>';
+                        $firsttweet++;
+                    }
+                
+                ?>
+>>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
             </div>
         </div>
 
@@ -211,36 +230,30 @@
                 <br>
                 <h2>Available Accommodations: </h2>
                 <div class="row">
-                    <?php 
-                        $make = '<h3>Something wrong :(</h3>';
+                    <?php
                         $sqlselectaccom = "SELECT * FROM accommodation";
                         $result = mysqli_query($conn, $sqlselectaccom);
-                
-                        //check if there are records
-                        if ($make = mysqli_num_rows($result)>0){
+
+                        if (!(mysqli_num_rows($result)>0)){
+                            echo 'Unable to connect to server';
+                        } else {
                             while ($row = mysqli_fetch_assoc($result)){
-                    
                                 echo "<div class='col-md-3'>";
                                 echo "<br>";
                                 $aid = $row['aid'];
-                                $aphoto = '<img src="SQLgetphoto.php?id='.$row['aid'].'" class="img-fluid">';
+                                $aphoto = '<img src="SQLgetphoto.php?aid='.$row['aid'].'" class="img-fluid">';
                                 $aname = $row['name'];
                                 $aloc = $row['location'];
-                      
-                                //retrieving accomm info, they become links to accomm pages, identified as their own accomm id
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
-                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                                //echo ('<h7><a target="_blank" class="text-secondary" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>'); 
-
+                    
+                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $aphoto  . '</a>');     
+                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aname  . '</a></h5>');
                                 echo "</div>";
                             }
-                        } else {
-                        print ($make);
-                        }   
+                        }
                     ?>
                 </div>
             </div>
-            <div class=col-md-2>
+            <div class="col-md-2">
             </div>
         </div>
         <div class="row">
@@ -255,15 +268,20 @@
                     <input type="submit" value="Donate" name="submit">
                     <p>You'll be taken to Paypal to complete your payment.</p><br>
                 </form>
-
+<<<<<<< HEAD
+                
+=======
+>>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
             </div>
             <div class="col-md-3">
+            <!--
+            <h2>Elastic Transition</h2>
+                <p><a class="group1" href="img/bg.jpeg" title="Backgoround1">Grouped Photo 1</a></p>
+                <p><a class="group1" href="img/bg2.jpeg" title="Bg 2">Grouped Photo 2</a></p>
+                <p><a class="group1" href="img/bg3.jpeg" title="Bg3">Grouped Photo 3</a></p>
+            -->
             </div>
         </div>
     </div>
-
-
-    
-
 </body>
 </html>

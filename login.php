@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <?php
+    include 'connectMySQL.php';
+    include 'function.php';
     session_start();
-    
-    //already logged in
-    if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
+
+    if(isset($_SESSION['login_user'])){ 
         header("location: index.php");
     }
 ?>
@@ -54,18 +55,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <form class="form-inline">
-                <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-light " type="submit">Search</button>
             </form>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html">Account</a>
+                    <?php
+                        isset_user();
+                    ?>
                 </li>
             </ul>
         </div>
     </nav>
 </header>
-
 
 <!-- Login Form -->
 <div class="card">
@@ -96,7 +98,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <div class="col-sm-7">
+                <div class="col-md-7">
                     <a href="signup.php" class="btn btn-primary">Sign Up</a>
                     <button type="submit" class="btn btn-primary">Log In</button>
                 </div>
@@ -104,7 +106,6 @@
         </form>
     </div>
 </div>
-
 
 </body>
 </html>

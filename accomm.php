@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <?php
     include("connectMySQL.php");
+    include 'function.php';
 
     session_start();
-
-    //$aid = $_GET['id'];
-    //$aresult = mysqli_query($conn, "SELECT * FROM accommodation WHERE aid = $aid");
-
 ?>
     <html lang="en">
 
@@ -22,7 +19,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
             crossorigin="anonymous">
 
-    
         <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <!-- Icon -->
@@ -55,29 +51,15 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
 
                     <!-- Search Bar -->
-                    <!-- also add functionality to search accommodations by name, location, user(host) by using dropdown list next to search bar -->
                     <form class="form-inline" action="searchResult.php" method="POST">
-                        <!--Can use GET method-->
-                        <input class="form-control mr-sm-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput">
-                        <!--type="search"-->
+                        <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput">
                         <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
                     </form>
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <?php
-                                if(isset($_SESSION['login_user']) ){  //&& isset($_SESSION['password'])){
-                                    //header("location: index.php");
-                                    $email = $_SESSION['login_user'];
-                                    $sqlselect="SELECT * FROM user WHERE email='$email'";
-                                    $result = mysqli_query($conn, $sqlselect);
-                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                                    $uid = $row['uid'];
-
-                                    echo '<a class="nav-link" href="profile.php?id='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
-                                } else {
-                                    echo '<a class="nav-link" href="login.php">Account</a>';
-                                } 
+                                isset_user();
                             ?>
                         </li>
                     </ul>
@@ -90,32 +72,29 @@
                     <div class="col-md-8 px-md-5 pt-md-4 ">
                         <div class="row">
                             <?php
-
-                            $aid = $_GET['id'];    
+                            $aid = $_GET['aid'];    
                             $sqla = "SELECT * FROM accommodation WHERE aid='$aid'";
                             $aresult = mysqli_query($conn, $sqla);
                             
                             $arow = mysqli_fetch_assoc($aresult);
                             $aid = $arow['aid'];
-                            $aphoto = '<img src = "SQLgetphoto.php?id='.$aid.'" class= img-fluid width=100%>';
+                            $aphoto = '<img src = "SQLgetphoto.php?aid='.$aid.'" class="img-fluid" width=100%>';
                             $aname = $arow['name'];
                             $aloc = $arow['location'];
                             $adescr = $arow['descr'];
                             
                             echo ($aphoto);
-
                             echo '<div class="col-md-12 mt-md-4">';
                             echo '<h4>'.$aname.'</h4>';
                             echo '<p>'.$aloc.'<p>';
                             echo '<p>'.$adescr.'<p>';
-                            
                             ?>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mt-md-4">
                     <div class="row">
-                        <div class="col-sm-12 bg-success">
+                        <div class="col-md-12">
                             <div class="row">
                                 <?php
                                     $sqlhost = "SELECT * FROM  user, accommodation WHERE accommodation.aid='$aid' AND accommodation.uid=user.uid";
@@ -123,7 +102,7 @@
 
                                     $urow = mysqli_fetch_assoc($uresult);
                                     $uid = $urow['uid'];
-                                    $uphoto = '<img src="SQLgetuphoto.php?id='.$uid.'" class="img-fluid">';
+                                    $uphoto = '<img src="SQLgetuphoto.php?uid='.$uid.'" class="img-fluid">';
                                     $ufname = $urow['firstname'];
                                     $usname = $urow['surname'];
                                     
@@ -131,32 +110,20 @@
                                         echo $uphoto;
                                     echo "</div>";
                                     echo "<div class='col-md-9'>";
-                                            echo '<br/>';
-                                            echo '<h3>'.$ufname.' '.$usname. '</h3>';
-                                            echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary" >Contact Host</a>';
+                                        echo '<br/>';
+                                        echo '<h3>'.$ufname.' '.$usname. '</h3>';
+                                        echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary">Contact Host</a>';
                                     echo "</div>";
-                                   
-                                ?>
-                                <?php
-                                    //echo '<div class="col-sm-7 align-middle">';
-                                        //echo '<div class="row">';
-                                          //  echo '<a href="contact.php?uid='.$uid.'" class="btn btn-primary" >Contact Host</a>';
-                                       // echo '</div>';
-                                    //echo '</div>';
                                 ?>
                             </div>
                         </div>
-                        <div class="col-md-12 bg-warning">
+                        <div class="col-md-12">
                             <?php
                                 echo '<br>';
-                                
                                 $acost = $arow['cost'];
                                 echo '<h4-inline>$'.$acost.' AUD </h4-inline> per night'; 
                                 
                             ?>
-                        </div>
-                        <div class="col-md-12 bg-danger">
-                            <p>Calendar</p>
                         </div>
                     
                     </div>

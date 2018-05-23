@@ -1,36 +1,30 @@
 <?php
 include("connectMySQL.php");
 
-    if (isset($_POST['fNameInput']) && !empty($_POST['lNameInput'])  ){
-        $fName = $_POST['fNameInput'];
-        $lName = $_POST['lNameInput'];
-        $uid = $_GET['uid'];
-
-        /*
-        //Checking Safe MySQL Data Insertion
-        $fName = mysqli_real_escape_string($db->link, $_POST["fNameInput"]);
-        $lName = mysqli_real_escape_string($db->link, $_POST["lNameInput"]);
-        $email = mysqli_real_escape_string($db->link, $_POST["emailInputReg"]);
-        $password = mysqli_real_escape_string($db->link, $_POST["passwordInput"]);
-        */
-        //NEED '' between varchars 
-        $updname = "UPDATE user SET firstname='$fName', surname='$lName' WHERE uid='$uid'";
-        
-        mysqli_query($conn, $updname);
-        /*
-        if (mysqli_query($conn, $updname) === TRUE){ //mysql_query($insertuser, $db->link);
-            header("Location: profile.php?id='.$uid.'");
+    if (!isset($_POST['submit'])){
+        header("location: index.php");
+    } else {
+        $fName = mysqli_real_escape_string($conn, $_POST["fNameInput"]);
+        $lName = mysqli_real_escape_string($conn, $_POST["lNameInput"]);
+        if (empty($fName) || empty($lName)){
+            header("location: profilename.php?error=empty");
         } else {
-            //error handle
+            if (!preg_match("/^[a-zA-Z]*$/", $fName) || !preg_match("/^[a-zA-Z]*$/", $lName)){
+                header("location: profilename.php?error=value");
+            } else {
+                $uid = $_GET['uid'];
+        
+                $updname = "UPDATE user SET firstname='$fName', surname='$lName' WHERE uid='$uid'";
+                
+                try {
+                    mysqli_query($conn, $updname);
+                } catch (exception $e){
+                    header("location: profilename.php?error=error");
+                }
+                header("Location: profile.php?uid=".$uid."");
+            }
         }
-        */
 
-
-        //for auto increment id
-        //$id = mysqli_insert_id($db->link);
     }
-
     $conn->close();
-    header("Location: profile.php?id=".$uid."");
-
 ?>

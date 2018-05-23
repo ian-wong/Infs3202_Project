@@ -3,58 +3,38 @@
     $uid = $_GET['uid'];
 
     if(!isset($_POST['submit'])){
-        //error handle
-        echo "submit isset error";
+        header("Location: index.php");
     } else{
         //not checking photo input isset
         if((!isset($_POST['nameInput'])) || (!isset($_POST['locInput'])) || (!isset($_POST['priceInput'])) || (!isset($_POST['descInput'])) ){
-            //error handle
-            echo "value isset error";
+            header("location: host.php?error=empty");
         } else {
-            //do a lot more error handling
-            //if(){}
-
-
-
-            
-        
-            //photo
             if ((($_FILES["photoInput"]["type"] == "image/gif") || ($_FILES["photoInput"]["type"] == "image/jpeg") || ($_FILES["photoInput"]["type"] == "image/pjpeg") || ($_FILES["photoInput"]["type"] == "image/png")) && ($_FILES["photoInput"]["size"] < 50000)){
                 if ($_FILES["photoInput"]["error"] > 0){
-                    echo "image error";
+                    header("location: host.php?error=photo");
                 } else {
                     $photoName = mysqli_real_escape_string($conn, $_FILES["photoInput"]["name"]);
                     $photoType = mysqli_real_escape_string($conn, $_FILES["photoInput"]["type"]);
                     $photoData = mysqli_real_escape_string($conn, file_get_contents($_FILES["photoInput"]["tmp_name"]));
 
-                    //if(substr($photoType, 0, 5) == "image"){
-                        
-                    //no mysql data insertion
-                    $name = $_POST['nameInput'];
-                    $loc = $_POST['locInput'];
-                    $price = $_POST['priceInput'];
-                    $desc = $_POST['descInput'];
+                    $name = mysqli_real_escape_string($conn, $_POST['nameInput']);
+                    $loc = mysqli_real_escape_string($conn, $_POST['locInput']);
+                    $price = mysqli_real_escape_string($conn, $_POST['priceInput']);
+                    $desc = mysqli_real_escape_string($conn, $_POST['descInput']);
 
-                    //need to do whole row (?)
                     $insaccomm = "INSERT INTO accommodation (uid, name, location, descr, photos, cost) VALUES ('$uid', '$name','$loc', '$desc', '$photoData', '$price')";
-                    mysqli_query($conn, $insaccomm);
-                
-                    header("location: profile.php?id=$uid");
-                        
-                    //} else {
-                    //    echo "substr photoType error";
                     
+                    try {
+                        mysqli_query($conn, $insaccomm);
+                    } catch (exception $e){
+                        header("location: host.php?error=error");
+                    }
+                    header("location: profile.php?uid=$uid&success=host");
                 }
             } else{
-                echo "image input error";
+                header("location: host.php?error=photo");
             }
-
         } 
-        //echo "value isset error";
-        
-        //
-
     }
-    //echo "submit isset error";
     $conn->close();
 ?>
