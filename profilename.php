@@ -75,6 +75,25 @@
             <h3 class="col-7 mb-1 ">Edit Profile Name</h3>
         </div>
             <?php
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    if($error == "empty"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Please fill out all fields.</p>";
+                        echo '</div>';
+                    } 
+                    elseif($error == "value"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>You entered invalid values for your name, please enter characters only.</p>";
+                        echo '</div>';
+                    } 
+                    elseif($error == "error"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Unable to connect to server, please try again later.</p>";
+                        echo '</div>';
+                    } 
+                }
+
                 $uid = $_GET['uid'];
                 echo '<form class="" id="hostForm" action="SQLprofilename.php?uid='.$uid.'" method="POST">';
             ?>

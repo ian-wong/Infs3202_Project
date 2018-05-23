@@ -75,12 +75,38 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
             <form class="form-inline" action="searchResult.php" method="POST">
                 <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
+
+            
+            <?php 
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    if($error == "donatevalue"){
+                        echo "<p class='text-danger'>&emsp;Please enter a value to donate.</p>";
+                    } 
+                    elseif($error == "paypal"){
+                        echo "<p class='text-danger'>&emsp;PayPal transaction failed, please try again later.</p>";
+                    } 
+                    elseif($error == "search"){
+                        echo "<p class='text-danger'>&emsp;Please enter values into the search bar.</p>";
+                    } 
+                } elseif (isset($_GET['success'])){
+                    $success = $_GET['success'];
+                    if($success == "paypal"){
+                        echo "<p class='text-success'>&emsp;Thank you very much for your donation!</p>";
+                    }
+                    elseif($success == "login"){
+                        echo "<p class='text-success'>&emsp;Successful login.</p>";
+                    }
+                    elseif($success == "email"){
+                        echo "<p class='text-success'>&emsp;Successfully sent email to host.</p>";
+                    }
+                }
+            ?>
+
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
