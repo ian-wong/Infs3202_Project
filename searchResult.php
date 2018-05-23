@@ -96,9 +96,9 @@
                                 $aname = $row['name'];
                                 $aloc = $row['location'];
 
-                                echo ('<a target="_blank" href="accomm.php?id='.$aid. '">' . $aphoto  . '</a>');     
-                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aname  . '</a></h5>');     
-                                echo ('<h7><a target="_blank" class="text-dark" href="accomm.php?id='.$aid. '">' . $aloc  . '</a></h7>');     
+                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $aphoto  . '</a>');     
+                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aname  . '</a></h5>');     
+                                echo ('<h7><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aloc  . '</a></h7>');     
                                 echo "</div>";
                             }
                         }
