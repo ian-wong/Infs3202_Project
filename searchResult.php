@@ -65,7 +65,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 bg-success">
                 <div class="row">
                     <?php
                     $searchInput = mysqli_real_escape_string($conn, $_POST['searchInput']);
@@ -88,7 +88,7 @@
                             echo "Sorry, your search did not match any accommodations.";
                         } else {
                             while($row = mysqli_fetch_array($result)){
-                                echo '<div class="col-md-6">';
+                                echo '<div class="col-md-4">';
                                 echo '<br/>';
 
                                 $aid = $row['aid'];
@@ -104,10 +104,11 @@
                         }
                     }
                 ?>
-            </div>
-            <div class="col-md-4 mt-md-3">
-                <div id="map"></div>
                 </div>
+                </div>
+            <div class="col-md-4 mt-md-4 bg-warning">
+                <div id="map"></div>
+            </div>
         </div>
     </div>
     <script>
