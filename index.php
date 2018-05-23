@@ -188,12 +188,13 @@
                 <?php
                     foreach($ytvideos->items as $item){ 
                         if(isset($item->id->videoId)){
+<<<<<<< HEAD
                            // echo '<div class="col-md-2">';
                             echo '<div class="col-md-4 youtube-video">';
                                 //echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
+=======
                             echo '<div class=" col-md-4 youtube-video">';
-
-                            echo '<div class=" col-md-4 youtube-video">';
+>>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
                                 echo '<iframe src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
                             echo '</div>';
                         }   
@@ -202,7 +203,8 @@
                 </div> 
             </div>
             <div class="col-md-2">
-
+<<<<<<< HEAD
+=======
                 <?php
                     
                     echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
@@ -217,6 +219,7 @@
                     }
                 
                 ?>
+>>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
             </div>
         </div>
 
@@ -265,6 +268,10 @@
                     <input type="submit" value="Donate" name="submit">
                     <p>You'll be taken to Paypal to complete your payment.</p><br>
                 </form>
+<<<<<<< HEAD
+                
+=======
+>>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
             </div>
             <div class="col-md-3">
             <!--
