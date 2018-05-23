@@ -68,12 +68,10 @@
             <div class="col-md-8">
                 <div class="row">
                     <?php
-                    $searchInput = $_POST['searchInput'];
+                    $searchInput = mysqli_real_escape_string($conn, $_POST['searchInput']);
 
                     if(empty($searchInput)){
-                        echo '<script language="javascript">';
-                        echo 'alert("Input value")';
-                        echo '</script>';
+                        header("location: index.php?error=search");
                     } else {
                         $condition = "";
                         $keyword = explode(" ", $searchInput);

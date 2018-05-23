@@ -76,6 +76,25 @@
         </div>
         <div class="card-body">
             <?php
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    if($error == "empty"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Please fill out the phone field.</p>";
+                        echo '</div>';
+                    } 
+                    elseif($error == "value"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Invalid values for phone number, please enter digits only.</p>";
+                        echo '</div>';
+                    } 
+                    elseif($error == "error"){
+                        echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                        echo "<p class='text-danger'>Unable to connect to server, please try again later.</p>";
+                        echo '</div>';
+                    } 
+                }
+
                 $uid = $_GET['uid'];
                 echo '<form id="hostForm" action="SQLprofilephone.php?uid='.$uid.'" method="POST">';
             ?>
