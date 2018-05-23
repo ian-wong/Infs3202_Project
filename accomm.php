@@ -21,6 +21,8 @@
 
         <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <!-- Colorbox CSS-->
+        <link rel="stylesheet" type="text/css" href="css/colorbox.css"/>
         <!-- Icon -->
         <link rel="icon" href="img/logo.png" />
 
@@ -33,9 +35,17 @@
             crossorigin="anonymous"></script>
         <!-- JQuery from Google-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    
+        <!-- Colorbox Jquery -->
+        <script src="js/jquery.colorbox.js"></script>
 
+        <script>
+			$(document).ready(function(){
+				//Examples of how to assign the Colorbox event to elements
+				$(".group1").colorbox({rel:'group1'});
 
+			});
+
+        </script>
     </head>
 
     <body>
@@ -132,6 +142,8 @@
             </div>
             </div>
 
+            <h2>Elastic Transition</h2>
+		<p><a class="group1" href="img/logo.png" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>
         </main>
 
     </body>
