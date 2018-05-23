@@ -97,7 +97,7 @@
                 }
         
                 if (!(mysqli_num_rows($result)>0)){
-                    echo 'You currently have no profile picture, add a profile picture.';
+                    echo 'Unable to connect to server, please try again later.';
                 } else {
                     $row = mysqli_fetch_assoc($result);
                     echo "<br>";
@@ -105,7 +105,11 @@
                     $ufname = $row['firstname'];
                     $usname = $row['surname'];
         
-                    echo $uphoto;
+                    if (empty($uphoto)){
+                        echo 'You currently have no profile picture, add a profile picture.';
+                    } else {
+                        echo $uphoto;
+                    }
                     echo '<div class="text-center">';
                         echo '<h3>'.$ufname.' '.$usname. '</h3>';
                     echo '</div>';

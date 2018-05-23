@@ -104,7 +104,6 @@
                         }
                     }
                 ?>
-                </div>
             </div>
             <div class="col-md-4 mt-md-3">
                 <div id="map"></div>

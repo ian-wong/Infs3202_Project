@@ -242,6 +242,18 @@
                         }
                     ?>
                 </div>
+                <br><br><br><br><br>
+                <div class="row">
+                    <div id="accomm">
+                        <?php
+                            
+                        ?>
+                    </div>
+                    
+                    <button> Show more accommodations </button>
+
+                    
+                </div>
             </div>
             <div class="col-md-2">
             </div>
