@@ -38,14 +38,6 @@
         <!-- Colorbox Jquery -->
         <script src="js/jquery.colorbox.js"></script>
 
-        <script>
-			$(document).ready(function(){
-				//Examples of how to assign the Colorbox event to elements
-				$(".group1").colorbox({rel:'group1'});
-
-			});
-
-        </script>
     </head>
 
     <body>

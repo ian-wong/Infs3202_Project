@@ -89,6 +89,12 @@ h4-inline{
   width: 300px;   
 }
 
+#contactFeature {
+    background-image: url('img/bg.jpeg');
+    background-size:cover;
+
+}
+
 
 /* RESPONSIVE CSS */
 
