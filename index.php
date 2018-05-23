@@ -84,12 +84,38 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            
-            <!-- Search Bar -->
             <form class="form-inline" action="searchResult.php" method="POST">
                 <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
                 <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
             </form>
+
+            
+            <?php 
+                if (isset($_GET['error'])) {
+                    $error = $_GET['error'];
+                    if($error == "donatevalue"){
+                        echo "<p class='text-danger'>&emsp;Please enter a value to donate.</p>";
+                    } 
+                    elseif($error == "paypal"){
+                        echo "<p class='text-danger'>&emsp;PayPal transaction failed, please try again later.</p>";
+                    } 
+                    elseif($error == "search"){
+                        echo "<p class='text-danger'>&emsp;Please enter values into the search bar.</p>";
+                    } 
+                } elseif (isset($_GET['success'])){
+                    $success = $_GET['success'];
+                    if($success == "paypal"){
+                        echo "<p class='text-success'>&emsp;Thank you very much for your donation!</p>";
+                    }
+                    elseif($success == "login"){
+                        echo "<p class='text-success'>&emsp;Successful login.</p>";
+                    }
+                    elseif($success == "email"){
+                        echo "<p class='text-success'>&emsp;Successfully sent email to host.</p>";
+                    }
+                }
+            ?>
+
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <?php
@@ -188,13 +214,7 @@
                 <?php
                     foreach($ytvideos->items as $item){ 
                         if(isset($item->id->videoId)){
-<<<<<<< HEAD
-                           // echo '<div class="col-md-2">';
-                            echo '<div class="col-md-4 youtube-video">';
-                                //echo '<iframe width="280" height="150" src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
-=======
                             echo '<div class=" col-md-4 youtube-video">';
->>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
                                 echo '<iframe src="https://www.youtube.com/embed/'.$item->id->videoId.'" frameborder="0" allowfullscreen></iframe>';
                             echo '</div>';
                         }   
@@ -203,23 +223,7 @@
                 </div> 
             </div>
             <div class="col-md-2">
-<<<<<<< HEAD
-=======
-                <?php
-                    
-                    echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
-                    
-                    $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
-                    
-
-                    $firsttweet = 1;
-                    foreach ($tweets as $twt){
-                        echo $twt->text . '<br><br>';
-                        $firsttweet++;
-                    }
-                
-                ?>
->>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
+                 
             </div>
         </div>
 
@@ -268,10 +272,6 @@
                     <input type="submit" value="Donate" name="submit">
                     <p>You'll be taken to Paypal to complete your payment.</p><br>
                 </form>
-<<<<<<< HEAD
-                
-=======
->>>>>>> d653e6c9d699a70d6975793f12be052d9975c441
             </div>
             <div class="col-md-3">
             <!--
