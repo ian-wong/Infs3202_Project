@@ -38,14 +38,6 @@
         <!-- Colorbox Jquery -->
         <script src="js/jquery.colorbox.js"></script>
 
-        <script>
-			$(document).ready(function(){
-				//Examples of how to assign the Colorbox event to elements
-				$(".group1").colorbox({rel:'group1'});
-
-			});
-
-        </script>
     </head>
 
     <body>
@@ -142,11 +134,15 @@
             </div>
             </div>
 
+<<<<<<< HEAD
             <h2>Elastic Transition</h2>
             <?php
 		        echo '<p><a class="group1" href="'.$aphoto.'" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>';
         
             ?>
+=======
+            
+>>>>>>> a5af00c0e8c683f772d17d9ee99c9c26012e90aa
         </main>
 
     </body>
