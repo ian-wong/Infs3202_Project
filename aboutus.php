@@ -58,9 +58,7 @@
                 rel: 'group1'
             });
             $(".iframe").colorbox({
-                iframe: true,
-                width: "80%",
-                height: "80%"
+                iframe:true, width: "70%", height: "90%"
             });
 
         });
@@ -129,7 +127,7 @@
                     <p> After experiencing first-hand the unpleasant experience of trying to find a suitable and inexpensive
                         accommodation in another country. We set out to create a solution.
                     </p>
-                    <a class="iframe btn btn-dark" href="index.php">Contact Us</a>
+                    <a class="iframe btn btn-dark" href="contactus.php">Contact Us</a>
 
                 </div>
                 <div class="col-md-1"></div>

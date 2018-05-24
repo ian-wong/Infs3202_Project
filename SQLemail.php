@@ -5,7 +5,7 @@
     use PHPMailer\PHPMailer\Exception;
     
     require 'phpmailer/vendor/autoload.php';
-
+       
     $fromemail = mysqli_real_escape_string($conn, $_POST['fromemail']);
     $toemail = mysqli_real_escape_string($conn, $_POST['toemail']);
     $subject = mysqli_real_escape_string($conn, $_POST['subject']);
@@ -30,22 +30,22 @@
                 $mail->Port = 25;                                    // TCP port to connect to
 
                 //Recipients
-                $mail->setFrom($_REQUEST['fromemail']);
+                $mail->setFrom($fromemail);
 
-                $mail->addAddress($_REQUEST['toemail']);   // Add a recipient
+                $mail->addAddress($toemail);   // Add a recipient
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = $_REQUEST['subject'];
-                $mail->Body    = $_REQUEST['message'];
+                $mail->Subject = $subject;
+                $mail->Body    = $message;
                 $mail->send();
-                echo 'Message has been sent';
                 
             } catch (Exception $e) {
                 header("location: contact.php?error=email");
             }
             header("location: index.php?success=email");
+
         }
     }
-    $conn->close;
+    $conn->close();
 ?>
