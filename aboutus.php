@@ -51,12 +51,18 @@
             });
         });
         //Assigning Colorbox event to elements
-         $(document).ready(function () {
+        $(document).ready(function () {
             $(".group1").colorbox({
                 rel: 'group1'
             });
             $(".iframe").colorbox({
+<<<<<<< HEAD
                 iframe:true, width: "70%", height: "90%"
+=======
+                iframe: true,
+                width: "80%",
+                height: "80%"
+>>>>>>> a29fb7f564957e825f883681d7d5a846066eb80a
             });
 
         });
@@ -110,7 +116,7 @@
                 </div>
 
             </div>
-         <hr class="feature-divider">
+            <hr class="feature-divider">
 
         </div>
         <div class="row-feature">
@@ -126,7 +132,12 @@
         <div class="row-feature">
 
         </div>
-        <div class="container marketing">
-
+        <div class="container">
+                <div class="col-lg-4">
+                        <img class="rounded-circle" src="img/profileImg1.jpg" alt="Generic placeholder image" height="180px" width="170px">
+                        <h2>Heading</h2>
+                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+                      </div>
         </div>
     </main>
