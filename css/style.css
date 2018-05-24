@@ -89,12 +89,17 @@ h4-inline{
   width: 300px;   
 }
 
-#contactFeature {
-    background-image: url('img/bg.jpeg');
-    background-size:cover;
-
+.form-error{
+    color: red;
 }
 
+.form-success{
+    color: green;
+}
+
+.input-error{
+    box-shadow: 0 0 5px red;
+}
 
 /* RESPONSIVE CSS */
 

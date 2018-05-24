@@ -139,7 +139,7 @@
                     <input type="password" class="form-control" id="confirmPassInput" name="confirmPassInput">
                 </div>
             </div>
-sdfg
+
             <div class="form-group">
                 <div class="col-md-7">
                     <button type="submit" class="btn btn-primary" name="submit">Create Account</button>
