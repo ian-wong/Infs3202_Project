@@ -134,15 +134,7 @@
             </div>
             </div>
 
-<<<<<<< HEAD
-            <h2>Elastic Transition</h2>
-            <?php
-		        echo '<p><a class="group1" href="'.$aphoto.'" title="Me and my grandfather on the Ohoopee.">Grouped Photo 1</a></p>';
-        
-            ?>
-=======
             
->>>>>>> a5af00c0e8c683f772d17d9ee99c9c26012e90aa
         </main>
 
     </body>
