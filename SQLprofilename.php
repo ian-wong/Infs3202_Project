@@ -1,16 +1,17 @@
 <?php
 include("connectMySQL.php");
 
+    $uid = $_GET['uid'];
     if (!isset($_POST['submit'])){
         header("location: index.php");
     } else {
         $fName = mysqli_real_escape_string($conn, $_POST["fNameInput"]);
         $lName = mysqli_real_escape_string($conn, $_POST["lNameInput"]);
         if (empty($fName) || empty($lName)){
-            header("location: profilename.php?error=empty");
+            header("location: profilename.php?uid=$uid&error=empty");
         } else {
             if (!preg_match("/^[a-zA-Z]*$/", $fName) || !preg_match("/^[a-zA-Z]*$/", $lName)){
-                header("location: profilename.php?error=value");
+                header("location: profilename.php?uid=$uid&error=value");
             } else {
                 $uid = $_GET['uid'];
         
@@ -19,7 +20,7 @@ include("connectMySQL.php");
                 try {
                     mysqli_query($conn, $updname);
                 } catch (exception $e){
-                    header("location: profilename.php?error=error");
+                    header("location: profilename.php?uid=$uid&error=error");
                 }
                 header("Location: profile.php?uid=".$uid."");
             }

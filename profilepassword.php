@@ -3,10 +3,12 @@
     include("connectMySQL.php");
     include 'function.php';
     
+    /*
     session_start();
     if(!isset($_SESSION['login_user'])){
         header('location: login.php');
     }
+    */
 ?>
 
 <html lang="en">
@@ -17,7 +19,6 @@
 
 </head>
 <body>
-
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <a href="index.php" class="navbar-brand">
@@ -42,11 +43,13 @@
         </div>
     </nav>
 </header>
+
 <div class="card">
     <div class="card-header mb-4">
-        <h3 class="col-7 mb-1 ">Edit Profile Name</h3>
+        <h3 class="col-7 mb-1 ">Change Password</h3>
     </div>
         <?php
+        /*
             if (isset($_GET['error'])) {
                 $error = $_GET['error'];
                 if($error == "empty"){
@@ -65,28 +68,39 @@
                     echo '</div>';
                 } 
             }
+        */
 
             $uid = $_GET['uid'];
-            echo '<form class="" id="hostForm" action="SQLprofilename.php?uid='.$uid.'" method="POST">';
+            echo '<form class="" id="hostForm" action="SQLprofilepassword.php?uid='.$uid.'" method="POST">';
         ?>
+            
             <div class="form-row form-inline ml-3">
+                <!--
                 <div class="col-md-4 ml-3 bg-success">
-                    <h5>First name: </h5>
-                    <input type="text" class="form-control" id="fNameInput" name="fNameInput" maxlength="30">
+                    <h5>Old Password:</h5>
+                    <input type="password" class="form-control" id="oldPass" name="oldPassInput" >
+                </div>
+                -->
+
+                <div class="col-md-4 ml-3 bg-success">
+                    <h5>New Password: </h5>
+                    <input type="password" class="form-control" id="newPassInput" name="newPassInput" >
                 </div>
 
                 <div class="col-md-4 ml-3 bg-success">
-                    <h5>Surname: </h5>
-                    <input type="text" class="form-control" id="lNameInput" name="lNameInput" maxlength="30">
+                    <h5>Confirm New Password: </h5>
+                    <input type="password" class="form-control" id="confNewPassInput" name="confNewPassInput">
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-md-7 ml-3 mt-4">
-                    <button class="btn btn-primary" type="submit" name="submit">Update Name</button>
+                    <button class="btn btn-primary" type="submit" name="submit">Update Password</button>
                 </div>
             </div>
         </form>
 </div>
+
+
 </body>
 
 </html>

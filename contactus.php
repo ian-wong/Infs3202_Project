@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
     include 'connectMySQL.php';
+    include 'function.php';
     session_start();
 ?>
 

@@ -12,7 +12,7 @@
         if(empty($fName) || empty($lName) || empty($email) || empty($password) || empty($confpassword)){
             header("location: signup.php?error=empty");
         } else { 
-            if (!preg_match("/^[a-zA-Z]*$/", $fName) || !preg_match("/^[a-zA-Z]*$/", $lName)){
+            if (!preg_match("/^[a-zA-Z ]*$/", $fName) || !preg_match("/^[a-zA-Z ]*$/", $lName)){
                 header("location: signup.php?error=name");
             } else {
                 if(!filter_var($email)){
@@ -21,13 +21,26 @@
                     if (!($password == $confpassword)){
                         header("location: signup.php?error=password");
                     } else {
-                        $insertuser = "INSERT INTO user(firstname, surname, email, passw) VALUES ('$fName', '$lName', '$email', '$password')";
-                        try {
-                            mysqli_query($conn, $insertuser);
-                        } catch (exception $e){
-                            header("location: signup.php?error=error");
+                        //check if email already exists
+                        $sqlunique = "SELECT * FROM user WHERE email='$email'";
+                        $uniqueresult = mysqli_query($conn, $sqlunique);
+                        $uniqueresultcheck = mysqli_num_rows($uniqueresult);
+
+                        if($uniqueresultcheck > 0){
+                            header("location: signup.php?error=emailtaken");
                         }
-                        header("Location: login.php?success=signup");
+                        else {
+                            $hashpwd = password_hash($password, PASSWORD_DEFAULT);
+
+                            $insertuser = "INSERT INTO user(firstname, surname, email, passw) VALUES ('$fName', '$lName', '$email', '$hashpwd')";
+                            try {
+                                mysqli_query($conn, $insertuser);
+                            } catch (exception $e){
+                                header("location: signup.php?error=error");
+                            }
+                            header("Location: login.php?success=signup");
+
+                        }
                     }
                 }
             }

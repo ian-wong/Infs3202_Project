@@ -100,7 +100,7 @@
             <div class="form-group">
                 <div class="col-md-7">
                     <a href="signup.php" class="btn btn-primary">Sign Up</a>
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Log In</button>
                 </div>
             </div>
         </form>

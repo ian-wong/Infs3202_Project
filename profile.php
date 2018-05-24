@@ -174,6 +174,11 @@
             <br>
             <br>
             <?php
+                echo '<a href="profilepassword.php?uid='.$uid.'" class="btn btn-primary"><h5>Change Password</h5></a>';
+            ?>
+            <br>
+            <br>
+            <?php
                 echo '<a href="profilephone.php?uid='.$uid.'" class="btn btn-primary"><h5>Add/Edit Phone Number</h5></a>';
             ?>
             <br>

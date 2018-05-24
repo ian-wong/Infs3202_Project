@@ -9,7 +9,7 @@
     $uid = $row['uid'];
     
     $phone = $row['phone'];
-    if ($phone=='0'){
+    if ($phone==null){
         if(session_destroy()){
             header("Location: index.php");
         } else {

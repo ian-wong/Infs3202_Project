@@ -7,7 +7,7 @@
         header("location: index.php");
     } else {
         if (!isset($_POST['phoneInput'])){
-            header("location: profilephone.php?error=empty");
+            header("location: profilephone.php?uid=$uid&error=empty");
         } else {
             $pho = str_pad($_POST['phoneInput'],1);
 
@@ -19,11 +19,11 @@
                 try {
                     mysqli_query($conn, $updphone);
                 } catch (exception $e){
-                    header("location: profilephone.php?error=error");    
+                    header("location: profilephone.php?uid=$uid&error=error");    
                 }
                 header("Location: profile.php?uid=".$uid."");
             } else {
-                header("location: profile.php?error=value");
+                header("location: profile.php?uid=$uid&error=value");
             }
         }
     }

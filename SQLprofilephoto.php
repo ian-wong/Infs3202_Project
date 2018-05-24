@@ -1,12 +1,14 @@
 <?php
     include("connectMySQL.php");
 
+
+    $uid = $_GET['uid'];
     if(!isset($_POST['submit'])){
         header("location: index.php");
     } else {
         if ((($_FILES["photoInput"]["type"] == "image/gif") || ($_FILES["photoInput"]["type"] == "image/jpeg") || ($_FILES["photoInput"]["type"] == "image/pjpeg") || ($_FILES["photoInput"]["type"] == "image/png")) && ($_FILES["photoInput"]["size"] < 50000)){
             if ($_FILES["photoInput"]["error"] > 0){
-                header("location: profilephoto.php?error=photo");
+                header("location: profilephoto.php?uid=$uid&error=photo");
             } else {
                 $photoName = mysqli_real_escape_string($conn, $_FILES["photoInput"]["name"]);
                 $photoType = mysqli_real_escape_string($conn, $_FILES["photoInput"]["type"]);
@@ -17,12 +19,12 @@
                 try{
                     mysqli_query($conn, $updphoto);
                 } catch (exception $e){
-                   header("location: error=error"); 
+                   header("location: profilephoto.php?uid=$uid&error=error"); 
                 }
                 header("location: profile.php?uid=$uid");
             }
         } else {
-            header("location: profilephoto.php?error=photo");
+            header("location: profilephoto.php?uid=$uid&error=photo");
         }
     }
     $conn->close();

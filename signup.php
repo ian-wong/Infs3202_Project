@@ -81,6 +81,11 @@
                             echo "<p class='text-danger'>Unable to connect to server, please try again later.</p>";
                             echo '</div>';
                         }
+                        elseif($error == "usertaken"){
+                            echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                            echo "<p class='text-danger'>Email Address already exists, please use another.</p>";
+                            echo '</div>';
+                        }
                     }
                 ?>
 
