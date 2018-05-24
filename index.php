@@ -118,7 +118,7 @@
                 <img class="first-slide" src="images/bg.jpeg" alt="">
                 <div class="container">
                     <div class="carousel-caption">
-                        <h1>Find new homes</h1>
+                        <h1>Experience new homes</h1>
                         <h1>around the world.</h1>
                     </div>
                 </div>
