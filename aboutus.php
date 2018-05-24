@@ -24,7 +24,7 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <!-- Colorbox CSS-->
-    <link rel="stylesheet" type="text/css" href="css/colorbox.css" />
+    <link rel="stylesheet" href="colorbox.css"/>
     <!-- Icon -->
     <link rel="icon" href="img/logo.png" />
     <!-- Bootstrap CDN -->
@@ -50,8 +50,10 @@
                 });
             });
         });
-        //Assigning Colorbox event to elements
-        $(document).ready(function () {
+    </script>
+    <script>
+         //Assigning Colorbox event to elements
+         $(document).ready(function () {
             $(".group1").colorbox({
                 rel: 'group1'
             });
@@ -116,24 +118,40 @@
 
         </div>
         <div class="row-feature">
-            <div class="col-md-12 text-center">
-                <h2 class="feature-heading"> About Us</h2>
-                <p>Quest Hotel is </p>
-                <a class="iframe btn btn-dark" href="index.php">Contact Us</a>
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10 text-center">
+                    <h2 class="feature-heading"> About Us</h2>
+                    <p>Quest Hotel is a Brisbane based short-term lodging search system where we help travellers and hosts have
+                        a stress free time locating and hosting accommodations. Easily locate, manage and book accommodations
+                        around the world with no fuss at all. There are a range of selection to choose from apartments, homes,
+                        units or cottages.</p>
+                    <p> After experiencing first-hand the unpleasant experience of trying to find a suitable and inexpensive
+                        accommodation in another country. We set out to create a solution.
+                    </p>
+                    <a class="iframe btn btn-dark" href="index.php">Contact Us</a>
 
+                </div>
+                <div class="col-md-1"></div>
             </div>
         </div>
         <hr class="feature-divider">
 
-        <div class="row-feature">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img class="rounded mx-auto" src="img/profileImg2.png" alt="Anthony Hanh" height="250em" width="200em">
+                <h3 class="mt-md-2">Anthony Hanh</h3>
+            </div>
+            <div class="col-md-6 text-center">
+                <img class="rounded mx-auto " src="img/profileImg1.jpg" alt="Ian Wong" height="250em" width="200em">
+                <h3 class="mt-md-2">Ian Wong</h3>
+            </div>
+
 
         </div>
         <div class="container">
-                <div class="col-lg-4">
-                        <img class="rounded-circle" src="img/profileImg1.jpg" alt="Generic placeholder image" height="180px" width="170px">
-                        <h2>Heading</h2>
-                        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-                      </div>
+
+
         </div>
+
     </main>
