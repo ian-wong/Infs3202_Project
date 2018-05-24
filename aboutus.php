@@ -99,7 +99,7 @@
         <h2 class="feature-heading text-center">Meet The Team</h2>
         <div class="row">
             <div class="col-md-6 text-center">
-                <img class="rounded mx-auto" src="img/profileImg2.png" alt="Anthony Hanh" height="250em" width="200em">
+                <img class="rounded mx-auto" src="img/profileImg3.png" alt="Anthony Hanh" height="250em" width="200em">
                 <h3 class="mt-md-2">Anthony Hanh</h3>
             </div>
             <div class="col-md-6 text-center">
