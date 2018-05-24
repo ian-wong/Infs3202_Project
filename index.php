@@ -205,30 +205,6 @@
             <div class="col-md-8">
                 <br>
                 <h2>Available Accommodations: </h2>
-                <div class="row">
-                    <?php
-                        $sqlselectaccom = "SELECT * FROM accommodation";
-                        $result = mysqli_query($conn, $sqlselectaccom);
-
-                        if (!(mysqli_num_rows($result)>0)){
-                            echo 'Unable to connect to server';
-                        } else {
-                            while ($row = mysqli_fetch_assoc($result)){
-                                echo "<div class='col-md-3'>";
-                                echo "<br>";
-                                $aid = $row['aid'];
-                                $aphoto = '<img src="SQLgetphoto.php?aid='.$row['aid'].'" class="img-fluid">';
-                                $aname = $row['name'];
-                                $aloc = $row['location'];
-                    
-                                echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $aphoto  . '</a>');     
-                                echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aname  . '</a></h5>');
-                                echo "</div>";
-                            }
-                        }
-                    ?>
-                </div>
-                <br><br><br><br><br>
                 <div class="row" id="accomms">
                         <?php
                             $selaccomm = "SELECT * FROM accommodation LIMIT 4";
@@ -251,7 +227,7 @@
                             }
                         ?>                  
                 </div>
-                <button> Show more accommodations </button>  
+                <button type="button" class="btn btn-secondary btn-sm mt-md-3"> Show more accommodations </button>  
             </div>
             <div class="col-md-2">
             </div>
