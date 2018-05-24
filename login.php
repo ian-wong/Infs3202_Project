@@ -36,6 +36,7 @@
                 <button class="btn btn-outline-light " type="submit">Search</button>
             </form>
             <ul class="navbar-nav ml-auto">
+            <a class="nav-link" href="aboutus.php">About Us</a>
                 <li class="nav-item">
                     <?php
                         isset_user();
