@@ -13,31 +13,18 @@
     <?php
         head_html();
     ?>
-    <!-- Colorbox JQuery -->
-    <script src="js/jquery.colorbox.js"></script>
+        <!-- Colorbox CSS -->
+        <link rel="stylesheet" type="text/css" href="colorbox.css"/>
+        <!-- Colorbox JQuery -->
+        <script src="js/jquery.colorbox.js"></script>
 
-    <script>
-        //Assigning Colorbox event to elements
-        //$(document).ready(function () {
-        // $(".group1").colorbox({
-        //   rel: 'group1'
-        // });
-        $(".iframe").colorbox({
-        iframe: true,
-        width: "70%",
-        height: "90%"
-        });
-
-    
-    </script>
-    <script>
-        $(document).ready(function () {
-            //Examples of how to assign the Colorbox event to elements
-            $(".group1").colorbox({
-                rel: 'group1'
-            });
-        });
-    </script>
+        <script>
+            //Assigning Colorbox event to elements
+            $(document).ready(function(){
+                $(".group1").colorbox({rel:'group1'});
+                $(".iframe").colorbox({iframe:true, width:"70%", height:"80%"});
+            }) 
+        </script>
 
 </head>
 
@@ -80,7 +67,7 @@
                     <h2 class="feature-heading">WE ARE QUEST HOTEL</h2>
                 </div>
                 <div class="col-md-4 mt-md-5 text-center bg-primary">
-                    <a class="group1 img-fluid mx-auto" href="img/logo.png" title="Quest Hotel">
+                    <a class="group1" href="img/logo.png" title="Quest Hotel">
                         <img src="img/logo.png">
                     </a>
 
