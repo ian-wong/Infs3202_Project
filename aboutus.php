@@ -50,12 +50,13 @@
                 });
             });
         });
-    </script>
-    <script>
-        $(document).ready(function () {
-            //Examples of how to assign the Colorbox event to elements
+        //Assigning Colorbox event to elements
+         $(document).ready(function () {
             $(".group1").colorbox({
                 rel: 'group1'
+            });
+            $(".iframe").colorbox({
+                iframe:true, width: "80%", height: "80%"
             });
 
         });
@@ -102,17 +103,30 @@
                     <h2 class="feature-heading">WE ARE QUEST HOTEL</h2>
                 </div>
                 <div class="col-md-5 mt-md-5 text-center">
-                    <a class="group1" href="img/logo.png" title="Quest Hotel">
+                    <a class="group1 img-fluid mx-auto" href="img/logo.png" title="Quest Hotel">
                         <img src="img/logo.png">
                     </a>
+
                 </div>
 
             </div>
+         <hr class="feature-divider">
 
         </div>
         <div class="row-feature">
             <div class="col-md-12 text-center">
-                <h2> About Us</h2>
+                <h2 class="feature-heading"> About Us</h2>
+                <p>Quest Hotel is </p>
+                <a class="iframe btn btn-dark" href="index.php">Contact Us</a>
+
             </div>
+        </div>
+        <hr class="feature-divider">
+
+        <div class="row-feature">
+
+        </div>
+        <div class="container marketing">
+
         </div>
     </main>
