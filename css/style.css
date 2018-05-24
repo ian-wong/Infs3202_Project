@@ -1,21 +1,44 @@
-
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
+/* RESPONSIVE CSS */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption h1 {
+        margin-bottom: 1.25rem;
+        font-size: 3rem;
+        line-height: 1.4;
+        text-shadow: 1px 1px 2px #000000;
+    }
+    .feature-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .feature-heading {
+        margin-top: 7rem;
+    }
+}
+
 #searchBar {
     width: 350px;
-
 }
+
 /* Logo Sizing */
+
 #Logo {
     width: 3em;
     height: 2.5em;
 }
 
 /* Signup Button */
+
 .signupBtn {
     background-color: #007aff;
     color: white;
@@ -31,9 +54,8 @@ html, body {
     background-color: #106cd6;
 }
 
-
-
 /* Carousel base class */
+
 .carousel {
     margin-bottom: 4rem;
 }
@@ -44,10 +66,12 @@ html, body {
 }
 
 /* Declare heights because of positioning of img element */
+
 .carousel-item {
     height: 32rem;
 }
-.carousel-item > img {
+
+.carousel-item>img {
     position: absolute;
     top: 0;
     left: 0;
@@ -56,20 +80,24 @@ html, body {
 }
 
 /* Feature */
+
 .feature {
-    margin: 4rem 0 ; /* Space out the Bootstrap <hr> more */
+    margin: 4rem 0;
+    /* Space out the Bootstrap <hr> more */
     padding-left: 2rem;
 }
 
 /* Thin out headings */
+
 .feature-heading {
     font-weight: 300;
     line-height: 1;
     letter-spacing: -.05rem;
 }
 
-h4-inline{
-    display: inline-block; /*inline-block;inline; to maintain vertical paddin */
+h4-inline {
+    display: inline-block;
+    /*inline-block;inline; to maintain vertical paddin */
     font-size: 1.33em;
     /*margin-top: 1.33em;
     margin-bottom: 1.33em; */
@@ -79,51 +107,49 @@ h4-inline{
 }
 
 #aphoto {
-  height: 250px;
-  width: 300px;   
+    height: 250px;
+    width: 300px;
 }
 
-.form-error{
+.form-error {
     color: red;
 }
 
-.form-success{
+.form-success {
     color: green;
 }
 
-.input-error{
+.input-error {
     box-shadow: 0 0 5px red;
 }
 
-/* Navigation Pop Down CSS */
-
-
 /* GOOOGLE MAPS CSS */
+
 /* Map Height in search results */
+
 #map {
     height: 500px;
-    
 }
 
 #description {
     font-family: Roboto;
     font-size: 15px;
     font-weight: 300;
-  }
+}
 
-  #infowindow-content .title {
+#infowindow-content .title {
     font-weight: bold;
-  }
+}
 
-  #infowindow-content {
+#infowindow-content {
     display: none;
-  }
+}
 
-  #map #infowindow-content {
+#map #infowindow-content {
     display: inline;
-  }
+}
 
-  .pac-card {
+.pac-card {
     margin: 10px 10px 0 0;
     border-radius: 2px 0 0 2px;
     box-sizing: border-box;
@@ -132,25 +158,25 @@ h4-inline{
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     background-color: #fff;
     font-family: Roboto;
-  }
+}
 
-  #pac-container {
+#pac-container {
     padding-bottom: 12px;
     margin-right: 12px;
-  }
+}
 
-  .pac-controls {
+.pac-controls {
     display: inline-block;
     padding: 5px 11px;
-  }
+}
 
-  .pac-controls label {
+.pac-controls label {
     font-family: Roboto;
     font-size: 13px;
     font-weight: 300;
-  }
+}
 
-  #pac-input {
+#pac-input {
     background-color: #fff;
     font-family: Roboto;
     font-size: 15px;
@@ -159,43 +185,28 @@ h4-inline{
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     width: 400px;
-  }
+}
 
-  #pac-input:focus {
+#pac-input:focus {
     border-color: #4d90fe;
-  }
+}
 
-  #title {
+#title {
     color: #fff;
     background-color: #4d90fe;
     font-size: 25px;
     font-weight: 500;
     padding: 6px 12px;
-  }
-  #target {
+}
+
+#target {
     width: 345px;
-  }
-
-/* RESPONSIVE CSS */
-
-@media (min-width: 40em) {
-    /* Bump up size of carousel content */
-    .carousel-caption h1 {
-        margin-bottom: 1.25rem;
-        font-size: 3rem;
-        line-height: 1.4;
-        text-shadow: 1px 1px 2px #000000;
-
-    }
-
-    .feature-heading {
-        font-size: 50px;
-    }
 }
 
-@media (min-width: 62em) {
-    .feature-heading {
-        margin-top: 7rem;
-    }
+.accord-section {
+    color: white;
 }
-
+#aboutusBG {
+    background-image: url('contactBackground.jpg');
+    background-color: #000000;
+}
