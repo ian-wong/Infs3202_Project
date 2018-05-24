@@ -44,7 +44,7 @@
                 var subject = $("#email-subject").val();
                 var message = $("#email-message").val();
                 var submit = $("#email-submit").val();
-                $(".form-message").load("test2.php", {
+                $(".form-message").load("SQLemailus.php", {
                     fromemail: fromemail, 
                     toemail: toemail, 
                     subject: subject, 
@@ -61,9 +61,11 @@
         <div class="col-md-1">
         </div>
         <div class="col-md-10">
-            <form action="test2.php" method="post">
+            <form action="SQLemailus.php" method="post">
+                <p class="form-message"></p>
+                
                 <label for="fromemail">From:</label>
-                <input type="text" id="email-from" name="fromemail"></br>
+                <input type="text" class="form-control" id="email-from" name="fromemail"></br>
 
                 <label for="toemail">To:</label>
                 <input type="text" class="form-control" id="email-to" name="toemail"></br>
@@ -75,8 +77,6 @@
                 <textarea class="form-control" rows="5" id="email-message" name="message"></textarea></br>
                 
                 <button type="submit" id="email-submit" name="submit" class="btn btn-primary">Send Email</button>
-
-                <p class="form-message"></p>
             </form>
         </div>
         <div class="col-md-1">

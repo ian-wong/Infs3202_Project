@@ -56,7 +56,7 @@
                 rel: 'group1'
             });
             $(".iframe").colorbox({
-                iframe:true, width: "80%", height: "80%"
+                iframe:true, width: "70%", height: "90%"
             });
 
         });
@@ -117,7 +117,7 @@
             <div class="col-md-12 text-center">
                 <h2 class="feature-heading"> About Us</h2>
                 <p>Quest Hotel is </p>
-                <a class="iframe btn btn-dark" href="index.php">Contact Us</a>
+                <a class="iframe btn btn-dark" href="contactus.php">Contact Us</a>
 
             </div>
         </div>

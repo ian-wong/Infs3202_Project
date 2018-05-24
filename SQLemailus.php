@@ -20,7 +20,7 @@
             echo "<span class='form-error'> Please enter a valid email.</span>";
             $errorEmail = true;
         } else {
-            echo"<span class='form-success'> asdfasdfa.</span>"; 
+            header("location: SQLemail.php?fromemail=$fromemail&toemail=$toemail&subject=$subject&message=$message");
         }
     } else {
         echo "There was an error!";
