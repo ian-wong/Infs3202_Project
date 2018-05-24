@@ -20,11 +20,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <!-- Colorbox CSS-->
-    <link rel="stylesheet" href="colorbox.css"/>
+    <link rel="stylesheet" href="colorbox.css" />
     <!-- Icon -->
     <link rel="icon" href="img/logo.png" />
     <!-- Bootstrap CDN -->
@@ -41,26 +40,25 @@
     <script src="js/jquery.colorbox.js"></script>
 
     <script>
-        $(document).ready(function () {
-            var accommCount = 4;
-            $("button").click(function () {
-                accommCount = accommCount + 4;
-                $("#accomms").load("loadaccomm.php", {
-                    accommNewCount: accommCount
-                });
-            });
+        //Assigning Colorbox event to elements
+        //$(document).ready(function () {
+        // $(".group1").colorbox({
+        //   rel: 'group1'
+        // });
+        $(".iframe").colorbox({
+        iframe: true,
+        width: "70%",
+        height: "90%"
         });
+
+    
     </script>
     <script>
-         //Assigning Colorbox event to elements
-         $(document).ready(function () {
+        $(document).ready(function () {
+            //Examples of how to assign the Colorbox event to elements
             $(".group1").colorbox({
                 rel: 'group1'
             });
-            $(".iframe").colorbox({
-                iframe:true, width: "70%", height: "90%"
-            });
-
         });
     </script>
 
@@ -101,10 +99,10 @@
     <main>
         <div class="row-feature">
             <div class="row">
-                <div class="col-md-7 text-right" id="contactFeature">
+                <div class="col-md-8 text-right bg-success">
                     <h2 class="feature-heading">WE ARE QUEST HOTEL</h2>
                 </div>
-                <div class="col-md-5 mt-md-5 text-center">
+                <div class="col-md-4 mt-md-5 text-center bg-primary">
                     <a class="group1 img-fluid mx-auto" href="img/logo.png" title="Quest Hotel">
                         <img src="img/logo.png">
                     </a>
@@ -134,7 +132,7 @@
             </div>
         </div>
         <hr class="feature-divider">
-
+        <h2 class="feature-heading text-center">Meet The Team</h2>
         <div class="row">
             <div class="col-md-6 text-center">
                 <img class="rounded mx-auto" src="img/profileImg2.png" alt="Anthony Hanh" height="250em" width="200em">
@@ -144,12 +142,9 @@
                 <img class="rounded mx-auto " src="img/profileImg1.jpg" alt="Ian Wong" height="250em" width="200em">
                 <h3 class="mt-md-2">Ian Wong</h3>
             </div>
-
-
-        </div>
-        <div class="container">
-
-
         </div>
 
     </main>
+</body>
+
+</html>
