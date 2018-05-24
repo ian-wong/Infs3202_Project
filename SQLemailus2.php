@@ -9,7 +9,7 @@
     $fromemail = mysqli_real_escape_string($conn, $_GET['fromemail']);
     $toemail = mysqli_real_escape_string($conn, $_GET['toemail']);
     $subject = mysqli_real_escape_string($conn, $_GET['subject']);
-    $message = $_POST['message'];
+    $message = mysqli_real_escape_string($conn, $_GET['message']);
 
 
     $mail = new PHPMailer(true);                              
@@ -36,11 +36,18 @@
     
         
     } catch (Exception $e) {
-        header("location: contact.php?error=email");
+        echo 'Unable to send email, please try again later.';
     }
     //worked.
-    die();
-    
+    //echo "<script>window.close();</script>";
+    //echo '<script type="text/javascript">window.close();</script> ';
+    //echo 'adsfasdfasdfa';
+    //header("location: index.php");
+    //exit();
+    //echo '<h1 text-color: green;><a href="JavaScript:window.close()">Email Sent, thank you. Close Window.</a></h1>';
+    //echo "EMAIL SENTSDAFFFFFFFFFFFFFFFFFFFFFFFASDFASDFSAFASDFA";
+    header("location: emailussent.php");
+    //echo '<button id="cboxClose" type=button>close </button>';
 
     $conn->close();
 ?>

@@ -44,7 +44,8 @@
                 header("location: contact.php?error=email");
             }
             header("location: index.php?success=email");
+
         }
     }
-    $conn->close;
+    $conn->close();
 ?>
