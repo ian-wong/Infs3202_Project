@@ -56,13 +56,7 @@
                 rel: 'group1'
             });
             $(".iframe").colorbox({
-<<<<<<< HEAD
                 iframe:true, width: "70%", height: "90%"
-=======
-                iframe: true,
-                width: "80%",
-                height: "80%"
->>>>>>> a29fb7f564957e825f883681d7d5a846066eb80a
             });
 
         });
