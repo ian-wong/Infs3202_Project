@@ -19,7 +19,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <a href="index.php" class="navbar-brand">
-                <img src="img/logo.png" id="Logo" class="d-inline-block align-top">
+                <img src="images/logo.png" id="Logo" class="d-inline-block align-top">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -130,7 +130,7 @@
               return;
             }
             var icon = {
-              url: 'img/marker.png',
+              url: 'images/marker.png',
               size: new google.maps.Size(71, 71),
               origin: new google.maps.Point(0, 0),
               anchor: new google.maps.Point(17, 34),

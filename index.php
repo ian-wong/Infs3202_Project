@@ -53,7 +53,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <a href="index.php" class="navbar-brand">
-            <img src="img/logo.png" id="Logo" class="d-inline-block align-top">
+            <img src="images/logo.png" id="Logo" class="d-inline-block align-top">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="first-slide" src="img/bg.jpeg" alt="">
+                <img class="first-slide" src="images/bg.jpeg" alt="">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Find new homes</h1>
@@ -124,7 +124,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="second-slide" src="img/bg2.jpeg" alt="Second slide">
+                <img class="second-slide" src="images/bg2.jpeg" alt="Second slide">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>The easy way to stay.</h1>
@@ -132,7 +132,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="third-slide" src="img/bg3.jpeg" alt="Second slide">
+                <img class="third-slide" src="images/bg3.jpeg" alt="Second slide">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Discover new favourite spots to stay.</h1>

@@ -32,7 +32,7 @@
         echo '<!-- Custom CSS -->';
         echo '<link rel="stylesheet" type="text/css" href="css/style.css"/>';
         echo '<!-- Icon -->';
-        echo '<link rel="icon" href="img/logo.png"/>';
+        echo '<link rel="icon" href="images/logo.png"/>';
 
         echo '<!-- Bootstrap CDN -->';
         echo '<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

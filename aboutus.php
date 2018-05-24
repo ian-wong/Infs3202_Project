@@ -47,7 +47,7 @@
         <header>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark">
                 <a href="index.php" class="navbar-brand">
-                    <img src="img/logo.png" id="Logo" class="d-inline-block align-top">
+                    <img src="images/logo.png" id="Logo" class="d-inline-block align-top">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -81,8 +81,8 @@
                         <h2 class="feature-heading">WE ARE QUEST HOTEL</h2>
                     </div>
                     <div class="col-md-4 mt-md-5 text-center">
-                        <a class="group1" href="img/logo.png" title="Quest Hotel">
-                            <img src="img/logo.png">
+                        <a class="group1" href="images/logo.png" title="Quest Hotel">
+                            <img src="images/logo.png">
                         </a>
                     </div>
 
@@ -112,7 +112,7 @@
             <h2 class="feature-heading text-center">Meet The Team</h2>
             <div class="row">
                 <div class="col-md-6 text-center">
-                    <img class="rounded mx-auto" src="img/profileImg3.png" alt="Anthony Hanh" height="250em" width="200em">
+                    <img class="rounded mx-auto" src="images/profileImg3.png" alt="Anthony Hanh" height="250em" width="200em">
                     <h3 class="mt-md-2">Anthony Hanh</h3>
                     <div class="row">
                             <div class=col-md-4></div>
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
-                    <img class="rounded mx-auto " src="img/profileImg1.jpg" alt="Ian Wong" height="250em" width="200em">
+                    <img class="rounded mx-auto " src="images/profileImg1.jpg" alt="Ian Wong" height="250em" width="200em">
                     <h3 class="mt-md-2">Ian Wong</h3>
                     <div class="row">
                             <div class="col-md-4"></div>
