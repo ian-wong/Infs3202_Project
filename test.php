@@ -35,7 +35,7 @@
     <?php
         head_html();
     ?>
-    <script>
+        <script>
         $(document).ready(function(){
             var accommCount = 4;
             $("button").click(function(){
