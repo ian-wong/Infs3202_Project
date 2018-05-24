@@ -11,6 +11,7 @@
             $uid = $row['uid'];
 
             echo '<a class="nav-link" href="profile.php?uid='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
+            
         } else {
             echo '<a class="nav-link" href="login.php">Account</a>';
         } 
