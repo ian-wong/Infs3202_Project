@@ -1,5 +1,6 @@
 <?php
     include 'connectMySQL.php';
+    include 'function.php';
     
     $accommNewCount = $_POST['accommNewCount'];
 
@@ -9,13 +10,9 @@
         while ($row = mysqli_fetch_assoc($result)){
             echo "<div class='col-md-3'>";
             echo "<br>";
-            $aid = $row['aid'];
-            $aphoto = '<img src="SQLgetphoto.php?aid='.$row['aid'].'" class="img-fluid">';
-            $aname = $row['name'];
-            $aloc = $row['location'];
+            
+            accomm_info($row);
 
-            echo ('<a target="_blank" href="accomm.php?aid='.$aid. '">' . $aphoto  . '</a>');     
-            echo ('<h5><a target="_blank" class="text-dark" href="accomm.php?aid='.$aid. '">' . $aname  . '</a></h5>');
             echo "</div>";
         }
     } else {

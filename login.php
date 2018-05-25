@@ -22,29 +22,9 @@
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a href="index.php  " class="navbar-brand">
-            <img src="images/logo.png" id="Logo" class="d-inline-block align-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline">
-                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light " type="submit">Search</button>
-            </form>
-            <ul class="navbar-nav ml-auto">
-            <a class="nav-link" href="aboutus.php">About Us</a>
-                <li class="nav-item">
-                    <?php
-                        isset_user();
-                    ?>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+        header_nav();
+    ?>
 </header>
 
 <!-- Login Form -->

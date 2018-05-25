@@ -3,12 +3,12 @@
     include("connectMySQL.php");
     include 'function.php';
     
-    /*
+    
     session_start();
     if(!isset($_SESSION['login_user'])){
         header('location: login.php');
     }
-    */
+    
 ?>
 
 <html lang="en">
@@ -20,29 +20,9 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a href="index.php" class="navbar-brand">
-            <img src="images/logo.png" id="Logo" class="d-inline-block align-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline" action="searchResult.php" method="POST">
-                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
-                <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
-            </form>
-            <ul class="navbar-nav ml-auto">
-            <a class="nav-link" href="aboutus.php">About Us</a>
-                <li class="nav-item">
-                    <?php
-                        isset_user(); 
-                    ?>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <?php
+        header_nav();
+    ?>
 </header>
 
 <div class="card">
@@ -50,7 +30,7 @@
         <h3 class="col-7 mb-1 ">Change Password</h3>
     </div>
         <?php
-        /*
+        
             if (isset($_GET['error'])) {
                 $error = $_GET['error'];
                 if($error == "empty"){
@@ -58,9 +38,14 @@
                     echo "<p class='text-danger'>Please fill out all fields.</p>";
                     echo '</div>';
                 } 
-                elseif($error == "value"){
+                elseif($error == "passmatch"){
                     echo '<div class="form-group col-md-12 ml-3 mb-4">';
-                    echo "<p class='text-danger'>You entered invalid values for your name, please enter characters only.</p>";
+                    echo "<p class='text-danger'>The passwords you entered did not match.</p>";
+                    echo '</div>';
+                } 
+                elseif($error == "oladpass"){
+                    echo '<div class="form-group col-md-12 ml-3 mb-4">';
+                    echo "<p class='text-danger'>Incorrect old password entered.</p>";
                     echo '</div>';
                 } 
                 elseif($error == "error"){
@@ -69,19 +54,19 @@
                     echo '</div>';
                 } 
             }
-        */
+        
 
             $uid = $_GET['uid'];
             echo '<form class="" id="hostForm" action="SQLprofilepassword.php?uid='.$uid.'" method="POST">';
         ?>
             
             <div class="form-row form-inline ml-3">
-                <!--
+                
                 <div class="col-md-4 ml-3 bg-success">
                     <h5>Old Password:</h5>
                     <input type="password" class="form-control" id="oldPass" name="oldPassInput" >
                 </div>
-                -->
+                
 
                 <div class="col-md-4 ml-3 bg-success">
                     <h5>New Password: </h5>
