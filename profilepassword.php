@@ -3,11 +3,12 @@
     include("connectMySQL.php");
     include 'function.php';
     
-    
+    /*
     session_start();
     if(!isset($_SESSION['login_user'])){
         header('location: login.php');
     }
+    */
     
 ?>
 
@@ -43,7 +44,7 @@
                     echo "<p class='text-danger'>The passwords you entered did not match.</p>";
                     echo '</div>';
                 } 
-                elseif($error == "oladpass"){
+                elseif($error == "oldpass"){
                     echo '<div class="form-group col-md-12 ml-3 mb-4">';
                     echo "<p class='text-danger'>Incorrect old password entered.</p>";
                     echo '</div>';
@@ -61,19 +62,17 @@
         ?>
             
             <div class="form-row form-inline ml-3">
-                
-                <div class="col-md-4 ml-3 bg-success">
+                <div class="col-md-9 ml-3">
                     <h5>Old Password:</h5>
                     <input type="password" class="form-control" id="oldPass" name="oldPassInput" >
                 </div>
-                
 
-                <div class="col-md-4 ml-3 bg-success">
+                <div class="col-md-4 ml-3">
                     <h5>New Password: </h5>
                     <input type="password" class="form-control" id="newPassInput" name="newPassInput" >
                 </div>
 
-                <div class="col-md-4 ml-3 bg-success">
+                <div class="col-md-4 ml-3">
                     <h5>Confirm New Password: </h5>
                     <input type="password" class="form-control" id="confNewPassInput" name="confNewPassInput">
                 </div>

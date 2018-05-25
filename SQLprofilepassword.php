@@ -5,7 +5,7 @@ include("connectMySQL.php");
     if (!isset($_POST['submit'])){
         header("location: index.php");
     } else {
-        //$oldPass = mysqli_real_escape_string($conn, $_POST["oldPassInput"]);
+        $oldPass = mysqli_real_escape_string($conn, $_POST["oldPassInput"]);
         $newPass = mysqli_real_escape_string($conn, $_POST["newPassInput"]);
         $confNewPass = mysqli_real_escape_string($conn, $_POST["confNewPassInput"]);
 
