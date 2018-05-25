@@ -20,6 +20,23 @@ SMSBroadcast API:
 ########
 Client-Side Libraries:
 
+Google Maps Places API:
+- Library: https://developers.google.com/places/web-service/intro
+
+Colorbox
+- Library: http://www.jacklmoore.com/colorbox/
+- Author: Jack Moore
+
+JQueryUI
+- Library: https://jqueryui.com/
+- Reference: https://jqueryui.com/accordion/
+
+
+Google reCAPTCHA
+- Library: https://developers.google.com/recaptcha/intro
+
+
+
 
 ########
 Password: 
