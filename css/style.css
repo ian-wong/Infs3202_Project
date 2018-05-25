@@ -206,7 +206,11 @@ h4-inline {
 .accord-section {
     color: white;
 }
-#aboutusBG {
-    background-image: url('contactBackground.jpg');
+#cover {
+    background: #222 url('../images/aboutBG.jpg') no-repeat;
+    background-size: cover;
+    color: black;
+    height: 25em;
+    
 }
 
