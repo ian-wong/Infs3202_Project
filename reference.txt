@@ -1,0 +1,21 @@
+Libraries and Code References
+
+Libraries: 
+Twitter: 
+-API Library
+
+Youtube Data API:
+-API Library using composer https://developers.google.com/youtube/v3/quickstart/php
+
+PHPMailer:
+-Library https://github.com/PHPMailer/PHPMailer
+-Code Reference https://github.com/PHPMailer/PHPMailer/blob/master/README.md
+
+Paypal:
+-SDK https://paypal.github.io/PayPal-PHP-SDK/
+
+SMSBroadcast API:
+-Code Reference https://www.smsbroadcast.com.au/developers
+
+
+
