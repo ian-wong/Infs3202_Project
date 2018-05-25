@@ -14,37 +14,13 @@
     <?php
         head_html();
     ?>
-     <!-- Google Maps API -->
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD556cffToiu6QUeMA370u-To2aBgcKngw&callback=initMap" async
-            defer></script>
-
 </head>
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a href="index.php" class="navbar-brand">
-            <img src="images/logo.png" id="Logo" class="d-inline-block align-top">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <form class="form-inline" action="searchResult.php" method="POST"><!--Can use GET method-->
-                <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" onkeyup="showResult(this.value)" aria-label="Search" name="searchInput"> 
-                <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
-            </form>
-            <ul class="navbar-nav ml-auto">
-            <a class="nav-link" href="aboutus.php">About Us</a>
-                <li class="nav-item">
-                    <?php
-                        isset_user();
-                    ?>
-                </li>
-            </ul>  
-        </div>
-    </nav>
+    <?php
+        header_nav();
+    ?>
 </header>
 
 <div class="card">

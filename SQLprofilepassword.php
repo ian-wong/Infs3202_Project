@@ -9,7 +9,7 @@ include("connectMySQL.php");
         $newPass = mysqli_real_escape_string($conn, $_POST["newPassInput"]);
         $confNewPass = mysqli_real_escape_string($conn, $_POST["confNewPassInput"]);
 
-        if (empty($newPass) || empty($confNewPass)){ //empty($oldPass)){
+        if (empty($newPass) || empty($confNewPass) || empty($oldPass)){
             header("location: profilepassword.php?uid=$uid&error=empty");
         } else {
             if (!($newPass == $confNewPass)){
