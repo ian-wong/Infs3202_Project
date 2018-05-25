@@ -24,7 +24,7 @@
     ?>
 </header>
 <div class="card">
-    <div class="card-header mb-4">
+    <div class="card-header mb-3">
         <h3 class="col-7 mb-1 ">Edit Profile Name</h3>
     </div>
         <?php
