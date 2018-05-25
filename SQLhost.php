@@ -15,7 +15,7 @@
                 } else {
                     if (!preg_match("/^[0-9]+(?:\.[0-9]{1,2})/", $_POST['priceInput'])) {
                         header("location:host.php?uid=$uid&error=price");
-                    } else 
+                    } else {
                 
                         $photoName = mysqli_real_escape_string($conn, $_FILES["photoInput"]["name"]);
                         $photoType = mysqli_real_escape_string($conn, $_FILES["photoInput"]["type"]);
