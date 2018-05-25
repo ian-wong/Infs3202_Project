@@ -10,7 +10,17 @@
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             $uid = $row['uid'];
 
-            echo '<a class="nav-link" href="profile.php?uid='.$uid.'">Welcome, '.$row['firstname'] .'</a>';
+            echo '
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="profile.php?uid='.$uid.'">Welcome, '.$row['firstname'] .'</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="profile.php?uid='.$uid.'">View Profile</a>
+                            <a class="dropdown-item" href="profilename.php?uid='.$uid.'">Edit Name</a>
+                            <a class="dropdown-item" href="profilephoto.php?uid='.$uid.'">Edit Profile Picture</a>
+                            <a class="dropdown-item" href="logout.php">Log Out</a>
+                        </div>
+                    </li>';
+
             
         } else {
             echo '<a class="nav-link" href="login.php">Account</a>';
