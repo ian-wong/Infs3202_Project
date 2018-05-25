@@ -1,6 +1,6 @@
 Libraries and Code References
 
-Libraries: 
+Server Side Libraries: 
 Twitter: 
 -API Library
 
@@ -16,6 +16,21 @@ Paypal:
 
 SMSBroadcast API:
 -Code Reference https://www.smsbroadcast.com.au/developers
+
+########
+Client-Side Libraries:
+
+
+########
+Password: 
+One-way Password Hashing 
+http://php.net/manual/en/function.password-hash.php
+http://php.net/manual/en/faq.passwords.php
+- Using bcrypt hashing algorithm, salt is included.
+- Once password is hashed and stored in the database there is no way of retrieving the original value.
+- It is one-way, no matter how, even with mySQL database access, can you obtain a password through dehashing
+the stored value, the return value will be a boolean. 
+- Constantly updated with PHP versions if needed. 
 
 
 
