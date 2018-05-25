@@ -13,15 +13,6 @@
     <?php
         head_html();
     ?>
-        <!-- Colorbox CSS -->
-        <link rel="stylesheet" type="text/css" href="colorbox.css" />
-        <!-- JQueryUI CSS-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <!-- JQueryUI JS-->
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-        <!-- Colorbox JQuery -->
-        <script src="js/jquery.colorbox.js"></script>
 
         <script>
             //Assigning Colorbox event to elements
