@@ -32,7 +32,7 @@
                         else {
                             $hashpwd = password_hash($password, PASSWORD_DEFAULT);
 
-                            $insertuser = "INSERT INTO user(firstname, surname, email, passw) VALUES ('$fName', '$lName', '$email', '$hashpwd')";
+                            $insertuser = "INSERT INTO user (firstname, surname, email, passw) VALUES ('$fName', '$lName', '$email', '$hashpwd')";
                             mysqli_query($conn, $insertuser);
                             
                             header("Location: login.php?success=signup");
