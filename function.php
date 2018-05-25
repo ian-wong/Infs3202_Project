@@ -60,7 +60,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
 
-                    <!-- Search Bar -->
                     <form class="form-inline" action="searchResult.php" method="POST">
                         <input class="form-control mr-md-2" id="searchBar" type="search" placeholder="Search" aria-label="Search" name="searchInput">
                         <button class="btn btn-outline-light " type="submit" name="submit">Search</button>
