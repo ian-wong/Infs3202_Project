@@ -11,9 +11,6 @@
         <?php
             head_html();
         ?>
-        <!-- Colorbox Jquery -->
-        <script src="js/jquery.colorbox.js"></script>
-
     </head>
 
     <body>
@@ -58,12 +55,16 @@
 
                                     $urow = mysqli_fetch_assoc($uresult);
                                     $uid = $urow['uid'];
-                                    $uphoto = '<img src="SQLgetuphoto.php?uid='.$uid.'" class="img-fluid">';
                                     $ufname = $urow['firstname'];
                                     $usname = $urow['surname'];
                                     
                                     echo "<div class='col-md-3'>";
-                                        echo $uphoto;
+                                        if (!(empty($urow['photos'])) ) {
+                                            $uphoto = '<img src="SQLgetuphoto.php?uid='.$uid.'" class="img-fluid">';
+                                            echo $uphoto;
+                                        } else {
+                                            echo "No profile picture added.";
+                                        }
                                     echo "</div>";
                                     echo "<div class='col-md-9'>";
                                         echo '<br/>';
