@@ -158,6 +158,7 @@
                 cottages to single rooms, there are a variety of accommodation available to reserve.</p>
         </div>
         <div class="col-md-5">
+            
         </div>
     </div>
 
@@ -182,20 +183,7 @@
                 </div> 
             </div>
             <div class="col-md-2">
-                <?php
-                    
-                    echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
-                    
-                    $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
-                    
 
-                    $firsttweet = 1;
-                    foreach ($tweets as $twt){
-                        echo $twt->text . '<br><br>';
-                        $firsttweet++;
-                    }
-                
-                ?>
             </div>
         </div>
 
@@ -205,26 +193,6 @@
             <div class="col-md-8">
                 <br>
                 <h2>Available Accommodations: </h2>
-                <div class="row">
-                    <?php
-                        $sqlselectaccom = "SELECT * FROM accommodation";
-                        $result = mysqli_query($conn, $sqlselectaccom);
-
-                        if (!(mysqli_num_rows($result)>0)){
-                            echo 'Unable to connect to server';
-                        } else {
-                            while ($row = mysqli_fetch_assoc($result)){
-                                echo "<div class='col-md-3'>";
-                                echo "<br>";
-                                
-                                accomm_info($row);
-                                
-                                echo "</div>";
-                            }
-                        }
-                    ?>
-                </div>
-                <br><br><br><br><br>
                 <div class="row" id="accomms">
                         <?php
                             $selaccomm = "SELECT * FROM accommodation LIMIT 4";
@@ -243,27 +211,38 @@
                             }
                         ?>                  
                 </div>
-                <button> Show more accommodations </button>  
+                <button type="button" class="btn btn-secondary btn-sm mt-md-3"> Show more accommodations </button>  
             </div>
             <div class="col-md-2">
             </div>
         </div>
+        <div class="container-fluid mt-md-5">
         <div class="row">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-6">
-                <br><br><br><br>
+            <div class="col-md-2 mt-md-5"></div>
+            <div class="col-md-4 mt-md-5">
                 <form action="SQLdonate.php" method="post" autocomplete="off">
                     <h4>Enjoy using Quest Hotel? Support us by donating.</h4>
                     <label for="donate">Amount</label>
                     <input type="text" name="donate">
-                    <input type="submit" value="Donate" name="submit">
+                    <input type="submit" class="btn btn-secondary"value="Donate" name="submit">
                     <p>You'll be taken to Paypal to complete your payment.</p><br>
                 </form>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4 mt-md-5">
+            <?php
+                    echo "<h2><a target=_'blank' href='https://twitter.com/HotelsQuest'>$user->screen_name Twitter</a></h2>";
+                    $tweets = $twitconn->get('statuses/user_timeline', ['count'=>5,'exclude_replies'=>true,'include_rts'=>false]);
+                    $firsttweet = 1;
+                    foreach ($tweets as $twt){
+                        echo $twt->text . '<br><br>';
+                        $firsttweet++;
+                    }
+                ?>
             </div>
+            <div class="col-md-2 mt-md-5"></div>
         </div>
     </div>
+        </div>
+
 </body>
 </html>

@@ -97,7 +97,7 @@
                     <div class=col-md-4></div>
                     <div class="accordion col-md-4 pb-md-5">
                         <h3>Backend Developer</h3>
-                        <p class="text-muted">Hi I'm Anthony! I'm currently studying IT at Univerisity of Queensland.</p>
+                        <p class="text-muted">Hi I'm Anthony! I'm currently studying IT.</p>
                     </div>
                     <div class=col-md-4></div>
                 </div>
@@ -109,7 +109,7 @@
                     <div class="col-md-4"></div>
                     <div class=" accordion col-md-4 pb-md-5">
                         <h3>UX Designer</h3>
-                        <p class="text-muted">22 year old, studying IT at Univerisity of Queensland.</p>
+                        <p class="text-muted">Hi, I'm 22 years old, studying IT.</p>
                     </div>
                     <div class=col-md-4></div>
                 </div>
