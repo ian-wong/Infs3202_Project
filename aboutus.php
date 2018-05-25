@@ -51,24 +51,23 @@
         ?>
     </header>
     <main>
-        <div class="row-feature">
-            <div class="row">
-                <div class="col-md-12" id="aboutusBG">
-                    <div class="row">
-                        <div class="col-md-8 text-right">
-                            <h2 class="feature-heading">WE ARE QUEST HOTEL</h2>
-                        </div>
-                        <div class="col-md-4 mt-md-5 text-center">
-                            <a class="group1" href="images/logo.png" title="Quest Hotel">
-                                <img src="images/logo.png">
-                            </a>
-                        </div>
-                    </div>
+        <div id="cover">
+            <div class="row-feature">
+                <div class="row">
+                    <div class="col-md-4"></div>
+                            <div class="col-md-4 text-center">
+                                <div class="feature-heading">WE ARE QUEST HOTEL</div>
+                            </div>
+                            <div class="col-md-2 mt-md-5 text-center">
+                                <a class="group1" href="images/logo.png" title="Quest Hotel">
+                                    <img src="images/logo.png">
+                                </a>
+                            </div>
+                    <div class="col-md-2"></div>
                 </div>
             </div>
-            <hr class="feature-divider">
-
         </div>
+
         <div class="row-feature">
             <div class="row">
                 <div class="col-md-1 pb-md-5"></div>
