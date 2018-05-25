@@ -97,9 +97,7 @@
                     <input type="password" class="form-control" id="confirmPassInput" name="confirmPassInput">
                 </div>
             </div>
-            <div class="form-group">
-                <div class="g-recaptcha" data-sitekey="6LfiWlsUAAAAABYaGDk6bi3Z5tW1I60dbdt1PzPh"></div>
-            </div>
+
 
             <div class="form-group">
                 <div class="col-md-7">
