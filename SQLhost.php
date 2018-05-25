@@ -13,21 +13,26 @@
                 if ($_FILES["photoInput"]["error"] > 0){
                     header("location: host.php?uid=$uid&error=photo");
                 } else {
-                    $photoName = mysqli_real_escape_string($conn, $_FILES["photoInput"]["name"]);
-                    $photoType = mysqli_real_escape_string($conn, $_FILES["photoInput"]["type"]);
-                    $photoData = mysqli_real_escape_string($conn, file_get_contents($_FILES["photoInput"]["tmp_name"]));
+                    if (!preg_match("/^[0-9]+(?:\.[0-9]{1,2})/", $_POST['priceInput'])) {
+                        header("location:host.php?uid=$uid&error=price");
+                    } else {
+                
+                        $photoName = mysqli_real_escape_string($conn, $_FILES["photoInput"]["name"]);
+                        $photoType = mysqli_real_escape_string($conn, $_FILES["photoInput"]["type"]);
+                        $photoData = mysqli_real_escape_string($conn, file_get_contents($_FILES["photoInput"]["tmp_name"]));
 
-                    $name = mysqli_real_escape_string($conn, $_POST['nameInput']);
-                    $loc = mysqli_real_escape_string($conn, $_POST['locInput']);
-                    $price = mysqli_real_escape_string($conn, $_POST['priceInput']);
-                    $desc = mysqli_real_escape_string($conn, $_POST['descInput']);
+                        $name = mysqli_real_escape_string($conn, $_POST['nameInput']);
+                        $loc = mysqli_real_escape_string($conn, $_POST['locInput']);
+                        $price = mysqli_real_escape_string($conn, $_POST['priceInput']);
+                        $desc = mysqli_real_escape_string($conn, $_POST['descInput']);
 
-                    $insaccomm = "INSERT INTO accommodation (uid, name, location, descr, photos, cost) VALUES ('$uid', '$name','$loc', '$desc', '$photoData', '$price')";
-                    
-                    
-                    mysqli_query($conn, $insaccomm);
-                    
-                    header("location: profile.php?uid=$uid&success=host");
+                        $insaccomm = "INSERT INTO accommodation (uid, name, location, descr, photos, cost) VALUES ('$uid', '$name','$loc', '$desc', '$photoData', '$price')";
+                        
+                        
+                        mysqli_query($conn, $insaccomm);
+                        
+                        header("location: profile.php?uid=$uid&success=host");
+                    }
                 }
             } else{
                 header("location: host.php?uid=$uid&error=photo");
