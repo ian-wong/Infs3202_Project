@@ -27,11 +27,9 @@ include("connectMySQL.php");
                 } elseif ($hashpassCheck == true){
                     $hashpwd = password_hash($newPass, PASSWORD_DEFAULT);
                     $updpass = "UPDATE user SET passw='$hashpwd' WHERE uid='$uid'";
-                    try {
-                        mysqli_query($conn, $updpass);
-                    } catch (exception $e){
-                        header("location: profilepassword.php?uid=$uid&error=error");
-                    }
+                    
+                    mysqli_query($conn, $updpass);
+                    
                     header("Location: profile.php?uid=$uid");
                 }  
             }

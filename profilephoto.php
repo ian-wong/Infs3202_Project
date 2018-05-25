@@ -19,7 +19,7 @@
 
 <header>
     <?php  
-        header();
+        header_nav();
     ?>
 </header>
 <div class="card">
@@ -39,7 +39,7 @@
                 $uid = $_GET['uid'];
                 echo '<form class="" id="hostForm" action="SQLprofilephoto.php?uid='.$uid.'" method="POST" enctype="multipart/form-data">';
             ?>
-                <div class="col-md-5 ml-3 bg-danger">
+                <div class="col-md-5 ml-3">
                     <label for="photoInput">Select new profile picture </label><br>
                     <input type="file" id="photoInput" name="photoInput" />
                 </div>

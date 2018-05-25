@@ -16,11 +16,8 @@
 
                 $updphoto = "UPDATE user SET photos='$photoData' WHERE uid='$uid'";
                 
-                try{
-                    mysqli_query($conn, $updphoto);
-                } catch (exception $e){
-                   header("location: profilephoto.php?uid=$uid&error=error"); 
-                }
+                mysqli_query($conn, $updphoto);
+                
                 header("location: profile.php?uid=$uid");
             }
         } else {

@@ -51,7 +51,7 @@
                 $uid = $_GET['uid'];
                 echo '<form id="hostForm" action="SQLprofilephone.php?uid='.$uid.'" method="POST">';
             ?>
-                <div class="col-md-5 ml-3 mb-4 bg-success">
+                <div class="col-md-5 ml-3 mb-4">
                     <label for="phoneInput">You will receive sms updates from Quest Hotel (enter digits only, mobile only):</label>
                     <input type="tel" class="form-control" id="phoneInput" name="phoneInput" maxlength="10">
                 </div>

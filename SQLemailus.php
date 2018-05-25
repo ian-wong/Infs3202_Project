@@ -3,8 +3,6 @@
 
     if(isset($_POST['submit'])){
         $fromemail = mysqli_real_escape_string($conn, $_POST['fromemail']);
-
-        //$fromemail = $_POST['email-from'];
         $toemail = mysqli_real_escape_string($conn, $_POST['toemail']);
         $subject = mysqli_real_escape_string($conn, $_POST['subject']);
         $message = $_POST['message'];

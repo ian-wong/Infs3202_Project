@@ -31,8 +31,9 @@
                 $uid = $_GET['uid'];
 
                 echo '<form class="" id="hostForm" action="SQLprofiledelete.php?uid='.$uid.'" method="POST">';
-            
-                echo '<a href="profile.php?uid='.$uid.'" class="btn btn-primary">No, go back.</a>';
+                echo '<div class="col-md-7 ml-3 mt-4">';
+                    echo '<a href="profile.php?uid='.$uid.'" class="btn btn-primary">No, go back.</a>';
+                echo '</div>';
             ?>    
                 <div class="col-md-7 ml-3 mt-4">
                     <button class="btn btn-danger" type="submit" name="submit">Yes, permanently delete account.</button>

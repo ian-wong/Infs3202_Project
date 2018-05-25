@@ -58,10 +58,10 @@
                     $ufname = $row['firstname'];
                     $usname = $row['surname'];
         
-                    if (empty($uphoto)){
-                        echo 'You currently have no profile picture, add a profile picture.';
-                    } else {
+                    if (!empty($row['photos']) ) {
                         echo $uphoto;
+                    } else {
+                        echo "No profile picture added.";
                     }
                     echo '<div class="text-center">';
                         echo '<h3>'.$ufname.' '.$usname. '</h3>';

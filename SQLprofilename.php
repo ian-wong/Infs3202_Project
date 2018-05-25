@@ -16,12 +16,8 @@ include("connectMySQL.php");
                 $uid = $_GET['uid'];
         
                 $updname = "UPDATE user SET firstname='$fName', surname='$lName' WHERE uid='$uid'";
+                mysqli_query($conn, $updname);
                 
-                try {
-                    mysqli_query($conn, $updname);
-                } catch (exception $e){
-                    header("location: profilename.php?uid=$uid&error=error");
-                }
                 header("Location: profile.php?uid=".$uid."");
             }
         }

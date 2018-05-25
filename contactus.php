@@ -43,8 +43,8 @@
                 <label for="fromemail">From:</label>
                 <input type="text" class="form-control" id="email-from" name="fromemail"></br>
 
-                <label for="toemail">To:</label>
-                <input type="text" class="form-control" id="email-to" name="toemail"></br>
+                <label for="toemail">To: This is our email</label>
+                <input type="text" class="form-control" id="email-to" name="toemail" value="anthony.hanh@uqconnect.edu.au"></br>
                 
                 <label for="subject">Subject:</label>
                 <input type="text" class="form-control" id="email-subject" name="subject"></br>

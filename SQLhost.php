@@ -24,11 +24,9 @@
 
                     $insaccomm = "INSERT INTO accommodation (uid, name, location, descr, photos, cost) VALUES ('$uid', '$name','$loc', '$desc', '$photoData', '$price')";
                     
-                    try {
-                        mysqli_query($conn, $insaccomm);
-                    } catch (exception $e){
-                        header("location: host.php?uid=$uid&error=error");
-                    }
+                    
+                    mysqli_query($conn, $insaccomm);
+                    
                     header("location: profile.php?uid=$uid&success=host");
                 }
             } else{

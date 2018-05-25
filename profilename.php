@@ -51,14 +51,14 @@
             echo '<form class="" id="hostForm" action="SQLprofilename.php?uid='.$uid.'" method="POST">';
         ?>
             <div class="form-row form-inline ml-3">
-                <div class="col-md-4 ml-3 bg-success">
+                <div class="col-md-4 ml-3">
                     <h5>First name: </h5>
-                    <input type="text" class="form-control" id="fNameInput" name="fNameInput" maxlength="30">
+                    <input type="text" class="form-control" id="fNameInput" name="fNameInput" maxlength="100">
                 </div>
 
-                <div class="col-md-4 ml-3 bg-success">
+                <div class="col-md-4 ml-3">
                     <h5>Surname: </h5>
-                    <input type="text" class="form-control" id="lNameInput" name="lNameInput" maxlength="30">
+                    <input type="text" class="form-control" id="lNameInput" name="lNameInput" maxlength="100">
                 </div>
             </div>
             <div class="form-group">

@@ -16,14 +16,11 @@
             if(is_numeric($phone)){
                 $updphone = "UPDATE user SET phone='$phone' WHERE uid='$uid'";
         
-                try {
-                    mysqli_query($conn, $updphone);
-                } catch (exception $e){
-                    header("location: profilephone.php?uid=$uid&error=error");    
-                }
+                mysqli_query($conn, $updphone);
+                
                 header("Location: profile.php?uid=".$uid."");
             } else {
-                header("location: profile.php?uid=$uid&error=value");
+                header("location: profilephone.php?uid=$uid&error=value");
             }
         }
     }
