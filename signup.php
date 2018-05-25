@@ -22,6 +22,8 @@
     <?php
         header_nav();
     ?>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </header>
 
 <div class="card">
@@ -94,6 +96,9 @@
                     <label for="confirmPassInput">Confirm Password</label>
                     <input type="password" class="form-control" id="confirmPassInput" name="confirmPassInput">
                 </div>
+            </div>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LfiWlsUAAAAABYaGDk6bi3Z5tW1I60dbdt1PzPh"></div>
             </div>
 
             <div class="form-group">
