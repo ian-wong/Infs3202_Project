@@ -68,11 +68,20 @@
                     echo '</div>';
                 }
 
-            echo '<a href="host.php?uid='.$uid.'" class="btn btn-block btn-primary"><h5>Host Accommodation</h5></a>';
+            echo '<a href="host.php?uid='.$uid.'" class="btn btn-block btn-secondary mt-md-5">Host Accommodation</a>';
+            
+            echo '<a href="profilepassword.php?uid='.$uid.'" class="btn btn-secondary mt-md-3">Change Password</a>';
+            echo '<a href="profilephone.php?uid='.$uid.'" class="btn btn-secondary mt-md-3">Add/Edit Phone Number</a>';
+      
+            echo '<a href="profiledonate.php?uid='.$uid.'" class="btn btn-secondary mt-md-3">View Donations</a>';
+      
+            echo '<a href="profiledelete.php?uid='.$uid.'" class="btn btn-secondary mt-md-3">Delete Account</a>';
+    
             ?>
         </div>
-        <div class="col-md-7">
-            <br>
+        <div class="col-md-1"></div>
+        <div class="col-md-7 mt-md-4">
+            
             <?php 
                 if (isset($_GET['error'])) {
                     $error = $_GET['error'];
@@ -94,10 +103,10 @@
                         echo '</div>';
                     }
                 }
+                
             ?>
 
-            <br>
-            <br>
+         
             <h2>Your hosted accommodations: </h2>
             <?php 
                 
@@ -139,39 +148,8 @@
                 }
             ?>
         </div>
-        <div class="col-md-2">
-            <br>
-            <?php
-                echo '<a href="profilename.php?uid='.$uid.'" class="btn btn-primary"><h5>Edit Profile Name</h5></a>';
-            ?>
-            <br>
-            <br>
-            <?php
-                echo '<a href="profilephoto.php?uid='.$uid.'" class="btn btn-primary"><h5>Edit Profile Picture</h5></a>';
-            ?>
-            <br>
-            <br>
-            <?php
-                echo '<a href="profilepassword.php?uid='.$uid.'" class="btn btn-primary"><h5>Change Password</h5></a>';
-            ?>
-            <br>
-            <br>
-            <?php
-                echo '<a href="profilephone.php?uid='.$uid.'" class="btn btn-primary"><h5>Add/Edit Phone Number</h5></a>';
-            ?>
-            <br>
-            <br>
-            <?php
-                echo '<a href="profiledonate.php?uid='.$uid.'" class="btn btn-primary"><h5>View Donations</h5></a>';
-            ?>
-            <br>
-            <br>
-            <?php
-                echo '<a href="profiledelete.php?uid='.$uid.'" class="btn btn-warning"><h5>Delete Account</h5></a>';
-            ?>
-            <br>
-            <br>
-            <a href="logout.php" class="btn btn-danger" ><h4>Log Out</h4></a>
+        <div class="col-md-1">
+
         </div>
     </div>
 </div>
