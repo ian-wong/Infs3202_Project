@@ -11,8 +11,8 @@ PHPMailer:
 -Library https://github.com/PHPMailer/PHPMailer
 -Code Reference https://github.com/PHPMailer/PHPMailer/blob/master/README.md
 
-Paypal:
--SDK https://paypal.github.io/PayPal-PHP-SDK/
+Paypal SDK:
+-Library https://paypal.github.io/PayPal-PHP-SDK/
 
 SMSBroadcast API:
 -Code Reference https://www.smsbroadcast.com.au/developers
