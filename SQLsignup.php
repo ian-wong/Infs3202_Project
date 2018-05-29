@@ -15,7 +15,7 @@
             if (!preg_match("/^[a-zA-Z ]*$/", $fName) || !preg_match("/^[a-zA-Z ]*$/", $lName)){
                 header("location: signup.php?error=name");
             } else {
-                if(!filter_var($email)){
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                     header("location: signup.php?error=email");
                 } else {
                     if (!($password == $confpassword)){
