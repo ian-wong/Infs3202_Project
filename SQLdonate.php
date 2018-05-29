@@ -21,38 +21,42 @@
                 header('location: index.php?error=donatevalue');
             } else {
                 $don = mysqli_real_escape_string($conn, $_POST['donate']);
-                $donate = (float) $don;
-                $total = $donate;
+                if (is_numeric($don)){
+                    $donate = (float) $don;
+                    $total = $donate;
 
-                $payer = new Payer();
-                $payer->setPaymentMethod('paypal'); 
+                    $payer = new Payer();
+                    $payer->setPaymentMethod('paypal'); 
 
-                $amount = new Amount();
-                $amount->setCurrency('AUD')
-                    ->setTotal($total);
-                
-                $transaction = new Transaction();
-                $transaction->setAmount($amount)
-                    ->setDescription('Donation to Quest Hotel')
-                    ->setInvoiceNumber(uniqid());
+                    $amount = new Amount();
+                    $amount->setCurrency('AUD')
+                        ->setTotal($total);
+                    
+                    $transaction = new Transaction();
+                    $transaction->setAmount($amount)
+                        ->setDescription('Donation to Quest Hotel')
+                        ->setInvoiceNumber(uniqid());
 
-                $redirectUrls = new RedirectUrls();
-                $redirectUrls->setReturnUrl(SITE_URL . '/SQLdonatedone.php?success=true&amount='.$donate.'')
-                    ->setCancelUrl(SITE_URL . '/SQLdonatedone.php?success=false');
-                
-                $payment = new Payment();
-                $payment->setIntent('sale')
-                    ->setPayer($payer)
-                    ->setRedirectUrls($redirectUrls)
-                    ->setTransactions([$transaction]);
+                    $redirectUrls = new RedirectUrls();
+                    $redirectUrls->setReturnUrl(SITE_URL . '/SQLdonatedone.php?success=true&amount='.$donate.'')
+                        ->setCancelUrl(SITE_URL . '/SQLdonatedone.php?success=false');
+                    
+                    $payment = new Payment();
+                    $payment->setIntent('sale')
+                        ->setPayer($payer)
+                        ->setRedirectUrls($redirectUrls)
+                        ->setTransactions([$transaction]);
 
-                try {
-                    $payment->create($paypal);
-                } catch(Exception $e) {
+                    try {
+                        $payment->create($paypal);
+                    } catch(Exception $e) {
+                        header("location: index.php?error=paypal");
+                    }
+                    $approvalUrl = $payment->getApprovalLink();
+                    header("location: $approvalUrl");
+                } else {
                     header("location: index.php?error=paypal");
                 }
-                $approvalUrl = $payment->getApprovalLink();
-                header("location: $approvalUrl");
             }
         }
     }
